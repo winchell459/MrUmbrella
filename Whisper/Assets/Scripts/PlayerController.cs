@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
 
@@ -59,7 +59,9 @@ public class PlayerController : MonoBehaviour
     {
         float velocity = Input.GetAxis("Horizontal") * speed;
 
-        body.velocity = new Vector2(velocity, body.velocity.y);
+        //body.velocity = new Vector2(velocity, body.velocity.y);
+        float F = (velocity - body.velocity.x) * body.mass / Time.deltaTime;
+        body.AddForce(new Vector2(F, 0));
 
         if(Mathf.Abs(body.velocity.x) > 0)
         {
