@@ -25,11 +25,12 @@ public class PlayerController : MonoBehaviour
 
 
     public Animator animator;
+    public GameObject Umbrella;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-
+        
     }
 
 
