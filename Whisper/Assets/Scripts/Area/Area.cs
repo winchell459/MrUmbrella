@@ -46,6 +46,7 @@ public abstract class Area : MonoBehaviour
 
                     // bridge = ab;
                     Player = Instantiate(PlayerHandler.PH.PlayerPrefab, bridge.transform.position + (Vector3)bridge.LoadingOffset, Quaternion.identity);
+
                     break;
                 }
             }
@@ -55,6 +56,8 @@ public abstract class Area : MonoBehaviour
         {
             Player = Instantiate(PlayerHandler.PH.PlayerPrefab, DefaultPlayerSpawnPoint.transform.position, Quaternion.identity);
         }
+
+        FindObjectOfType<CameraFollow>().SetTarget(Player.transform.GetChild(0));
     }
 
     public void UseBridge(AreaBridge bridge)
