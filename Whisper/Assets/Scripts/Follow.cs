@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour
 {
-    public GameObject player;
-    public Vector2 Smooth;
-    public Vector3 offset;
+    private GameObject player;
+    public float Smooth;
+    public float yValue;
+    private Vector3 offset;
+
+    public Vector3 SetOffset;
+
+    public bool specialCase;
+
+    private Vector3 AreaPosDifference;
 
     private void Start()
     {
-        offset = new Vector3(0, 0.92f, -10);
+        offset = SetOffset;
+        AreaPosDifference = FindObjectOfType<AreaFollow>().MoveDistance;
     }
 
     private void Update()
@@ -23,11 +31,14 @@ public class Follow : MonoBehaviour
     // LateUpdate is called after Update each frame
     void LateUpdate()
     {
-
-        // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
-        transform.position = new Vector3(player.transform.position.x * Smooth.x, -0.62f, 0) + offset;
-
-        Debug.Log(new Vector3(player.transform.position.x * Smooth.x, 0, 0) + offset);
+        if (!specialCase)
+        {
+            transform.position = new Vector3(player.transform.position.x * Smooth, yValue, 0) + offset;
+        }
+        if (specialCase)
+        {
+            transform.position = new Vector3(player.transform.position.x * Smooth, player.transform.position.y, -10) + new Vector3(AreaPosDifference.x, AreaPosDifference.y);
+        }
 
     }
 }

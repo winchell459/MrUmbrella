@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
         if (col.transform.transform.CompareTag("Ground"))
         {
             Grounded = false;
-            Debug.Log("no");
+            //Debug.Log("no");
         }
     }
 
@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
         if (col.transform.transform.CompareTag("Ground"))
         {
             Grounded = true;
-            Debug.Log("Yes");
+            //Debug.Log("Yes");
         }
     }
 

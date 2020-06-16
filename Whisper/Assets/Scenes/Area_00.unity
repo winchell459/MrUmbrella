@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 638495863}
   - component: {fileID: 638495862}
   - component: {fileID: 638495864}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ForeGround
   m_TagString: Ground
   m_Icon: {fileID: 0}

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Weapon
+  - particle
+  - enemyWeapon
   layers:
   - Default
   - TransparentFX
@@ -18,7 +21,7 @@ TagManager:
   - Body
   - TC
   - Weapon
-  - 
+  - Ground
   - 
   - 
   - 
@@ -59,6 +62,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2510123275
+    locked: 0
+  - name: Enemy
+    uniqueID: 555678373
     locked: 0
   - name: Weapon
     uniqueID: 3309536425
