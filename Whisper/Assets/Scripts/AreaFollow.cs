@@ -11,16 +11,14 @@ public class AreaFollow : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
-            Camera.transform.position = Camera.transform.position + new Vector3(MoveDistance.x, MoveDistance.y);
-            FindObjectOfType<Follow>().specialCase = true;
+            FindObjectOfType<Follow>().SetBounds(GetComponent<BoxCollider2D>());
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.transform.CompareTag("Player"))
         {
-            Camera.transform.position = Camera.transform.position + new Vector3(-MoveDistance.x, -MoveDistance.y);
-            FindObjectOfType<Follow>().specialCase = false;
+            
         }
     }
 }

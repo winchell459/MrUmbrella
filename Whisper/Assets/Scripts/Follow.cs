@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour
 {
-    private GameObject player;
-    public float Smooth;
-    public float yValue;
-    private Vector3 offset;
+    public Transform player;
+    public Vector2 Smooth = new Vector2(1,1);
+    public Vector2 Margin;
 
-    public Vector3 SetOffset;
+    public BoxCollider2D Bounds; // { get; set; }
+    private Vector2 minBounds, maxBounds;
 
-    public bool specialCase;
+    float cameraHalfWidth, cameraHalfHeight;
 
-    private Vector3 AreaPosDifference;
+    public bool isFollowing { get; set; }
 
     private void Start()
     {
-        offset = SetOffset;
-        AreaPosDifference = FindObjectOfType<AreaFollow>().MoveDistance;
+        cameraHalfHeight = GetComponent<Camera>().orthographicSize;
+        cameraHalfWidth = cameraHalfHeight * ((float)Screen.width / Screen.height);
     }
 
     private void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        
         
     }
     // Use this for initialization
@@ -31,14 +31,38 @@ public class Follow : MonoBehaviour
     // LateUpdate is called after Update each frame
     void LateUpdate()
     {
-        if (!specialCase)
+        if (isFollowing)
         {
-            transform.position = new Vector3(player.transform.position.x * Smooth, yValue, 0) + offset;
-        }
-        if (specialCase)
-        {
-            transform.position = new Vector3(player.transform.position.x * Smooth, player.transform.position.y, -10) + new Vector3(AreaPosDifference.x, AreaPosDifference.y);
+            float x = transform.position.x;
+            float y = transform.position.y;
+
+            //find new point to move towards using smoothing
+            if (Mathf.Abs(x - player.position.x) > Margin.x)
+                x = Mathf.Lerp(x, player.position.x, Smooth.x * Time.deltaTime);
+            if (Mathf.Abs(y - player.position.y) > Margin.y)
+                y = Mathf.Lerp(y, player.position.y, Smooth.y * Time.deltaTime);
+
+            //check that camera is inside current bounds
+            //if (Mathf.Abs(maxBounds.x - minBounds.x) > cameraHalfWidth * 2)
+                x = Mathf.Clamp(x, minBounds.x + cameraHalfWidth, maxBounds.x - cameraHalfWidth);
+            //if (Mathf.Abs(maxBounds.y - minBounds.y)  > cameraHalfHeight * 2)
+                y = Mathf.Clamp(y, minBounds.y + cameraHalfHeight, maxBounds.y - cameraHalfHeight);
+
+            transform.position = new Vector3(x, y, transform.position.z);
         }
 
+    }
+
+    public void SetBounds(BoxCollider2D bounds)
+    {
+        this.Bounds = bounds;
+        minBounds = Bounds.bounds.min;
+        maxBounds = Bounds.bounds.max;
+    }
+
+    public void SetTarget(Transform Target)
+    {
+        player = Target;
+        isFollowing = true;
     }
 }
