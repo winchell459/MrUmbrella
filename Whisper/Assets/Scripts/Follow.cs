@@ -13,7 +13,7 @@ public class Follow : MonoBehaviour
 
     float cameraHalfWidth, cameraHalfHeight;
 
-    public bool isFollowing { get; set; }
+    public bool isFollowing;//{ get; set; }
 
     private void Start()
     {
@@ -33,6 +33,7 @@ public class Follow : MonoBehaviour
     {
         if (isFollowing)
         {
+            Debug.Log("isFollowing");
             float x = transform.position.x;
             float y = transform.position.y;
 
@@ -42,11 +43,21 @@ public class Follow : MonoBehaviour
             if (Mathf.Abs(y - player.position.y) > Margin.y)
                 y = Mathf.Lerp(y, player.position.y, Smooth.y * Time.deltaTime);
 
+            float minX = minBounds.x + cameraHalfWidth;
+            float maxX = maxBounds.x - cameraHalfWidth;
+            float minY = minBounds.y + cameraHalfHeight;
+            float maxY = maxBounds.y - cameraHalfHeight;
+
             //check that camera is inside current bounds
-            //if (Mathf.Abs(maxBounds.x - minBounds.x) > cameraHalfWidth * 2)
-                x = Mathf.Clamp(x, minBounds.x + cameraHalfWidth, maxBounds.x - cameraHalfWidth);
-            //if (Mathf.Abs(maxBounds.y - minBounds.y)  > cameraHalfHeight * 2)
-                y = Mathf.Clamp(y, minBounds.y + cameraHalfHeight, maxBounds.y - cameraHalfHeight);
+            
+            if (transform.position.x < minBounds.x + cameraHalfWidth) minX = transform.position.x;
+            else if (transform.position.x > maxBounds.x - cameraHalfWidth) maxX = transform.position.x;
+
+            if (transform.position.y < minY) minY = transform.position.y;
+            else if (transform.position.y > maxY) maxY = transform.position.y;
+
+            x = Mathf.Clamp(x, minX, maxX);
+            y = Mathf.Clamp(y, minY, maxY);
 
             transform.position = new Vector3(x, y, transform.position.z);
         }
@@ -55,6 +66,7 @@ public class Follow : MonoBehaviour
 
     public void SetBounds(BoxCollider2D bounds)
     {
+        Debug.Log("SetBounds(" + bounds.name + ")");
         this.Bounds = bounds;
         minBounds = Bounds.bounds.min;
         maxBounds = Bounds.bounds.max;
@@ -62,6 +74,7 @@ public class Follow : MonoBehaviour
 
     public void SetTarget(Transform Target)
     {
+        Debug.Log("SetTarget(" + Target.name + ")");
         player = Target;
         isFollowing = true;
     }
