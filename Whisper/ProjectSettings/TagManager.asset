@@ -22,14 +22,14 @@ TagManager:
   - TC
   - Weapon
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Level
+  - Enemy
+  - Usable
+  - Pickup
+  - IgnorePlayer
+  - Player
+  - PlayerDrop
+  - ateformThrought
   - 
   - 
   - 
