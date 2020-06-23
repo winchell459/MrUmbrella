@@ -54,7 +54,7 @@ public abstract class Area : MonoBehaviour
             Player = Instantiate(PlayerHandler.PH.PlayerPrefab, DefaultPlayerSpawnPoint.transform.position, Quaternion.identity).transform;
         }
 
-        FindObjectOfType<Follow>().SetTarget(Player.GetChild(0));
+        FindObjectOfType<Follow>().SetTarget(Player);
     }
     public void UseBridge(AreaBridge bridge)
     {
