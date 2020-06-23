@@ -14,6 +14,8 @@ public abstract class Area : MonoBehaviour
     public abstract void OnUpdate();
     public abstract void OnExit();//when the player exit the scene
 
+    public Transform Player { get; set; }
+
     private void Awake()
     {
         OnAwake();
@@ -42,15 +44,16 @@ public abstract class Area : MonoBehaviour
             {
                 if(bridge.BridgeName == LoadingAreaBridge)
                 {
-                    Instantiate(PlayerHandler.PH.PlayerPrefab, bridge.transform.position + (Vector3)bridge.LoadingOffset, Quaternion.identity);
+                    Player = Instantiate(PlayerHandler.PH.PlayerPrefab, bridge.transform.position + (Vector3)bridge.LoadingOffset, Quaternion.identity).transform.GetChild(0);
                     break;
                 }
             }
         }
         else
         {
-            Instantiate(PlayerHandler.PH.PlayerPrefab, DefaultPlayerSpawnPoint.transform.position, Quaternion.identity);
+            Player = Instantiate(PlayerHandler.PH.PlayerPrefab, DefaultPlayerSpawnPoint.transform.position, Quaternion.identity).transform;
         }
+        FindObjectOfType<Follow>().SetTarget(Player);
     }
     public void UseBridge(AreaBridge bridge)
     {

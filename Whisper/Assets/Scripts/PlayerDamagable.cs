@@ -10,6 +10,10 @@ public class PlayerDamagable : MonoBehaviour
 
     public GameObject Self;
 
+    public bool isDamagedOnce;
+
+    public bool isDamagePlayer;
+
     private void Start()
     {
         OwnHealth = GetComponent<Health>().health;
@@ -23,8 +27,18 @@ public class PlayerDamagable : MonoBehaviour
         {
             if (collision.TryGetComponent(out WeaponProperty wp))
             {
-                OwnHealth = OwnHealth - wp.damage;
+                if (isDamagedOnce == false)
+                {
+                    OwnHealth = OwnHealth - wp.damage;
+                    FindObjectOfType<TimeManager>().SlowDown();
+                    
+                    isDamagedOnce = true;
+                    
+                }
+                
+                FindObjectOfType<EnemyFire>().animator.SetBool("isAttack", false);
                 Destroy(collision.gameObject);
+
             }
             else
             {
@@ -33,23 +47,27 @@ public class PlayerDamagable : MonoBehaviour
         }
     }
 
-    private void death()
+    private void Checkdeath()
     {
         if(OwnHealth <= 0)
         {
-            Debug.Log("You ded");
+            if(FindObjectOfType<EnemyFire>().isPlayerDead == false)
+            {
+                Debug.Log("You ded");
+                FindObjectOfType<EnemyFire>().isPlayerDead = true;
+                OwnHealth = MaxHealth;
 
-            Destroy(Self);
 
-            FindObjectOfType<EnemyBehavior>().isPlayerDead = true;
+                Destroy(Self);
+            }
+            
 
-            OwnHealth = MaxHealth;
-
+            
         }
     }
 
     private void Update()
     {
-        death();
+        Checkdeath();
     }
 }

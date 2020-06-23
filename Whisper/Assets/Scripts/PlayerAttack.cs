@@ -10,8 +10,9 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        
+
     }
+    
 
     void isAttack()
     {
@@ -27,7 +28,22 @@ public class PlayerAttack : MonoBehaviour
             attacking = false;
             animator.SetBool("isAttacking", attacking);
         }
+        if (Input.GetKey(KeyCode.K))
+        {
+            animator.SetBool("isProtection", true);
+
+        }
+        if (!Input.GetKey(KeyCode.K))
+        {
+            animator.SetBool("isProtection", false);
+        }
         
+
+    }
+
+   public void ActiveWaterRay()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
     }
     
 
@@ -35,5 +51,6 @@ public class PlayerAttack : MonoBehaviour
     {
         isAttack();
         
+
     }
 }

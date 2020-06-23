@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1620638531955142369}
   - component: {fileID: 6470964808995921404}
   - component: {fileID: 1394505149879798535}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: 1_E01Bullet
   m_TagString: enemyWeapon
   m_Icon: {fileID: 0}
@@ -104,7 +104,6 @@ MonoBehaviour:
   rotateSpeed: 200
   Explosion: {fileID: 2188368701358088915, guid: 91a2b570667794e2e8e5e5bf4b7b8d97,
     type: 3}
-  isPlayerDead: 0
 --- !u!50 &1620638531955142370
 Rigidbody2D:
   serializedVersion: 4
@@ -267,6 +266,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1_E01Bullet_Trail
       objectReference: {fileID: 0}
+    - target: {fileID: 2870563400256152449, guid: a793aff6c3e68415e813ae8b49f62506,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 2870563400256152448, guid: a793aff6c3e68415e813ae8b49f62506,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -341,6 +345,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GroundOffset
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906940572128600985, guid: 00fc4c12a8448408a9ef6c5dfb4efe54,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8906940572128600986, guid: 00fc4c12a8448408a9ef6c5dfb4efe54,
         type: 3}

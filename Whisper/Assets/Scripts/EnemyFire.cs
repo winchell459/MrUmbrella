@@ -13,9 +13,18 @@ public class EnemyFire : MonoBehaviour
     private float MaxTime;
     private bool canSpanwNextBullet = true;
 
+    public bool isPlayerDead;
+
+    public Animator animator;
+
+    public GameObject DestroyTheBullet;
+
+
     private void SpawnBullet()
     {
-        Instantiate(Bullet, SelfPos);
+        DestroyTheBullet = Instantiate(Bullet, new Vector3(SelfPos.position.x, SelfPos.position.y), Quaternion.identity);
+
+
     }
     private void Start()
     {
@@ -24,26 +33,33 @@ public class EnemyFire : MonoBehaviour
 
     private void Fire()
     {
-        for(int i = 1; i < FireAmount; i = i + 1)
+        if(isPlayerDead == false && FindObjectOfType<EnemyBehaviour>().Isidle == false)
         {
-            
-            
-
-            if (canSpanwNextBullet)
+            for (int i = 1; i < FireAmount; i = i + 1)
             {
-                SpawnBullet();
-                Debug.Log(i);
+                
+               
 
-                canSpanwNextBullet = false;
+                if (canSpanwNextBullet)
+                {
+                    SpawnBullet();
+                    FindObjectOfType<PlayerDamagable>().isDamagedOnce = false;
+                    animator.SetBool("isAttack", true);
+                    
+                    Debug.Log(i);
+
+                    canSpanwNextBullet = false;
+                }
+                else
+                {
+                    isStartCD = true;
+                    CDCountDown();
+                }
+
             }
-            else
-            {
-                isStartCD = true;
-                CDCountDown();
-            }
-            
+
         }
-        
+
     }
 
     private void Update()
