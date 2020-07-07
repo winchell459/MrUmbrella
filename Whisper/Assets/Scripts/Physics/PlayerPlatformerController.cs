@@ -15,6 +15,7 @@ public class PlayerPlatformerController : PhysicsObject
 
     protected override void ComputeVelocity()
     {
+        //Debug.Log(velocity);
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
@@ -36,7 +37,7 @@ public class PlayerPlatformerController : PhysicsObject
         //}
 
         targetVelocity = move * maxSpeed;
-
+        //Debug.Log(targetVelocity);
     }
 }
 

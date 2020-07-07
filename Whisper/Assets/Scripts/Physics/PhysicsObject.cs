@@ -7,6 +7,8 @@ public class PhysicsObject : MonoBehaviour
     public float minGroundNormalY = 0.65f;
     public float gravityModifier = 1f;
 
+    public bool effectorable;
+
     protected Vector2 targetVelocity;
     protected bool grounded;
     protected Vector2 groundNormal;
@@ -18,6 +20,8 @@ public class PhysicsObject : MonoBehaviour
 
     protected const float minMoveDistance = 0.001f;
     protected const float shellRadius = 0.01f;
+
+
 
     private void OnEnable()
     {
@@ -79,6 +83,21 @@ public class PhysicsObject : MonoBehaviour
             for (int i = 0; i < hitBufferList.Count; i += 1)
             {
                 Vector2 currentNormal = hitBufferList[i].normal;
+                Debug.DrawRay(hitBufferList[i].point, hitBufferList[i].normal);
+                if (effectorable && hitBufferList[i].transform.GetComponent<PlatformEffector2D>())
+                {
+
+                    PlatformEffector2D pe = hitBufferList[i].transform.GetComponent<PlatformEffector2D>();
+                    Debug.Log("Entry Point: " + hitBufferList[i].point);
+                    if(hitBufferList[i].point.y < pe.GetComponent<BoxCollider2D>().bounds.max.y)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+
+                    }
+                }
                 if (currentNormal.y > minGroundNormalY)
                 {
                     grounded = true;

@@ -54,6 +54,7 @@ public class TrackBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.name);
         if (collision.transform.CompareTag("Weapon"))
         {
             FindObjectOfType<ParticleDisapear>().isStartCD = true;

@@ -27,6 +27,7 @@ public class PlayerDamagable : MonoBehaviour
         {
             if (collision.TryGetComponent(out WeaponProperty wp))
             {
+                Debug.Log("Weapon Collision: " + wp.gameObject.name);
                 if (isDamagedOnce == false)
                 {
                     OwnHealth = OwnHealth - wp.damage;
