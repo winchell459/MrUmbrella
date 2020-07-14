@@ -18,7 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void Update()
     {
-        if (FindObjectOfType<EnemyFire>().isPlayerDead == false) target = GameObject.FindGameObjectWithTag("Player").transform;
+        if (FindObjectOfType<EnemyFire>().isPlayerDead == false) target = GameObject.FindGameObjectWithTag("PlayerTarget").transform;
     }
 
     private void FixedUpdate()
@@ -27,7 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             transform.Rotate(Vector3.forward, Time.deltaTime * IdleTurnSpeed);
         }
-        if(Isidle == false)
+        if(Isidle == false && target != null)
         {
             Vector2 direction = (Vector2)target.position - rb.position;
 

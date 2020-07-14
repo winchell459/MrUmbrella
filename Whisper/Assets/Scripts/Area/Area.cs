@@ -45,6 +45,7 @@ public abstract class Area : MonoBehaviour
                 if(bridge.BridgeName == LoadingAreaBridge)
                 {
                     Player = Instantiate(PlayerHandler.PH.PlayerPrefab, bridge.transform.position + (Vector3)bridge.LoadingOffset, Quaternion.identity).transform.GetChild(0);
+                    if(Player.TryGetComponent(out Health health)) Player.GetComponent<Health>().health = PlayerHandler.PH.Health;
                     break;
                 }
             }
@@ -52,6 +53,7 @@ public abstract class Area : MonoBehaviour
         else
         {
             Player = Instantiate(PlayerHandler.PH.PlayerPrefab, DefaultPlayerSpawnPoint.transform.position, Quaternion.identity).transform;
+            Player.GetComponent<Health>().health = PlayerHandler.PH.Health;
         }
         FindObjectOfType<Follow>().SetTarget(Player);
     }

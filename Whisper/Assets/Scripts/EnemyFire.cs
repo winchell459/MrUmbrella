@@ -43,7 +43,7 @@ public class EnemyFire : MonoBehaviour
                 if (canSpanwNextBullet)
                 {
                     SpawnBullet();
-                    FindObjectOfType<PlayerDamagable>().isDamagedOnce = false;
+                    FindObjectOfType<TrackBullet>().isDamageOnce = false;
                     animator.SetBool("isAttack", true);
                     
                     Debug.Log(i);

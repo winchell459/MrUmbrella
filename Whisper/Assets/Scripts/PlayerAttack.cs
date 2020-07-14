@@ -6,50 +6,66 @@ public class PlayerAttack : MonoBehaviour
 {
     public Animator animator;
     public bool attacking;
-    
+
+    public Transform firepoint;
+    public GameObject FireBall;
+
+    public float maxTurn;
+    public float minTurn;
+    public float ZAngle;
 
     void Start()
     {
 
     }
     
+    
 
-    void isAttack()
+    public void MeleeAb(bool isLeftClick)
+	{
+		if (isLeftClick)
+		{
+			animator.SetBool("isAttacking", true);
+        }
+        else
+        {
+            animator.SetBool("isAttacking", false);
+        }
+		
+        
+		
+	}
+    public void ProjectileAb(bool isRightClick, bool isPressC)
     {
-        if (Input.GetKey(KeyCode.J))
-        {
-            attacking = true;
-            animator.SetBool("isAttacking", attacking);
-            Debug.Log(attacking);
-            
-        }
-        if (!Input.GetKey(KeyCode.J))
-        {
-            attacking = false;
-            animator.SetBool("isAttacking", attacking);
-        }
-        if (Input.GetKey(KeyCode.K))
+        if (isRightClick == true)
         {
             animator.SetBool("isProtection", true);
+        }
+        else if (isPressC)
+        {
+            animator.SetBool("isFireBall", true);
+            animator.SetBool("isProtection", false);
 
         }
-        if (!Input.GetKey(KeyCode.K))
+        else
         {
             animator.SetBool("isProtection", false);
+            animator.SetBool("isFireBall", false);
         }
-        
-
     }
 
-   public void ActiveWaterRay()
+    public void FireballInstantiate()
     {
-        transform.GetChild(0).gameObject.SetActive(true);
+        ZAngle = Random.Range(minTurn, maxTurn);
+        Instantiate(FireBall, firepoint.transform.position, Quaternion.Euler(new Vector3(0,0,ZAngle)));
     }
-    
+
+
 
     void Update()
     {
-        isAttack();
+        
+
         
 
     }

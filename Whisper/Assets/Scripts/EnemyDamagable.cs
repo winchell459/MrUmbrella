@@ -4,23 +4,14 @@ using UnityEngine;
 
 public class EnemyDamagable : MonoBehaviour
 {
-
-    public GameObject Self;
-    //public EnemyFire Fire;
+    public bool isEnemyDamage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.CompareTag("Weapon"))
         {
-            Destroy(FindObjectOfType<EnemyFire>().DestroyTheBullet);
-            
-
-            Destroy(Self);
-
-            
-            //Fire.enabled = false;
-
-            Debug.Log("YES");
+            isEnemyDamage = true;
         }
+        
     }
 }

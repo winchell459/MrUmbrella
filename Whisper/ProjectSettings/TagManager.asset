@@ -8,6 +8,9 @@ TagManager:
   - Weapon
   - particle
   - enemyWeapon
+  - PlayerParticle
+  - Enemy
+  - PlayerTarget
   layers:
   - Default
   - TransparentFX
@@ -42,9 +45,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Bg
     uniqueID: 93402519
     locked: 0
@@ -68,4 +68,10 @@ TagManager:
     locked: 0
   - name: Weapon
     uniqueID: 3309536425
+    locked: 0
+  - name: Item
+    uniqueID: 2877951083
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

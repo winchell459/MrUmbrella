@@ -6,6 +6,9 @@ public class TrackBullet : MonoBehaviour
 {
     public Transform target;
 
+    private ProjectileProperty PP;
+    public bool isDamageOnce;
+
     public float speed = 5f;
     public float rotateSpeed = 200;
 
@@ -23,7 +26,7 @@ public class TrackBullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-
+        PP = GetComponent<ProjectileProperty>();
     }
 
 
@@ -73,6 +76,27 @@ public class TrackBullet : MonoBehaviour
 
             Instantiate(Explosion, new Vector3(rb.gameObject.transform.GetChild(0).transform.position.x, rb.gameObject.transform.GetChild(0).transform.position.y, rb.gameObject.transform.GetChild(0).transform.position.z), Quaternion.identity);
             
+        }
+
+        if (collision.transform.CompareTag("Player"))
+        {
+            if(isDamageOnce == false)
+            {
+                Health PlayerHealth = collision.GetComponent<Health>();
+                if (PlayerHealth != null)
+                {
+                    PlayerHealth.TakeDamage(PP.damage);
+
+                    Debug.Log(PlayerHealth.health);
+                }
+
+                isDamageOnce = true;
+            }
+
+            FindObjectOfType<EnemyFire>().animator.SetBool("isAttack", false);
+
+            Destroy(rb.gameObject);
+
         }
     }
     
