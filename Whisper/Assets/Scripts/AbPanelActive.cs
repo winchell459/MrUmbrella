@@ -20,19 +20,20 @@ public class AbPanelActive : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             OnHold = !OnHold;
+            FindObjectOfType<PlayerHandler>().SavePlayerPrefs();
         }
 
         if(OnHold == true)
         {
             AbPanel.SetActive(true);
-
+            AbPanel.transform.GetChild(0).GetComponent<AbilityUI>().DisplayAbilities();
             
         }
         else
         {
             AbPanel.SetActive(false);
 
-            FindObjectOfType<PlayerHandler>().SavePlayerPrefs();
+            //FindObjectOfType<PlayerHandler>().SavePlayerPrefs();
         }
     }
     private void loadAbilityPanel()

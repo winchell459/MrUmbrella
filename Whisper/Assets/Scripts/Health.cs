@@ -5,17 +5,20 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float health;
-    private float maxHealth;
+    private float maxHealth ;
     //public bool isHeal;
     public string Inheritance;
 
     public GameObject particle;
 
-    private void Start()
+    private void Awake()
     {
         maxHealth = health;
     }
-
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
     public void TakeDamage(float damage)
     {
         health -= damage;

@@ -1760,7 +1760,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3025,7 +3024,7 @@ MonoBehaviour:
   BridgeName: 01_Out
   BridgeToAreaName: Area_02
   BridgeToBridgeName: 02
-  LoadingOffset: {x: -3, y: 0}
+  LoadingOffset: {x: -5.49, y: 0}
 --- !u!4 &624166533
 Transform:
   m_ObjectHideFlags: 0
@@ -4783,7 +4782,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.8396226, b: 0.20109525, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
