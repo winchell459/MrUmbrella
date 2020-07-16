@@ -32,7 +32,7 @@ public class AbPanelActive : MonoBehaviour
         {
             AbPanel.SetActive(false);
 
-            FindObjectOfType<PlayerHandler>().SavePlayerPrefs();
+            //FindObjectOfType<PlayerHandler>().SavePlayerPrefs();
         }
     }
     private void loadAbilityPanel()

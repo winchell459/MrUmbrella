@@ -11,9 +11,14 @@ public class Health : MonoBehaviour
 
     public GameObject particle;
 
-    private void Start()
+    private void Awake()
     {
         maxHealth = health;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
     }
 
     public void TakeDamage(float damage)

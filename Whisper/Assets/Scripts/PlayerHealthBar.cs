@@ -27,7 +27,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     void Update()
     {
-        if (selfHealth == null && FindObjectOfType<EnemyFire>().isPlayerDead == false)
+        if (selfHealth == null)
         {
             selfHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
 
@@ -37,7 +37,7 @@ public class PlayerHealthBar : MonoBehaviour
         }
         if(isSetMax == true)
         {
-            slider.maxValue = selfHealth.health;
+            slider.maxValue = selfHealth.GetMaxHealth();
             isSetMax = false;
         }
         
