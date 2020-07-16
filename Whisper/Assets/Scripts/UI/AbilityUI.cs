@@ -58,4 +58,11 @@ public class AbilityUI : MonoBehaviour
         slot.GetComponent<Image>().sprite = ability.AbilitySprite;
         slot.GetChild(0).GetComponent<Text>().text = ability.Detail;
     }
+
+    public void DisplayAbilities()
+    {
+        if (Melee) assignSlot(Melee, MeleeSlot);
+        if (Range) assignSlot(Range, RangeSlot);
+        if (Protection) assignSlot(Protection, ProtectionSlot);
+    }
 }

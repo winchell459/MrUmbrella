@@ -39,12 +39,11 @@ public class PlayerHandler : MonoBehaviour
     public void loadPlayerPrefs()
     {
 
-        
+        //Debug.Log("Ability 0 value " + PlayerPrefs.GetInt("ability0"));
         if (PlayerPrefs.HasKey("ability0"))
         {
             int index = PlayerPrefs.GetInt("ability0");
-            index = Mathf.Clamp(index, 0, MeleeAbilities.Count - 1);
-            Debug.Log(index);
+            index = (int)Mathf.Clamp(index, 0, MeleeAbilities.Count - 1); //[1,2,3,4,5,6]
             Melee = MeleeAbilities[index];
         }
         if (PlayerPrefs.HasKey("ability1"))
@@ -59,8 +58,11 @@ public class PlayerHandler : MonoBehaviour
             index = Mathf.Clamp(index, 0, RangeAbilities.Count - 1);
             Range = RangeAbilities[index];
         }
-        if (PlayerPrefs.HasKey("Health")) Health = PlayerPrefs.GetFloat("Health");
-
+        if (PlayerPrefs.HasKey("Health"))
+        {
+            Health = PlayerPrefs.GetFloat("Health");
+            Debug.Log("Health: " + Health);
+        }
     }
 
     public void SavePlayerPrefs()
@@ -70,5 +72,6 @@ public class PlayerHandler : MonoBehaviour
         if (Range) PlayerPrefs.SetInt("ability2", RangeAbilities.IndexOf(Range));
         Health = FindObjectOfType<PlayerController>().gameObject.GetComponent<Health>().health;
         PlayerPrefs.SetFloat("Health", Health);
+        Debug.Log("Saving Player Health: " + FindObjectOfType<PlayerController>().gameObject.GetComponent<Health>().health);
     }
 }

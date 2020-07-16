@@ -46,10 +46,9 @@ public abstract class Area : MonoBehaviour
                 {
                     Player = Instantiate(PlayerHandler.PH.PlayerPrefab, bridge.transform.position + (Vector3)bridge.LoadingOffset, Quaternion.identity).transform;//.GetChild(0);
                     //if(Player.TryGetComponent(out Health health))
-
                     float health = PlayerHandler.PH.Health;
                     Player.GetComponent<Health>().health = health;
-                    Debug.Log("BridgeLoad" + PlayerHandler.PH.Health);
+                    Debug.Log("Bridge load healt: " + PlayerHandler.PH.Health);
                     break;
                 }
             }
@@ -57,17 +56,17 @@ public abstract class Area : MonoBehaviour
         else
         {
             Player = Instantiate(PlayerHandler.PH.PlayerPrefab, DefaultPlayerSpawnPoint.transform.position, Quaternion.identity).transform;
+            Debug.Log("No Bridge Load health: " + PlayerHandler.PH.Health);
             Player.GetComponent<Health>().health = PlayerHandler.PH.Health;
-
-            Debug.Log("NoBridgeLoad" + PlayerHandler.PH.Health);
+            //Debug.Log("no bridge load");
+            
         }
         FindObjectOfType<Follow>().SetTarget(Player);
     }
     public void UseBridge(AreaBridge bridge)
     {
+        PlayerHandler.PH.SavePlayerPrefs();
         LoadingAreaBridge = bridge.BridgeToBridgeName;
         SceneManager.LoadScene(bridge.BridgeToAreaName);
-
-        PlayerHandler.PH.SavePlayerPrefs();
     }
 }
