@@ -33,7 +33,7 @@ public class TrackBullet : MonoBehaviour
     private void Update()
     {
         //if(rb.gameObject) GroundOffset.position = rb.transform.position;
-        if(FindObjectOfType<EnemyFire>().isPlayerDead == false) target = GameObject.FindGameObjectWithTag("Player").transform;
+        if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false) target = GameObject.FindGameObjectWithTag("TC").transform;//target = GameObject.FindGameObjectWithTag("PlayerTarget").transform;
     }
 
     private void FixedUpdate()
@@ -78,7 +78,7 @@ public class TrackBullet : MonoBehaviour
             
         }
 
-        if (collision.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player") || collision.transform.CompareTag("TC"))
         {
             if(isDamageOnce == false)
             {
@@ -91,6 +91,13 @@ public class TrackBullet : MonoBehaviour
                 }
 
                 isDamageOnce = true;
+
+                Instantiate(Explosion, collision.transform.position, Quaternion.identity);
+
+                if(collision.GetComponent<LinkTC>() != null)
+                {
+                    collision.GetComponent<LinkTC>().LinkDamage(PP.damage);
+                }
             }
 
             FindObjectOfType<EnemyFire>().animator.SetBool("isAttack", false);

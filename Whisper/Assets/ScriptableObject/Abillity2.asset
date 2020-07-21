@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937a9625ddf8c4023800c377ef14d2b0, type: 3}
   m_Name: Abillity2
   m_EditorClassIdentifier: 
-  AbilityType: 0
+  AbilityType: 1
   Detail: NO u
   AbilitySprite: {fileID: 21300000, guid: 970c16e3e4873440393c9dc78ebf49ac, type: 3}

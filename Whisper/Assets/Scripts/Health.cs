@@ -11,6 +11,13 @@ public class Health : MonoBehaviour
 
     public GameObject particle;
 
+    public bool isPlayerDead;
+
+
+
+
+    
+
     private void Awake()
     {
         maxHealth = health;
@@ -34,6 +41,7 @@ public class Health : MonoBehaviour
         if(health < maxHealth)
         {
             health += healAmount;
+            
 
             Instantiate(particle, transform.position, Quaternion.identity);
 
@@ -41,8 +49,21 @@ public class Health : MonoBehaviour
 
             Destroy(medkit);
         }
+        if(health + healAmount > 20)
+        {
+            health = maxHealth;
+        }
 
         
+        
+    }
+    
+    public void RespawnPanel(GameObject Panel)
+    {
+        
+        Panel.SetActive(true);
+           
+
         
     }
 
@@ -51,7 +72,7 @@ public class Health : MonoBehaviour
 
         if(who == "Player")
         {
-            FindObjectOfType<EnemyFire>().isPlayerDead = true;
+            isPlayerDead = true;
         }
         if(who == "FarRangeEnemy")
         {
@@ -62,5 +83,15 @@ public class Health : MonoBehaviour
 
         Destroy(gameObject);
     }
+    private void Update()
+    {
+        
+        if(health <= 0)
+        {
+            
+        }
+        
+    }
+
 
 }

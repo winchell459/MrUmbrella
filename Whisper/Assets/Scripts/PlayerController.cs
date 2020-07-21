@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
 
     public Transform DJPoint;
 
+
+    //public bool isSwitch;
+
     void Start()
     {
         extraJump = extraJumpValue;
@@ -60,6 +63,11 @@ public class PlayerController : MonoBehaviour
         {
             Flip(1);
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(groundCheck.position, checkRadius);
     }
 
     private void Update()
@@ -130,7 +138,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-
+        
         
 
         Checkfall();

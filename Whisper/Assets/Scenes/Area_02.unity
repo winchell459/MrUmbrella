@@ -7254,9 +7254,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6702a5087d20e4c54b7bb471c342c411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeleeAbilities: []
-  ProtectionAbilities: []
-  RangeAbilities: []
+  MeleeAbilities:
+  - {fileID: 11400000, guid: 515c3f3db17a64ac3b4a207444a925e7, type: 2}
+  - {fileID: 11400000, guid: e3032450623b74ade9918f7fe57e200e, type: 2}
+  ProtectionAbilities:
+  - {fileID: 11400000, guid: 58fcb6c479432432d801fe18d0658830, type: 2}
+  - {fileID: 11400000, guid: feb84e0a4fe6d482b902ed4ec34de9e0, type: 2}
+  RangeAbilities:
+  - {fileID: 11400000, guid: 2c934f4f0f63d44d9a18d4ee5711ef78, type: 2}
+  - {fileID: 11400000, guid: 1a9debcc99fb5418bb88f303778c81d5, type: 2}
   PlayerPrefab: {fileID: 4074326391173413331, guid: 5abe54630a4f14c9e8cb17c69209485a,
     type: 3}
 --- !u!4 &1981412903

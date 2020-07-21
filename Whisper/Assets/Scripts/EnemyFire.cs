@@ -13,7 +13,7 @@ public class EnemyFire : MonoBehaviour
     private float MaxTime;
     private bool canSpanwNextBullet = true;
 
-    public bool isPlayerDead;
+    //public bool isPlayerDead;
 
     public Animator animator;
 
@@ -33,7 +33,7 @@ public class EnemyFire : MonoBehaviour
 
     private void Fire()
     {
-        if(isPlayerDead == false && FindObjectOfType<EnemyBehaviour>().Isidle == false)
+        if(FindObjectOfType<PlayerDeadManager>().isPlayerDied == false && FindObjectOfType<EnemyBehaviour>().Isidle == false)
         {
             for (int i = 1; i < FireAmount; i = i + 1)
             {

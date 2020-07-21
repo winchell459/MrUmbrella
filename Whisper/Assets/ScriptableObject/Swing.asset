@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937a9625ddf8c4023800c377ef14d2b0, type: 3}
   m_Name: Swing
   m_EditorClassIdentifier: 
-  AbilityType: 1
-  Detail: Proteciton 1
-  AbilitySprite: {fileID: 21300000, guid: 652448b17c46f42b2bb16b0cd9524d97, type: 3}
+  AbilityType: 0
+  Detail: Swing
+  AbilitySprite: {fileID: 21300000, guid: d30ca8761a1f64b86a116e0cb90ea5f4, type: 3}

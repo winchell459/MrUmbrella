@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937a9625ddf8c4023800c377ef14d2b0, type: 3}
   m_Name: Ability
   m_EditorClassIdentifier: 
-  AbilityType: 0
+  AbilityType: 1
   Detail: REEEEEEE
   AbilitySprite: {fileID: 21300000, guid: 870919817e1ad4f86b13ffe10393c801, type: 3}

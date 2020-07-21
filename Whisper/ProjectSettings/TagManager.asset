@@ -11,6 +11,7 @@ TagManager:
   - PlayerParticle
   - Enemy
   - PlayerTarget
+  - TC
   layers:
   - Default
   - TransparentFX

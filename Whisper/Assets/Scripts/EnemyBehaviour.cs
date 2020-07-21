@@ -18,7 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void Update()
     {
-        if (FindObjectOfType<EnemyFire>().isPlayerDead == false) target = GameObject.FindGameObjectWithTag("PlayerTarget").transform;
+        if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false && FindObjectOfType<RespawnAltar>().isOnPanel == false) target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void FixedUpdate()

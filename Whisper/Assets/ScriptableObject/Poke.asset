@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937a9625ddf8c4023800c377ef14d2b0, type: 3}
   m_Name: Poke
   m_EditorClassIdentifier: 
-  AbilityType: 1
-  Detail: Protection 2
-  AbilitySprite: {fileID: 21300000, guid: 705f5ab7f004c46c588caff24c99bd99, type: 3}
+  AbilityType: 0
+  Detail: Poke
+  AbilitySprite: {fileID: 21300000, guid: 21cef402f15d0432bb9575767067ef63, type: 3}
