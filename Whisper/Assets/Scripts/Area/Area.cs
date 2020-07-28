@@ -59,7 +59,7 @@ public abstract class Area : MonoBehaviour
         else
         {
             Player = Instantiate(PlayerHandler.PH.PlayerPrefab, DefaultPlayerSpawnPoint.transform.position, Quaternion.identity).transform;
-            Debug.Log("No Bridge Load health: " + PlayerHandler.PH.Health);
+            //Debug.Log("No Bridge Load health: " + PlayerHandler.PH.Health);
             Player.GetComponent<Health>().health = PlayerHandler.PH.Health;
             //Debug.Log("no bridge load");
             

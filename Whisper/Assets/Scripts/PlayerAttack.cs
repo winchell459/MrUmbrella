@@ -72,11 +72,11 @@ public class PlayerAttack : MonoBehaviour
             animator.SetBool("isProtection", true);
             bullet.PP.damage = ar.Power;
             bullet.PP.speed = ar.speed;
-
+            bullet.Setup();
         }
         else if(ar.RangeType == AbilityRange.RangeTypes.Fireball)
         {
-            animator.SetBool("isFireBall", false);
+            animator.SetBool("isFireBall", true);
         }
         else if(ar.RangeType == AbilityRange.RangeTypes.SmallBullet)
         {
