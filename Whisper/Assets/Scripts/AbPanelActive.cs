@@ -40,8 +40,4 @@ public class AbPanelActive : MonoBehaviour
     {
         AbPanel = Instantiate(AbilityUIPrefab, Vector3.zero, Quaternion.identity);
     }
-    private void Update()
-    {
-        Debug.Log(gameObject);
-    }
 }

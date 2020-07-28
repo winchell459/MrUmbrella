@@ -156,14 +156,12 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetButtonDown("Fire1"))
             {
-                FindObjectOfType<PlayerAttack>().ProjectileAb();
+                FindObjectOfType<PlayerAttack>().ProjectileAb(true, false);
             }
             else
             {
-                FindObjectOfType<PlayerAttack>().animator.SetBool("isProtection", false);
-                FindObjectOfType<PlayerAttack>().animator.SetBool("isFireBall", false);
+                FindObjectOfType<PlayerAttack>().ProjectileAb(false, false);
             }
-            /*
             if (Input.GetKey(KeyCode.C))
             {
                 FindObjectOfType<PlayerAttack>().ProjectileAb(false, true);
@@ -172,7 +170,7 @@ public class PlayerController : MonoBehaviour
             {
                 FindObjectOfType<PlayerAttack>().ProjectileAb(false, false);
             }
-            */
+
             FindObjectOfType<AbPanelActive>().OpenInventory();
 
         }

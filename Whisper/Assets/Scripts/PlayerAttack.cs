@@ -7,10 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public Animator animator;
     public bool attacking;
 
-    public Transform fireBallfirePoint;
-    public Transform BulletFirepoint;
-    public GameObject bulletPrefab;
-    public GameObject smallBulletPrefab;
+    public Transform firepoint;
     public GameObject FireBall;
 
     public float maxTurn;
@@ -27,13 +24,10 @@ public class PlayerAttack : MonoBehaviour
     public float AttackRate; //how many times per sec
     private float nextAttackTime;
 
-    AbilityRange ar;
-
     void Start()
     {
         MP = GetComponent<MeleeProperty>();
-        
-        UpdateMeleeAbilities();
+        AttackRate = MP.CD;
     }
     
     
@@ -44,32 +38,28 @@ public class PlayerAttack : MonoBehaviour
         {
             if (isLeftClick)
             {
-                UpdateMeleeAbilities();
                 animator.SetBool("isAttacking", true);
                 Attack();
                 nextAttackTime = Time.time + 1 / AttackRate;
 
             }
-            
+            else
+            {
+                animator.SetBool("isAttacking", false);
+
+            }
         }
-        else
-        {
-            animator.SetBool("isAttacking", false);
-
-        }
-
-
-
-
-    }
-    public void ProjectileAb()
-    {
+		
+		
         
-        ar = (AbilityRange)FindObjectOfType<PlayerHandler>().Range;
-        if(ar.RangeType == AbilityRange.RangeTypes.Bullet)
+		
+	}
+    public void ProjectileAb(bool isRightClick, bool isPressC)
+    {
+        if (isRightClick == true)
         {
-            Bullet bullet = Instantiate(bulletPrefab, BulletFirepoint.position, BulletFirepoint.rotation).GetComponent<Bullet>();
             animator.SetBool("isProtection", true);
+<<<<<<< HEAD
             bullet.PP.damage = ar.Power;
             bullet.PP.speed = ar.speed;
 <<<<<<< HEAD
@@ -85,27 +75,26 @@ public class PlayerAttack : MonoBehaviour
 >>>>>>> parent of 84896c54... 7.29.20
 
 >>>>>>> parent of d24a37cc... Merge branch 'Xu_02' into Xu_01
+=======
+>>>>>>> parent of 9a59568e... 7.28.20.afterclass
         }
-        else if(ar.RangeType == AbilityRange.RangeTypes.Fireball)
+        else if (isPressC)
         {
-            animator.SetBool("isFireBall", false);
-        }
-        else if(ar.RangeType == AbilityRange.RangeTypes.SmallBullet)
-        {
+            animator.SetBool("isFireBall", true);
+            animator.SetBool("isProtection", false);
 
         }
-        
+        else
+        {
+            animator.SetBool("isProtection", false);
+            animator.SetBool("isFireBall", false);
+        }
     }
 
     public void FireballInstantiate()
     {
-        //AbilityRange ar = (AbilityRange)FindObjectOfType<AbilityUI>().Range;
         ZAngle = Random.Range(minTurn, maxTurn);
-        Bullet fireball = Instantiate(FireBall, fireBallfirePoint.transform.position, Quaternion.Euler(new Vector3(0,0,ZAngle))).GetComponent<Bullet>();
-        ProjectileProperty pp = fireball.GetComponent<ProjectileProperty>();
-        pp.speed = ar.speed;
-        pp.damage = ar.Power;
-        fireball.Setup();
+        Instantiate(FireBall, firepoint.transform.position, Quaternion.Euler(new Vector3(0,0,ZAngle)));
     }
 
     void Attack()
@@ -120,19 +109,10 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+
+        AttackRange = MP.swingSize;
+        Damage = MP.Damage;
         
 
-
-    }
-    private void UpdateMeleeAbilities()
-    {
-        PlayerHandler abUi = FindObjectOfType<PlayerHandler>();
-        AttackRange = abUi.Melee.Radius;
-        Damage = abUi.Melee.Power;
-        AttackRate = abUi.Melee.CD;
-    }
-    private void UpdateRangeAbilities()
-    {
-
-    }
+}
 }
