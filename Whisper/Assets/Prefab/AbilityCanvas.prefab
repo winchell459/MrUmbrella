@@ -918,7 +918,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Ability
       value: 
-      objectReference: {fileID: 11400000, guid: 45d4031b929ec40e0b65e4e816d5f6bd,
+      objectReference: {fileID: 11400000, guid: 1a9debcc99fb5418bb88f303778c81d5,
         type: 2}
     - target: {fileID: 8163104221091415878, guid: e7f58284b55a14fb983781318d812b7c,
         type: 3}
@@ -1137,7 +1137,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Ability
       value: 
-      objectReference: {fileID: 11400000, guid: feb9075873ed84c05be2c004303a7382,
+      objectReference: {fileID: 11400000, guid: 2c934f4f0f63d44d9a18d4ee5711ef78,
         type: 2}
     - target: {fileID: 8163104221091415878, guid: e7f58284b55a14fb983781318d812b7c,
         type: 3}

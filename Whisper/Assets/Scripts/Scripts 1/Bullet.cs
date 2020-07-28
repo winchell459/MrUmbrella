@@ -11,13 +11,9 @@ public class Bullet : MonoBehaviour {
     public bool isDirChange;
 
     // Use this for initialization
-    private void Start()
-    {
-        PP = GetComponent<ProjectileProperty>();
-    }
     public void Setup () {
 
-        
+        PP = GetComponent<ProjectileProperty>();
 		
 
         if (isDirChange)

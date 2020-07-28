@@ -20,4 +20,4 @@ MonoBehaviour:
   CD: 0
   Radius: 0
   RangeType: 1
-  speed: 2
+  speed: 10

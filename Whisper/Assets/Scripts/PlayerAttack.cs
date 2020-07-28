@@ -72,7 +72,11 @@ public class PlayerAttack : MonoBehaviour
             animator.SetBool("isProtection", true);
             bullet.PP.damage = ar.Power;
             bullet.PP.speed = ar.speed;
+<<<<<<< HEAD
             bullet.Setup();
+=======
+
+>>>>>>> parent of 84896c54... 7.29.20
         }
         else if(ar.RangeType == AbilityRange.RangeTypes.Fireball)
         {
