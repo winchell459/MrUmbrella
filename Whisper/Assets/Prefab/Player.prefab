@@ -763,7 +763,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4074326391211555253}
   attacking: 0
-  firepoint: {fileID: 3282369404123025774}
+  fireBallfirePoint: {fileID: 3282369404123025774}
+  BulletFirepoint: {fileID: 4193557582024071372}
+  bulletPrefab: {fileID: 865162796705698190, guid: b44eb768e47794d5dabc806d8738193e,
+    type: 3}
+  smallBulletPrefab: {fileID: 0}
   FireBall: {fileID: 8403065563307590596, guid: 3bac9df23f6cc4d80ae1b04c59f124bc,
     type: 3}
   maxTurn: 180

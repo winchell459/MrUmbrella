@@ -50,7 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 58fcb6c479432432d801fe18d0658830, type: 2}
   - {fileID: 11400000, guid: feb84e0a4fe6d482b902ed4ec34de9e0, type: 2}
   RangeAbilities:
-  - {fileID: 11400000, guid: 2c934f4f0f63d44d9a18d4ee5711ef78, type: 2}
-  - {fileID: 11400000, guid: 1a9debcc99fb5418bb88f303778c81d5, type: 2}
+  - {fileID: 11400000, guid: feb9075873ed84c05be2c004303a7382, type: 2}
+  - {fileID: 11400000, guid: 45d4031b929ec40e0b65e4e816d5f6bd, type: 2}
   PlayerPrefab: {fileID: 4074326391173413331, guid: 5abe54630a4f14c9e8cb17c69209485a,
     type: 3}

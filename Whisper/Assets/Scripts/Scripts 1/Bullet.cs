@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    private ProjectileProperty PP;
+    public ProjectileProperty PP;
 	public Rigidbody2D rb;
 	public GameObject impactEffect;
 
     public bool isDirChange;
 
     // Use this for initialization
-    void Start () {
+    public void Setup () {
 
         PP = GetComponent<ProjectileProperty>();
 		
