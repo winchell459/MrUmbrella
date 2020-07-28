@@ -23,7 +23,7 @@ public class PlayerDeadManager : MonoBehaviour
 
         //playerGO = FindObjectOfType<GetPlayer>().Player;
 
-        Debug.Log("ture");
+        //Debug.Log("ture");
 
     }
     public void SetStatus(bool status)

@@ -42,6 +42,6 @@ public class AbPanelActive : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(gameObject);
+        //Debug.Log(gameObject);
     }
 }

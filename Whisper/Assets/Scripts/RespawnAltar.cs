@@ -26,7 +26,7 @@ public class RespawnAltar : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(Panel.activeSelf);
+        //Debug.Log(Panel.activeSelf);
         if(Panel.activeSelf == true)
         {
             isOnPanel = true;
