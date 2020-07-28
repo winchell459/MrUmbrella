@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AreaDefault : Area
 {
+    
+
+
     public override void OnAwake()
     {
         

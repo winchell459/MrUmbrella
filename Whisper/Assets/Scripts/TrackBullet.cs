@@ -33,7 +33,21 @@ public class TrackBullet : MonoBehaviour
     private void Update()
     {
         //if(rb.gameObject) GroundOffset.position = rb.transform.position;
-        if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false) target = GameObject.FindGameObjectWithTag("TC").transform;//target = GameObject.FindGameObjectWithTag("PlayerTarget").transform;
+        if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false)
+        {
+            if(FindObjectOfType<SwitchManager>().isSwitch == false)
+            {
+                target = GameObject.FindGameObjectWithTag("TC").transform;
+            }
+            else
+            {
+                target = GameObject.FindGameObjectWithTag("PlayerTarget").transform;
+            }
+
+           
+        }
+        //Debug.Log(Mathf.Log(1.25f, 2));
+            
     }
 
     private void FixedUpdate()

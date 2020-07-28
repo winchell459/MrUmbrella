@@ -143,32 +143,37 @@ public class PlayerController : MonoBehaviour
 
         Checkfall();
 
-        if (Input.GetMouseButtonDown(0))
+        if(FindObjectOfType<PlayerAttack>())
         {
-            FindObjectOfType<PlayerAttack>().MeleeAb(true);
-        }
-        else
-        {
-            FindObjectOfType<PlayerAttack>().MeleeAb(false);
-        }
-        if (Input.GetButtonDown("Fire1"))
-        {
-            FindObjectOfType<PlayerAttack>().ProjectileAb(true, false);
-        }
-        else
-        {
-            FindObjectOfType<PlayerAttack>().ProjectileAb(false, false);
-        }
-        if (Input.GetKey(KeyCode.C))
-        {
-            FindObjectOfType<PlayerAttack>().ProjectileAb(false, true);
-        }
-        else
-        {
-            FindObjectOfType<PlayerAttack>().ProjectileAb(false, false);
-        }
 
-        FindObjectOfType<AbPanelActive>().OpenInventory();
+            if (Input.GetMouseButtonDown(0))
+            {
+                FindObjectOfType<PlayerAttack>().MeleeAb(true);
+            }
+            else
+            {
+                FindObjectOfType<PlayerAttack>().MeleeAb(false);
+            }
+            if (Input.GetButtonDown("Fire1"))
+            {
+                FindObjectOfType<PlayerAttack>().ProjectileAb(true, false);
+            }
+            else
+            {
+                FindObjectOfType<PlayerAttack>().ProjectileAb(false, false);
+            }
+            if (Input.GetKey(KeyCode.C))
+            {
+                FindObjectOfType<PlayerAttack>().ProjectileAb(false, true);
+            }
+            else
+            {
+                FindObjectOfType<PlayerAttack>().ProjectileAb(false, false);
+            }
+
+            FindObjectOfType<AbPanelActive>().OpenInventory();
+
+        }
 
         if (Mathf.Abs(rb.velocity.x) > 0)
         {

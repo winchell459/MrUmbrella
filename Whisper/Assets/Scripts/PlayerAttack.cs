@@ -14,23 +14,42 @@ public class PlayerAttack : MonoBehaviour
     public float minTurn;
     public float ZAngle;
 
+    public Transform attackPoint;
+    public MeleeProperty MP;
+    public float AttackRange;
+    public LayerMask enemyLayers;
+
+    public float Damage;
+
+    public float AttackRate; //how many times per sec
+    private float nextAttackTime;
+
     void Start()
     {
-
+        MP = GetComponent<MeleeProperty>();
+        AttackRate = MP.CD;
     }
     
     
 
     public void MeleeAb(bool isLeftClick)
 	{
-		if (isLeftClick)
-		{
-			animator.SetBool("isAttacking", true);
-        }
-        else
+        if(Time.time >= nextAttackTime)
         {
-            animator.SetBool("isAttacking", false);
+            if (isLeftClick)
+            {
+                animator.SetBool("isAttacking", true);
+                Attack();
+                nextAttackTime = Time.time + 1 / AttackRate;
+
+            }
+            else
+            {
+                animator.SetBool("isAttacking", false);
+
+            }
         }
+		
 		
         
 		
@@ -60,13 +79,22 @@ public class PlayerAttack : MonoBehaviour
         Instantiate(FireBall, firepoint.transform.position, Quaternion.Euler(new Vector3(0,0,ZAngle)));
     }
 
+    void Attack()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, AttackRange, enemyLayers);
 
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            enemy.gameObject.GetComponent<Health>().TakeDamage(Damage);
+        }
+    }
 
     void Update()
     {
+
+        AttackRange = MP.swingSize;
+        Damage = MP.Damage;
         
 
-        
-
-    }
+}
 }

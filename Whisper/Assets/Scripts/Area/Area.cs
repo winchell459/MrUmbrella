@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public abstract class Area : MonoBehaviour
 {
+    public List<SpawnObjects> spawnObjects = new List<SpawnObjects>();
+    public static List<AreaDespawn> ObjectsDestroyed = new List<AreaDespawn>();
+
     public static string LoadingAreaBridge;
     public List<AreaBridge> AreaBridges;
     public Transform DefaultPlayerSpawnPoint;
@@ -25,7 +28,7 @@ public abstract class Area : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        despawnObjects();
         OnLoad();
         loadPlayer();
     }
@@ -68,5 +71,40 @@ public abstract class Area : MonoBehaviour
         PlayerHandler.PH.SavePlayerPrefs();
         LoadingAreaBridge = bridge.BridgeToBridgeName;
         SceneManager.LoadScene(bridge.BridgeToAreaName);
+    }
+    public void DespawnObject(SpawnObjects so)
+    {
+        if (spawnObjects.Contains(so))
+        {
+            int objectsIndex = spawnObjects.IndexOf(so);
+
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+            AreaDespawn areaDespawn = new AreaDespawn();
+            areaDespawn.SceneIndex = sceneIndex;
+            areaDespawn.SpawnObjectIndex = objectsIndex;
+            ObjectsDestroyed.Add(areaDespawn);
+
+        }
+        
+    }
+
+    private void despawnObjects()
+    {
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        foreach(AreaDespawn ad in ObjectsDestroyed)
+        {
+            if(ad.SceneIndex == sceneIndex)
+            {
+                Transform parent = spawnObjects[ad.SpawnObjectIndex].transform;
+                
+                
+                while (parent.parent) parent = parent.parent;
+                Destroy(parent.gameObject);
+
+                
+            }
+        }
     }
 }

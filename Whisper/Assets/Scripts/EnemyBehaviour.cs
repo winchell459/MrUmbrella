@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviour : MonoBehaviour
+public class EnemyBehaviour : SpawnObjects
 {
     public float IdleTurnSpeed = 50;
     public float ChaseTurnSpeed = 300;
@@ -59,5 +59,12 @@ public class EnemyBehaviour : MonoBehaviour
             
 
         }
+    }
+
+    public void EnemyDIE()
+    {
+        DespawnObjects();
+
+        Destroy(gameObject);
     }
 }

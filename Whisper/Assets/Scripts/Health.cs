@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float health;
-    private float maxHealth ;
+    public float maxHealth ;
     //public bool isHeal;
     public string Inheritance;
 
@@ -47,7 +47,7 @@ public class Health : MonoBehaviour
 
             //isHeal = true;
 
-            Destroy(medkit);
+            
         }
         if(health + healAmount > 20)
         {
@@ -73,15 +73,17 @@ public class Health : MonoBehaviour
         if(who == "Player")
         {
             isPlayerDead = true;
+            Destroy(gameObject);
         }
         if(who == "FarRangeEnemy")
         {
             FindObjectOfType<EnemyFire>().enabled = false;
             Destroy(FindObjectOfType<EnemyFire>().DestroyTheBullet);
-            Destroy(gameObject.transform.parent.GetChild(1).gameObject);
+
+            transform.parent.GetComponent<EnemyBehaviour>().EnemyDIE();
         }
 
-        Destroy(gameObject);
+        
     }
     private void Update()
     {

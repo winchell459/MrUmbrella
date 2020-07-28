@@ -2,17 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaEnemies : MonoBehaviour
+public class AreaEnemies : Area
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnAwake()
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnExit()
     {
-        
+        throw new System.NotImplementedException();
     }
+
+    public override void OnLoad()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    
 }

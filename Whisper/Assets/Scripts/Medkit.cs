@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Medkit : MonoBehaviour
+public class Medkit : SpawnObjects
 {
     public float healAmount;
 
@@ -12,13 +12,15 @@ public class Medkit : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             Health playerHealth = collision.GetComponent<Health>();
-
+            DespawnObjects();
 
 
             playerHealth.Heal(healAmount, gameObject);
 
-            
-            
+            Destroy(gameObject);
+
+            //Debug.Log(Mathf.RoundToInt(playerHealth.maxHealth));
+                
         }
     }
 }

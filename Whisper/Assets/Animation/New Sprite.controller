@@ -256,7 +256,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isFireball
+  - m_Name: isFireBall
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -315,7 +315,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isFireball
+    m_ConditionEvent: isFireBall
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8698602727074330593}
@@ -340,7 +340,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isFireball
+    m_ConditionEvent: isFireBall
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7224900260449557055}
@@ -370,7 +370,7 @@ AnimatorStateMachine:
     m_Position: {x: 160, y: -60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7224900260449557055}
-    m_Position: {x: 560, y: 150, z: 0}
+    m_Position: {x: 580, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7297780016465905282}
     m_Position: {x: 550, y: -80, z: 0}

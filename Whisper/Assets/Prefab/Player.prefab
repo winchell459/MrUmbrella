@@ -227,6 +227,36 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!1 &2760675393519857581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2228002806799654040}
+  m_Layer: 11
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2228002806799654040
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760675393519857581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.47, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4074326391211555250}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3966820613975199560
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +441,7 @@ GameObject:
   - component: {fileID: 6089346626157311173}
   - component: {fileID: 4563607356442294314}
   - component: {fileID: 7912757081337533212}
+  - component: {fileID: 3696257091208882158}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -552,6 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  maxHealth: 0
   Inheritance: Player
   particle: {fileID: 2064322951160840459, guid: 8ff24eb496c8d4fb88fc6e6b95a39152,
     type: 3}
@@ -594,6 +626,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06f92bc9d0b9447482db228f4a86cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+--- !u!114 &3696257091208882158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4074326391173413331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053480e1adaa24694a8a4f67340818aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialoguePanel: {fileID: 0}
 --- !u!1 &4074326391211555248
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +655,7 @@ GameObject:
   - component: {fileID: 4796373283136418165}
   - component: {fileID: 755694542565427073}
   - component: {fileID: 5476222085642395378}
+  - component: {fileID: 1980221853973195099}
   m_Layer: 11
   m_Name: Umbrella
   m_TagString: Weapon
@@ -629,6 +676,7 @@ Transform:
   m_Children:
   - {fileID: 3282369404123025774}
   - {fileID: 619678440662110074}
+  - {fileID: 2228002806799654040}
   m_Father: {fileID: 4074326391173413333}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -721,6 +769,14 @@ MonoBehaviour:
   maxTurn: 180
   minTurn: 0
   ZAngle: 0
+  attackPoint: {fileID: 4193557582024071372}
+  MP: {fileID: 0}
+  AttackRange: 0
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 8192
+  Damage: 0
+  AttackRate: 0
 --- !u!60 &4796373283136418165
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -906,6 +962,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1980221853973195099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4074326391211555248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d68ae15e5ddc4bbfa5108c2cca957a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swingSize: 1
+  CD: 2
+  Damage: 5
 --- !u!1 &4074326391419930078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,4 +1433,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerDied: 0
-  Player: {fileID: 0}
+  playerGO: {fileID: 0}

@@ -12,6 +12,8 @@ TagManager:
   - Enemy
   - PlayerTarget
   - TC
+  - DialoguePanel
+  - NPC
   layers:
   - Default
   - TransparentFX
