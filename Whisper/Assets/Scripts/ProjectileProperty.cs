@@ -6,4 +6,5 @@ public class ProjectileProperty : MonoBehaviour
 {
     public float damage = 15f;
     public float speed = 2f;
+    
 }

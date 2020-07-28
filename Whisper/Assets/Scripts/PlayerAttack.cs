@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     public float AttackRate; //how many times per sec
     private float nextAttackTime;
 
-    AbilityRange ar;
+    public AbilityRange ar;
 
     void Start()
     {
@@ -64,14 +64,19 @@ public class PlayerAttack : MonoBehaviour
     }
     public void ProjectileAb()
     {
-        
-        ar = (AbilityRange)FindObjectOfType<PlayerHandler>().Range;
-        if(ar.RangeType == AbilityRange.RangeTypes.Bullet)
+        AbilityObject TheRange = FindObjectOfType<PlayerHandler>().Range;
+        ar.Power = TheRange.Power;
+        //ar.speed = TheRange.
+        //The range doesnt have speed, the abilityrange  has the  speed, it is confused, maybe add speedto ar
+        Debug.Log(ar);
+
+        if (ar.RangeType == AbilityRange.RangeTypes.Bullet)
         {
             Bullet bullet = Instantiate(bulletPrefab, BulletFirepoint.position, BulletFirepoint.rotation).GetComponent<Bullet>();
             animator.SetBool("isProtection", true);
             bullet.PP.damage = ar.Power;
             bullet.PP.speed = ar.speed;
+            Debug.Log(ar.Power);
 
         }
         else if(ar.RangeType == AbilityRange.RangeTypes.Fireball)
