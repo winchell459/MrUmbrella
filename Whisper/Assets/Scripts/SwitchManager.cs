@@ -19,7 +19,7 @@ public class SwitchManager : MonoBehaviour
         if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false)
         {
             Player = GameObject.FindGameObjectWithTag("Player");
-            //Debug.Log("IS WORKING");
+            Debug.Log("IS WORKING");
 
             if (isSwitch == false)
             {

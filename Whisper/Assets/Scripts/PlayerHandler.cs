@@ -61,7 +61,7 @@ public class PlayerHandler : MonoBehaviour
         if (PlayerPrefs.HasKey("Health"))
         {
             Health = PlayerPrefs.GetFloat("Health");
-            //Debug.Log("Health: " + Health);
+            Debug.Log("Health: " + Health);
         }
     }
 

@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -140,6 +141,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -313,6 +315,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -386,6 +389,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -464,6 +468,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -540,6 +545,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -613,6 +619,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -696,6 +703,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.8901961}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -790,6 +798,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -864,6 +873,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1735,12 +1745,6 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f58284b55a14fb983781318d812b7c, type: 3}
---- !u!224 &1717822486111868609 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8163104221091415878, guid: e7f58284b55a14fb983781318d812b7c,
-    type: 3}
-  m_PrefabInstance: {fileID: 7394842938603540871}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1717822486111868613 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8163104221091415874, guid: e7f58284b55a14fb983781318d812b7c,
@@ -1753,6 +1757,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beb0da93762c448dbaa9d2d0dc685b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1717822486111868609 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8163104221091415878, guid: e7f58284b55a14fb983781318d812b7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7394842938603540871}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8545425385163692377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1949,12 +1959,6 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f58284b55a14fb983781318d812b7c, type: 3}
---- !u!224 &566995154342043167 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8163104221091415878, guid: e7f58284b55a14fb983781318d812b7c,
-    type: 3}
-  m_PrefabInstance: {fileID: 8545425385163692377}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &566995154342043163 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8163104221091415874, guid: e7f58284b55a14fb983781318d812b7c,
@@ -1967,6 +1971,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beb0da93762c448dbaa9d2d0dc685b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &566995154342043167 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8163104221091415878, guid: e7f58284b55a14fb983781318d812b7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8545425385163692377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9208083820387956210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2178,12 +2188,6 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f58284b55a14fb983781318d812b7c, type: 3}
---- !u!224 &1044979668100035252 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8163104221091415878, guid: e7f58284b55a14fb983781318d812b7c,
-    type: 3}
-  m_PrefabInstance: {fileID: 9208083820387956210}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1044979668100035248 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8163104221091415874, guid: e7f58284b55a14fb983781318d812b7c,
@@ -2196,3 +2200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beb0da93762c448dbaa9d2d0dc685b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1044979668100035252 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8163104221091415878, guid: e7f58284b55a14fb983781318d812b7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9208083820387956210}
+  m_PrefabAsset: {fileID: 0}
