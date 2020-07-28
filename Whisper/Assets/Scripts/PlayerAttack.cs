@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     public float AttackRate; //how many times per sec
     private float nextAttackTime;
 
-    public AbilityRange ar;
+    AbilityRange ar;
 
     void Start()
     {
@@ -64,18 +64,15 @@ public class PlayerAttack : MonoBehaviour
     }
     public void ProjectileAb()
     {
-        AbilityObject TheRange = FindObjectOfType<PlayerHandler>().Range;
-        ar.Power = TheRange.Power;
-        //ar.speed = TheRange.
-        //The range doesnt have speed, the abilityrange  has the  speed, it is confused, maybe add speedto ar
-        Debug.Log(ar);
-
-        if (ar.RangeType == AbilityRange.RangeTypes.Bullet)
+        
+        ar = (AbilityRange)FindObjectOfType<PlayerHandler>().Range;
+        if(ar.RangeType == AbilityRange.RangeTypes.Bullet)
         {
             Bullet bullet = Instantiate(bulletPrefab, BulletFirepoint.position, BulletFirepoint.rotation).GetComponent<Bullet>();
             animator.SetBool("isProtection", true);
             bullet.PP.damage = ar.Power;
             bullet.PP.speed = ar.speed;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             bullet.Setup();
@@ -84,6 +81,8 @@ public class PlayerAttack : MonoBehaviour
 >>>>>>> parent of 84896c54... 7.29.20
 =======
             Debug.Log(ar.Power);
+=======
+>>>>>>> parent of 84896c54... 7.29.20
 
 >>>>>>> parent of d24a37cc... Merge branch 'Xu_02' into Xu_01
         }
