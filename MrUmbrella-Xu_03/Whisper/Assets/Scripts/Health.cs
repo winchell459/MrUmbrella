@@ -82,6 +82,11 @@ public class Health : MonoBehaviour
 
             transform.parent.GetComponent<EnemyBehaviour>().EnemyDIE();
         }
+        if(who == "CloseRangeEnemy")
+        {
+            Destroy(gameObject);
+            transform.parent.GetChild(2).GetComponent<HealthBar>().SetBarStateOff(true);
+        }
 
         
     }

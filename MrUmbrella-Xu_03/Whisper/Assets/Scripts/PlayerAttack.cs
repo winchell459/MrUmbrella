@@ -25,36 +25,82 @@ public class PlayerAttack : MonoBehaviour
     public float Damage;
 
     public float AttackRate; //how many times per sec
-    private float nextAttackTime;
+    private float MeleeNextAttackTime;
+
+    public float FireRate;
+    private float RangeNextAttackTime;
 
     AbilityRange ar;
+    AbilityMelee am;
+
+    PlayerHandler PH;
+
+    //Bullet bullet;
+    bool isFireSingBullet;
+
+
+
+
+
+    //public Animator CamAnim;
 
     void Start()
     {
         MP = GetComponent<MeleeProperty>();
         
         UpdateMeleeAbilities();
+
+        //CamAnim = Camera.main.transform.parent.GetComponent<Animator>();
+        
     }
     
     
 
     public void MeleeAb(bool isLeftClick)
 	{
-        if(Time.time >= nextAttackTime)
+        if(Time.time >= MeleeNextAttackTime)
         {
             if (isLeftClick)
             {
+                
                 UpdateMeleeAbilities();
-                animator.SetBool("isAttacking", true);
-                Attack();
-                nextAttackTime = Time.time + 1 / AttackRate;
+                if (!PH) PH = FindObjectOfType<PlayerHandler>();
+                am = PH.Melee;
+                if(am.MeleeType == AbilityMelee.MeleeTypes.Swing)
+                {
+                    animator.SetBool("isAttacking", true);
+                   
+
+                }
+                else if(am.MeleeType == AbilityMelee.MeleeTypes.Poke)
+                {
+                    animator.SetBool("isPoke", true);
+                    
+                }
+                else if (am.MeleeType == AbilityMelee.MeleeTypes.Smash)
+                {
+                    animator.SetBool("isSmash", true);
+                  
+                }
+
+
+
+                //Attack();
+
+
+                //CamAnim.SetBool("isShake", true);
+                MeleeNextAttackTime = Time.time + AttackRate;
 
             }
+            //set to false
             
         }
         else
         {
             animator.SetBool("isAttacking", false);
+            animator.SetBool("isPoke", false);
+            animator.SetBool("isSmash", false);
+
 
         }
 
@@ -62,28 +108,42 @@ public class PlayerAttack : MonoBehaviour
 
 
     }
+    
     public void ProjectileAb()
     {
-        
-        ar = (AbilityRange)FindObjectOfType<PlayerHandler>().Range;
-        if(ar.RangeType == AbilityRange.RangeTypes.Bullet)
+        if (Time.time >= RangeNextAttackTime)
         {
-            Bullet bullet = Instantiate(bulletPrefab, BulletFirepoint.position, BulletFirepoint.rotation).GetComponent<Bullet>();
-            animator.SetBool("isProtection", true);
-            bullet.PP.damage = ar.Power;
-            bullet.PP.speed = ar.speed;
-            bullet.Setup();
-        }
-        else if(ar.RangeType == AbilityRange.RangeTypes.Fireball)
-        {
-            animator.SetBool("isFireBall", true);
-        }
-        else if(ar.RangeType == AbilityRange.RangeTypes.SmallBullet)
-        {
+            if (!PH) PH = FindObjectOfType<PlayerHandler>();
+            ar = PH.Range;
+            if (ar.RangeType == AbilityRange.RangeTypes.Bullet)
+            {
+                //InstantiateSingularBullet();
+                animator.SetBool("isProtection", true);
+                Bullet bullet = Instantiate(bulletPrefab, BulletFirepoint.position, BulletFirepoint.rotation).GetComponent<Bullet>();
+                bullet.PP.damage = ar.Power;
+                bullet.PP.speed = ar.speed;
+                FireRate = ar.CD;
+                bullet.Setup();
+                    //isFireSingBullet = false;
+                
+            }
+            else if (ar.RangeType == AbilityRange.RangeTypes.Fireball)
+            {
+                animator.SetBool("isFireBall", true);
+            }
+            else if (ar.RangeType == AbilityRange.RangeTypes.SmallBullet)
+            {
 
+            }
+
+
+            RangeNextAttackTime = Time.time + FireRate;
         }
+        
         
     }
+    
+    
 
     public void FireballInstantiate()
     {
@@ -93,16 +153,18 @@ public class PlayerAttack : MonoBehaviour
         ProjectileProperty pp = fireball.GetComponent<ProjectileProperty>();
         pp.speed = ar.speed;
         pp.damage = ar.Power;
+        FireRate = ar.CD;
         fireball.Setup();
     }
 
-    void Attack()
+    public void Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, AttackRange, enemyLayers);
 
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.gameObject.GetComponent<Health>().TakeDamage(Damage);
+            
         }
     }
 
@@ -122,5 +184,10 @@ public class PlayerAttack : MonoBehaviour
     private void UpdateRangeAbilities()
     {
 
+    }
+
+    public void InstantiateParticles(GameObject ptxs)
+    {
+        Instantiate(ptxs, attackPoint.position, Quaternion.identity);
     }
 }

@@ -33,30 +33,32 @@ public class EnemyFire : MonoBehaviour
 
     private void Fire()
     {
-        if(FindObjectOfType<PlayerDeadManager>().isPlayerDied == false && FindObjectOfType<EnemyBehaviour>().Isidle == false)
+        if(FindObjectOfType<PlayerDeadManager>().isPlayerDied == false && GetComponent<EnemyBehaviour>().Isidle == false && GetComponent<EnemyBehaviour>().enemyType == EnemyBehaviour.EnemyTypes.eo1)
         {
-            for (int i = 1; i < FireAmount; i = i + 1)
+
+            //Debug.Log("el");
+
+
+            if (canSpanwNextBullet)
             {
-                
-               
+                SpawnBullet();
 
-                if (canSpanwNextBullet)
-                {
-                    SpawnBullet();
-                    FindObjectOfType<TrackBullet>().isDamageOnce = false;
-                    animator.SetBool("isAttack", true);
-                    
-                    Debug.Log(i);
+                //Debug.Log("e");
+                FindObjectOfType<TrackBullet>().isDamageOnce = false;
+                animator.SetBool("isAttack", true);
+   
 
-                    canSpanwNextBullet = false;
-                }
-                else
-                {
-                    isStartCD = true;
-                    CDCountDown();
-                }
-
+                canSpanwNextBullet = false;
             }
+            else
+            {
+                isStartCD = true;
+                CDCountDown();
+
+                //Debug.Log("ef" + FireInterval);
+            }
+
+            
 
         }
 

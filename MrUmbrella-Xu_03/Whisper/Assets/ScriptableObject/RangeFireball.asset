@@ -15,9 +15,10 @@ MonoBehaviour:
   AbilityType: 2
   Detail: Fireball
   AbilitySprite: {fileID: 21300000, guid: e4e08248a70724183a793dca115f48eb, type: 3}
+  LockedSprite: {fileID: 0}
   Duration: 0
   Power: 15
-  CD: 0
+  CD: 5
   Radius: 0
   RangeType: 1
   speed: 10

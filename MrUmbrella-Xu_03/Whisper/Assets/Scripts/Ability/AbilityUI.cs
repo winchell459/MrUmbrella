@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class AbilityUI : MonoBehaviour
 {
-    public AbilityObject Melee;
-    public AbilityObject Range;
+    public AbilityMelee Melee;
+    public AbilityRange Range;
     public AbilityObject Protection;
 
     public Transform MeleeSlot;
@@ -27,7 +27,7 @@ public class AbilityUI : MonoBehaviour
     {
         if(ability.AbilityType == AbilityObject.AbilityTypes.Melee)
         {
-            Melee = ability;
+            Melee = (AbilityMelee)ability;
 
             PlayerHandler.PH.Melee = Melee;
             
@@ -46,7 +46,7 @@ public class AbilityUI : MonoBehaviour
         }
         else if (ability.AbilityType == AbilityObject.AbilityTypes.Range)
         {
-            Range = ability;
+            Range = (AbilityRange)ability;
 
             PlayerHandler.PH.Range = Range;
 

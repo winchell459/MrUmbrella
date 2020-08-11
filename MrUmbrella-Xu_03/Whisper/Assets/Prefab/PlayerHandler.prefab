@@ -43,9 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6702a5087d20e4c54b7bb471c342c411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Melee: {fileID: 0}
   MeleeAbilities:
-  - {fileID: 11400000, guid: 515c3f3db17a64ac3b4a207444a925e7, type: 2}
-  - {fileID: 11400000, guid: e3032450623b74ade9918f7fe57e200e, type: 2}
+  - {fileID: 11400000, guid: a077393c51b0b4bc6989554841a43567, type: 2}
+  - {fileID: 11400000, guid: 8c8c34d01fd3a4222be97d6d50c62814, type: 2}
+  - {fileID: 11400000, guid: 1f211d2bee3f54e0099ac3b78d63e5ac, type: 2}
   ProtectionAbilities:
   - {fileID: 11400000, guid: 58fcb6c479432432d801fe18d0658830, type: 2}
   - {fileID: 11400000, guid: feb84e0a4fe6d482b902ed4ec34de9e0, type: 2}

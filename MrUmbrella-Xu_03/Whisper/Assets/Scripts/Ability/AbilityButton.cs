@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class AbilityButton : MonoBehaviour
 {
     public AbilityObject Ability;
+    private bool unlocked;
 
     public void Select()
     {
@@ -13,7 +14,23 @@ public class AbilityButton : MonoBehaviour
     }
     private void Awake()
     {
-        GetComponent<Image>().sprite = Ability.AbilitySprite;
+        if (FindObjectOfType<PlayerHandler>().AbilityUnlocked(Ability))
+        {
+            Unlock();
+
+        }
+        else
+        {
+            GetComponent<Image>().sprite = Ability.LockedSprite;
+            GetComponent<Button>().interactable = false;
+        }
+
         transform.GetChild(0).GetComponent<Text>().text = Ability.Detail;
+    }
+    public void Unlock()
+    {
+        GetComponent<Image>().sprite = Ability.AbilitySprite;
+        unlocked = true;
+        GetComponent<Button>().interactable = true;
     }
 }

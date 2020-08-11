@@ -73,7 +73,7 @@ public class TrackBullet : MonoBehaviour
     {
         if (collision.transform.CompareTag("Weapon"))
         {
-            FindObjectOfType<ParticleDisapear>().isStartCD = true;
+            //FindObjectOfType<ParticleDisapear>().isStartCD = true;
             FindObjectOfType<EnemyFire>().animator.SetBool("isAttack", false);
 
             Destroy(rb.gameObject);
@@ -82,8 +82,8 @@ public class TrackBullet : MonoBehaviour
         }
         if (collision.transform.CompareTag("Ground"))
         {
-            FindObjectOfType<ParticleDisapear>().isStartCD = true;
-            FindObjectOfType<ParticleDisapear>().isGround = true;
+            //FindObjectOfType<ParticleDisapear>().isStartCD = true;
+            //FindObjectOfType<ParticleDisapear>().isGround = true;
             FindObjectOfType<EnemyFire>().animator.SetBool("isAttack", false);
 
             Destroy(rb.gameObject);

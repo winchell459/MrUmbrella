@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     public Transform DJPoint;
 
+    //public float drag;
+
 
     //public bool isSwitch;
 
@@ -63,6 +65,8 @@ public class PlayerController : MonoBehaviour
         {
             Flip(1);
         }
+
+        //rb.drag = drag;
     }
     private void OnDrawGizmos()
     {
@@ -79,6 +83,7 @@ public class PlayerController : MonoBehaviour
             extraJump = extraJumpValue;
             animator.SetBool("isJumping", false);
         }
+        
         if (Input.GetKeyDown(KeyCode.Space) && extraJump > 0)
         {
 
@@ -146,15 +151,17 @@ public class PlayerController : MonoBehaviour
         if(FindObjectOfType<PlayerAttack>())
         {
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !FindObjectOfType<AbPanelActive>().OnHold)
             {
                 FindObjectOfType<PlayerAttack>().MeleeAb(true);
+                //rb.drag = drag;
             }
             else
             {
                 FindObjectOfType<PlayerAttack>().MeleeAb(false);
+                //rb.drag = 0;
             }
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && !FindObjectOfType<AbPanelActive>().OnHold)
             {
                 FindObjectOfType<PlayerAttack>().ProjectileAb();
             }

@@ -14,6 +14,7 @@ public class AbilityObject : ScriptableObject
     public AbilityTypes AbilityType;
     public string Detail = "YES";
     public Sprite AbilitySprite;
+    public Sprite LockedSprite;
 
     
     //Protection

@@ -6,19 +6,21 @@ public class DialogueCollide : MonoBehaviour
 {
     bool isTrigger;
     public GameObject DialoguePanel;
+    GameObject Instance;
 
-    //public BoxCollider2D TheCollider;
-
-
+    private void Start()
+    {
+        
+    }
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.transform.CompareTag("NPC") && !isTrigger)
         {
             isTrigger = true;
             col.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
+            
 
-            
-            
+
         }
     }
 
@@ -28,24 +30,30 @@ public class DialogueCollide : MonoBehaviour
         {
             isTrigger = false;
 
+
         }
     }
 
     private void Update()
     {
-        if(DialoguePanel == null)
+        if(FindObjectOfType<PlayerDeadManager>().isPlayerDied == false)
         {
-            DialoguePanel = GameObject.FindGameObjectWithTag("DialoguePanel");
-        }
+            
+            if(isTrigger == true  && Instance == null)
+            {
+                Instance = Instantiate(DialoguePanel, Vector3.zero, Quaternion.identity);
+            }
+            else if(isTrigger == false && Instance)
+            {
+                Destroy(Instance);
+            }
+            
 
-        if (isTrigger)
-        {
-            DialoguePanel.SetActive(true);
+           
+            
         }
-        if (isTrigger == false)
-        {
-            DialoguePanel.SetActive(false);
-        }
+        
+        
 
     }
 

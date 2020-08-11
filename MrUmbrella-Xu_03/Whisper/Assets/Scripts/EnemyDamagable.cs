@@ -8,7 +8,7 @@ public class EnemyDamagable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("Weapon"))
+        if (collision.transform.CompareTag("Player"))
         {
             isEnemyDamage = true;
         }

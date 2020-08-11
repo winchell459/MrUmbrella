@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
+    public Button btn;
 
     private Queue<string> sentences;
 
@@ -25,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+  
         sentences = new Queue<string>();
         Debug.Log(sentences);
     }
@@ -74,6 +76,27 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueTriggerPoint[whichIsTriggered].GetComponent<BoxCollider2D>().enabled = false;
         Debug.Log("TESTING");
+
+    }
+    private void Update()
+    {
+        if(dialogueText == null)
+        {
+            dialogueText = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>();
+            Debug.Log("r");
+            
+        }
+        if (nameText == null)
+        {
+            nameText = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(1).gameObject.GetComponent<Text>();
+        }
+        if(btn == null)
+        {
+            btn = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(2).gameObject.GetComponent<Button>();
+            btn.onClick.AddListener(DisplayNextSentence);
+        }
+        
+        
 
     }
 

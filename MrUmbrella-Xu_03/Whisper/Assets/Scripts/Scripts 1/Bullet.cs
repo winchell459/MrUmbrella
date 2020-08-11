@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour {
     {
         
         
-        FindObjectOfType<ParticleDisapear>().isStartPlayerCD = true;
+        //FindObjectOfType<ParticleDisapear>().isStartPlayerCD = true;
 
 
         if (hitInfo.transform.CompareTag("Ground") || hitInfo.transform.CompareTag("Enemy"))

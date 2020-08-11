@@ -10,6 +10,25 @@ public class EnemyBehaviour : SpawnObjects
     public Transform target;
     public bool Isidle = true;
 
+    public bool MovingRight;
+
+    public Animator anim;
+
+    public float damage;
+
+    public GameObject Player;
+
+
+
+
+
+    public enum EnemyTypes
+    {
+        eo1,
+        eo3
+    }
+    public EnemyTypes enemyType;
+
 
     private void Start()
     {
@@ -18,47 +37,106 @@ public class EnemyBehaviour : SpawnObjects
     }
     private void Update()
     {
-        if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false && FindObjectOfType<RespawnAltar>().isOnPanel == false) target = GameObject.FindGameObjectWithTag("Player").transform;
+        if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false && FindObjectOfType<RespawnAltar>().isOnPanel == false)
+        {
+            target = GameObject.FindGameObjectWithTag("PlayerTarget").transform;
+            
+            
+        }
+        if(transform.GetChild(0).CompareTag("Enemy") == false)
+        {
+            gameObject.SetActive(false);
+        }
+
     }
+
+    
 
     private void FixedUpdate()
     {
-        if (Isidle == true)
+        if(enemyType == EnemyTypes.eo1)
         {
-            transform.Rotate(Vector3.forward, Time.deltaTime * IdleTurnSpeed);
+            if (Isidle == true)
+            {
+                transform.Rotate(Vector3.forward, Time.deltaTime * IdleTurnSpeed);
+            }
+            if (Isidle == false && target != null)
+            {
+                Vector2 direction = (Vector2)target.position - rb.position;
+
+                direction.Normalize();
+
+                float rotateAmount = Vector3.Cross(direction, transform.up).z;
+
+                rb.angularVelocity = -rotateAmount * ChaseTurnSpeed;
+
+            }
         }
-        if(Isidle == false && target != null)
+        else if(enemyType == EnemyTypes.eo3)
         {
-            Vector2 direction = (Vector2)target.position - rb.position;
+            if(Isidle == false)
+            {
+                anim.SetBool("isAttack", true);
+                
+            }
+            else
+            {
 
-            direction.Normalize();
-
-            float rotateAmount = Vector3.Cross(direction, transform.up).z;
-
-            rb.angularVelocity = -rotateAmount * ChaseTurnSpeed;
-
+                anim.SetBool("isAttack", false);
+            }
         }
+        
 
         
     }
+    public void Attack()
+    {
+        Player.gameObject.GetComponent<Health>().TakeDamage(damage);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if(enemyType == EnemyTypes.eo1)
         {
-            Isidle = false;
-            
+            if (collision.transform.CompareTag("Player"))
+            {
+                Isidle = false;
+                
+
+            }
+        }else if(enemyType == EnemyTypes.eo3)
+        {
+            if (collision.transform.CompareTag("Player"))
+            {
+                Isidle = false;
+
+                Player = collision.gameObject;
+
+                
+            }
         }
+        
         
         
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (enemyType == EnemyTypes.eo1)
         {
-            Isidle = true;
-            
+            if(collision.transform.CompareTag("Player"))
+            {
+                Isidle = true;
 
+            }
         }
+        else if (enemyType == EnemyTypes.eo3)
+        {
+            if (collision.transform.CompareTag("Player"))
+            {
+                Isidle = true;
+
+            }
+        }
+
     }
 
     public void EnemyDIE()

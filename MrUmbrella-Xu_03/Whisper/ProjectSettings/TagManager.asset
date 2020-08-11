@@ -14,6 +14,7 @@ TagManager:
   - TC
   - DialoguePanel
   - NPC
+  - PatrolArea
   layers:
   - Default
   - TransparentFX

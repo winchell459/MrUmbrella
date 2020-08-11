@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
         slider.value = selfHealth.health;
     }
 
-    void SetBarStateOff(bool isClose)
+    public void SetBarStateOff(bool isClose)
     {
         if (isClose)
         {

@@ -5,111 +5,33 @@ using UnityEngine;
 
 public class ParticleDisapear : MonoBehaviour
 {
-    public bool isStartCD;
-    public bool isStartPlayerCD;
-    public bool isGround;
-    public float CDTime;
-    public float PlayerCDTime;
-    private float SetPlayerCDTime;
-    public GameObject[] Particles;
-    public float SetCDTime;
+    public float norm_ParticleDecayTime = 5f;
+    public float p_ParticleDecayTime = 2f;
 
+    public GameObject[] particles;
+    public GameObject[] PlayerParticles;
 
-    public GameObject[] PlayerParticle;
-
-    private void Start()
-    {
-        SetCDTime = CDTime;
-        SetPlayerCDTime = PlayerCDTime;
-}
     private void Update()
     {
-        Particles = GameObject.FindGameObjectsWithTag("particle");
+        particles = GameObject.FindGameObjectsWithTag("particle");
+        PlayerParticles = GameObject.FindGameObjectsWithTag("PlayerParticle");
 
-        PlayerParticle = GameObject.FindGameObjectsWithTag("PlayerParticle");
-
-        CDCountDown(Particles);
-
-        CDPlayer(PlayerParticle);
-    }
-
-    private void CDCountDown(GameObject[] TheParticles)
-    {
-        
-        if (isStartCD)
+        if (GameObject.FindGameObjectWithTag("PlayerParticle") || GameObject.FindGameObjectWithTag("particle"))
         {
-            CDTime = CDTime - Time.deltaTime;
-
-            //Debug.Log(isStartCD);
-
-            if (CDTime <= 0)
-            {
-                /*
-                if (isGround)
-                {
-                    if (UpGround.transform.childCount >= 1) Destroy(UpGround.transform.GetChild(0).gameObject);
-
-                    isGround = false;
-                }
-                */
-
-                GameObject.FindGameObjectWithTag("particle");
-
-                if (TheParticles.Length >= 1) {
-                    for(int i = 0; i < TheParticles.Length; i = i + 1)
-                    {
-                        Destroy(TheParticles[i]);
-                    }
-                   
-                } 
-
-                CDTime = SetCDTime;
-                isStartCD = false;
-                //Debug.Log(isStartCD);
-            }
+            DestroyPartices();
         }
 
-
-
     }
-    private void CDPlayer(GameObject[] TheParticles)
+    public void DestroyPartices()
     {
-
-        if (isStartPlayerCD)
+        for (int i = 0; i < particles.Length; i = i + 1)
         {
-            PlayerCDTime = PlayerCDTime - Time.deltaTime;
-
-            //Debug.Log(isStartCD);
-
-            if (PlayerCDTime <= 0)
-            {
-                /*
-                if (isGround)
-                {
-                    if (UpGround.transform.childCount >= 1) Destroy(UpGround.transform.GetChild(0).gameObject);
-
-                    isGround = false;
-                }
-                */
-
-                GameObject.FindGameObjectWithTag("particle");
-
-                if (TheParticles.Length >= 1)
-                {
-                    for (int i = 0; i < TheParticles.Length; i = i + 1)
-                    {
-                        Destroy(TheParticles[i]);
-                    }
-
-                }
-
-                PlayerCDTime = SetPlayerCDTime;
-                isStartPlayerCD = false;
-                //Debug.Log(isStartCD);
-            }
+            Destroy(particles[i], norm_ParticleDecayTime);
         }
-
-
-
+        for (int i = 0; i < PlayerParticles.Length; i = i + 1)
+        {
+            Destroy(PlayerParticles[i], p_ParticleDecayTime);
+        }
     }
+    
 }
