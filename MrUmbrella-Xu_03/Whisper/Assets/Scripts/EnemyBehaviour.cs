@@ -91,7 +91,7 @@ public class EnemyBehaviour : SpawnObjects
     }
     public void Attack()
     {
-        Player.gameObject.GetComponent<Health>().TakeDamage(damage);
+        Player.gameObject.GetComponent<Health>().TakeDamage(damage * FindObjectOfType<PlayerAttack>().ProtectionPower);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

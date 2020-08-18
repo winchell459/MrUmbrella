@@ -25,7 +25,7 @@ public class AbilityButton : MonoBehaviour
             GetComponent<Button>().interactable = false;
         }
 
-        transform.GetChild(0).GetComponent<Text>().text = Ability.Detail;
+        transform.GetChild(1).GetComponent<Text>().text = Ability.Detail;
     }
     public void Unlock()
     {

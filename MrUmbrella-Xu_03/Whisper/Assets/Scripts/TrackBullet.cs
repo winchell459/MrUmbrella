@@ -99,7 +99,7 @@ public class TrackBullet : MonoBehaviour
                 Health PlayerHealth = collision.GetComponent<Health>();
                 if (PlayerHealth != null)
                 {
-                    PlayerHealth.TakeDamage(PP.damage);
+                    PlayerHealth.TakeDamage(PP.damage * FindObjectOfType<PlayerAttack>().ProtectionPower);
 
                     Debug.Log(PlayerHealth.health);
                 }
@@ -110,7 +110,7 @@ public class TrackBullet : MonoBehaviour
 
                 if(collision.GetComponent<LinkTC>() != null)
                 {
-                    collision.GetComponent<LinkTC>().LinkDamage(PP.damage);
+                    collision.GetComponent<LinkTC>().LinkDamage(PP.damage * FindObjectOfType<PlayerAttack>().ProtectionPower);
                 }
             }
 

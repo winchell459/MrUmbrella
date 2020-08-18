@@ -7,11 +7,13 @@ public class AbilityUI : MonoBehaviour
 {
     public AbilityMelee Melee;
     public AbilityRange Range;
-    public AbilityObject Protection;
+    public AbilityProtection Protection;
 
     public Transform MeleeSlot;
     public Transform ProtectionSlot;
     public Transform RangeSlot;
+
+    public AbilityButton[] MeleeAbilityButtons, RangeAbilityButtons, ProtectionAbilityButtons;
 
     private void Start()
     {
@@ -37,7 +39,7 @@ public class AbilityUI : MonoBehaviour
         }
         else if(ability.AbilityType == AbilityObject.AbilityTypes.Protection)
         {
-            Protection = ability;
+            Protection = (AbilityProtection)ability;
 
             PlayerHandler.PH.Protection = Protection;
 
@@ -56,7 +58,7 @@ public class AbilityUI : MonoBehaviour
     private void assignSlot(AbilityObject ability, Transform slot)
     {
         slot.GetComponent<Image>().sprite = ability.AbilitySprite;
-        slot.GetChild(0).GetComponent<Text>().text = ability.Detail;
+        slot.GetChild(1).GetComponent<Text>().text = ability.Detail;
     }
 
     public void DisplayAbilities()

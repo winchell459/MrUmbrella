@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityType: 0
   Detail: Smash
-  AbilitySprite: {fileID: 21300000, guid: 9a2b531f6b7ed407ab19a36039c7f106, type: 3}
+  AbilitySprite: {fileID: 21300000, guid: 8775b07b93a7d444993cad47a72aa554, type: 3}
   LockedSprite: {fileID: 0}
   Duration: 0
   Power: 7

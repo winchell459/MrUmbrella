@@ -6,10 +6,10 @@ public class PlayerHandler : MonoBehaviour
 {
     public AbilityMelee Melee; //ability0 playerpref int 0 or 1
     public AbilityRange Range { get; set; } //ability1 playerpref int 0 or 1
-    public AbilityObject Protection { get; set; } //ability2 playerpref int 0 or 1
+    public AbilityProtection Protection { get; set; } //ability2 playerpref int 0 or 1
 
     public List<AbilityMelee> MeleeAbilities;
-    public List<AbilityObject> ProtectionAbilities;
+    public List<AbilityProtection> ProtectionAbilities;
     public List<AbilityRange> RangeAbilities;
 
     public static PlayerHandler PH;
@@ -18,18 +18,20 @@ public class PlayerHandler : MonoBehaviour
     public float Health { get; set; }
 
     private static string[] abilityTags = { "ability0", "ability1", "ability2" };
-    private string[] meleeTags = { "melee0", "melee1", "melee2" };
-    private string[] rangeTags = { "range0", "range1", "range2" };
-    private string[] protectionTags = { "protection0", "protection1", "protection2" };
-    private string spawnSceneTag = "spawnScene";
-    private string healthTag = "Health";
+   
+    private static string[] meleelockTags = { "meleeLock0", "meleeLock1", "meleeLock2" };
+    private static string[] rangelockTags = { "rangeLock0", "rangeLock1", "rangeLock2" };
+    private static string[] protectionlockTags = { "protectionLock0", "protectionLock1", "protectionLock2" };
+    private static string spawnSceneTag = "spawnScene";
+    private static string healthTag = "Health";
 
     private bool[] meleeUnlock = { true, true, true };
-    private bool[] rangeUnlock = { true, false, false };
-    private bool[] protectionUnlock = { true, false, false };
+    private bool[] rangeUnlock = { true, true, true };
+    private bool[] protectionUnlock = { true, true, true };
 
     private void Awake()
     {
+        //PlayerPrefs.SetInt(rangelockTags[1], 0);
         if (PH) Destroy(gameObject);
         else
         {
@@ -38,6 +40,7 @@ public class PlayerHandler : MonoBehaviour
 
             loadPlayerPrefs();
         }
+        
         
     }
     private void OnDestroy()
@@ -74,6 +77,27 @@ public class PlayerHandler : MonoBehaviour
             Health = PlayerPrefs.GetFloat(healthTag);
             //Debug.Log("Health: " + Health);
         }
+        for(int i = 0; i < 3; i += 1)
+        {
+            if (PlayerPrefs.HasKey(meleelockTags[i]))
+            {
+                meleeUnlock[i] = PlayerPrefs.GetInt(meleelockTags[i]) == 0 ? false : true;
+            }
+        }
+        for (int i = 0; i < 3; i += 1)
+        {
+            if (PlayerPrefs.HasKey(rangelockTags[i]))
+            {
+                rangeUnlock[i] = PlayerPrefs.GetInt(rangelockTags[i]) == 0 ? false : true;
+            }
+        }
+        for (int i = 0; i < 3; i += 1)
+        {
+            if (PlayerPrefs.HasKey(protectionlockTags[i]))
+            {
+                protectionUnlock[i] = PlayerPrefs.GetInt(protectionlockTags[i]) == 0 ? false : true;
+            }
+        }
     }
 
     public void SavePlayerPrefs()
@@ -84,6 +108,19 @@ public class PlayerHandler : MonoBehaviour
         Health = FindObjectOfType<PlayerController>().gameObject.GetComponent<Health>().health;
         PlayerPrefs.SetFloat(healthTag, Health);
         Debug.Log("Saving Player Health: " + FindObjectOfType<PlayerController>().gameObject.GetComponent<Health>().health);
+
+        for (int i = 0; i < 3; i += 1)
+        {
+            PlayerPrefs.SetInt(meleelockTags[i], meleeUnlock[i] ? 1 : 0);
+        }
+        for (int i = 0; i < 3; i += 1)
+        {
+            PlayerPrefs.SetInt(rangelockTags[i], rangeUnlock[i] ? 1 : 0);
+        }
+        for (int i = 0; i < 3; i += 1)
+        {
+            PlayerPrefs.SetInt(protectionlockTags[i], protectionUnlock[i] ? 1 : 0);
+        }
     }
     public bool AbilityUnlocked(AbilityObject ao)
     {
@@ -113,4 +150,38 @@ public class PlayerHandler : MonoBehaviour
         return false;
         
     }
+    public void AbilityUnlock(AbilityObject ao)
+    {
+        bool done = false;
+        AbilityUI aui = FindObjectOfType<AbPanelActive>().AbPanel.transform.GetChild(0).GetComponent<AbilityUI>();//FindObjectOfType<AbilityUI>();
+        for(int i= 0; i < aui.MeleeAbilityButtons.Length && !done; i += 1)
+        {
+            if(aui.MeleeAbilityButtons[i].Ability == ao)
+            {
+                done = true;
+                meleeUnlock[i] = true;
+                aui.MeleeAbilityButtons[i].Unlock();
+            }
+        }
+        for (int i = 0; i < aui.RangeAbilityButtons.Length && !done; i += 1)
+        {
+            if (aui.RangeAbilityButtons[i].Ability == ao)
+            {
+                done = true;
+                rangeUnlock[i] = true;
+                aui.RangeAbilityButtons[i].Unlock();
+            }
+        }
+        for (int i = 0; i < aui.ProtectionAbilityButtons.Length && !done; i += 1)
+        {
+            if (aui.ProtectionAbilityButtons[i].Ability == ao)
+            {
+                done = true;
+                protectionUnlock[i] = true;
+                aui.ProtectionAbilityButtons[i].Unlock();
+            }
+        }
+
+    }
+    
 }

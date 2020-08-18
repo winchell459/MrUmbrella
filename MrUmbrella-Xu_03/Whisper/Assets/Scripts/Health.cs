@@ -36,7 +36,7 @@ public class Health : MonoBehaviour
             Die(Inheritance);
         }
     }
-    public void Heal(float healAmount, GameObject medkit)
+    public void Heal(float healAmount)
     {
         if(health < maxHealth)
         {
@@ -85,7 +85,7 @@ public class Health : MonoBehaviour
         if(who == "CloseRangeEnemy")
         {
             Destroy(gameObject);
-            transform.parent.GetChild(2).GetComponent<HealthBar>().SetBarStateOff(true);
+            transform.parent.GetChild(1).GetComponent<HealthBar>().SetBarStateOff(true);
         }
 
         

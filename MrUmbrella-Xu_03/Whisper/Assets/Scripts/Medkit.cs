@@ -15,7 +15,7 @@ public class Medkit : SpawnObjects
             DespawnObjects();
 
 
-            playerHealth.Heal(healAmount, gameObject);
+            playerHealth.Heal(healAmount);
 
             Destroy(gameObject);
 

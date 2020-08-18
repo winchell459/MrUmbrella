@@ -68,9 +68,13 @@ public abstract class Area : MonoBehaviour
     }
     public void UseBridge(AreaBridge bridge)
     {
-        PlayerHandler.PH.SavePlayerPrefs();
-        LoadingAreaBridge = bridge.BridgeToBridgeName;
-        SceneManager.LoadScene(bridge.BridgeToAreaName);
+        if (GameObject.FindGameObjectWithTag("Enemy") == null)
+        {
+            PlayerHandler.PH.SavePlayerPrefs();
+            LoadingAreaBridge = bridge.BridgeToBridgeName;
+            SceneManager.LoadScene(bridge.BridgeToAreaName);
+        }
+        
     }
     public void DespawnObject(SpawnObjects so)
     {

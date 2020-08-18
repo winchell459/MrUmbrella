@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     //public bool isSwitch;
 
+    public bool isMove = true;
     void Start()
     {
         extraJump = extraJumpValue;
@@ -52,19 +53,24 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-
-        moveInput = Input.GetAxis("Horizontal");
-
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-
-        if (facingRight == false && moveInput > 0)
+        if (isMove == true)
         {
-            Flip(0);
+            
+
+            moveInput = Input.GetAxis("Horizontal");
+
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+
+            if (facingRight == false && moveInput > 0)
+            {
+                Flip(0);
+            }
+            else if (facingRight == true && moveInput < 0)
+            {
+                Flip(1);
+            }
         }
-        else if (facingRight == true && moveInput < 0)
-        {
-            Flip(1);
-        }
+        
 
         //rb.drag = drag;
     }
@@ -169,6 +175,15 @@ public class PlayerController : MonoBehaviour
             {
                 FindObjectOfType<PlayerAttack>().animator.SetBool("isProtection", false);
                 FindObjectOfType<PlayerAttack>().animator.SetBool("isFireBall", false);
+            }
+            if (Input.GetButtonDown("Fire2"))
+            {
+                FindObjectOfType<PlayerAttack>().ProtectionAb(true);
+            }
+            else
+            {
+                FindObjectOfType<PlayerAttack>().ProtectionAb(false);
+                //FindObjectOfType<PlayerAttack>().ProtectionPower = 1;
             }
             /*
             if (Input.GetKey(KeyCode.C))

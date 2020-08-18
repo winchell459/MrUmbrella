@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Protection1
   m_EditorClassIdentifier: 
   AbilityType: 1
-  Detail: Umbrella Switch
-  AbilitySprite: {fileID: 21300000, guid: 870919817e1ad4f86b13ffe10393c801, type: 3}
+  Detail: Shield
+  AbilitySprite: {fileID: 21300000, guid: 64c16cc83183a40f8bcea13f8d24df4f, type: 3}
+  LockedSprite: {fileID: 0}
   Duration: 1
-  Power: 3
-  CD: 1
-  Radius: 3
+  Power: 0.5
+  CD: 3
+  Radius: 0

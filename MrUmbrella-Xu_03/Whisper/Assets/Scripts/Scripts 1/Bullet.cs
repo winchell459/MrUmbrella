@@ -8,7 +8,13 @@ public class Bullet : MonoBehaviour {
 	public Rigidbody2D rb;
 	public GameObject impactEffect;
 
-    public bool isDirChange;
+    public enum BulletFireTypes
+    {
+        SingBullet,
+        Fireball,
+        SmallBullet
+    }
+    public BulletFireTypes bulletFireType;
 
     // Use this for initialization
     public void Setup () {
@@ -16,13 +22,23 @@ public class Bullet : MonoBehaviour {
         PP = GetComponent<ProjectileProperty>();
 		
 
-        if (isDirChange)
+        if (bulletFireType == BulletFireTypes.Fireball)
         {
             rb.velocity = transform.TransformDirection(Vector3.right * PP.speed);
         }
-        else
+        else if(bulletFireType == BulletFireTypes.SingBullet)
         {
             rb.velocity = transform.right * PP.speed;
+        }
+        else if(bulletFireType == BulletFireTypes.SmallBullet)
+        {
+            rb.velocity = transform.right * PP.speed;
+
+            if (Mathf.RoundToInt(transform.eulerAngles.z) == 90)
+            {
+                rb.velocity = Vector2.right * PP.speed;
+            }
+            Debug.Log(Mathf.Abs(transform.eulerAngles.z));
         }
         
 	}

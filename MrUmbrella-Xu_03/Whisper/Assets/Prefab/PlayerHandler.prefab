@@ -49,10 +49,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8c8c34d01fd3a4222be97d6d50c62814, type: 2}
   - {fileID: 11400000, guid: 1f211d2bee3f54e0099ac3b78d63e5ac, type: 2}
   ProtectionAbilities:
-  - {fileID: 11400000, guid: 58fcb6c479432432d801fe18d0658830, type: 2}
-  - {fileID: 11400000, guid: feb84e0a4fe6d482b902ed4ec34de9e0, type: 2}
+  - {fileID: 11400000, guid: ff35003748b2c4f22982ced2fcd9f7d5, type: 2}
+  - {fileID: 11400000, guid: c8be51467caf844549b7866b5dd66797, type: 2}
+  - {fileID: 11400000, guid: 26f96ee69952d4414bf60ce57774094b, type: 2}
   RangeAbilities:
   - {fileID: 11400000, guid: feb9075873ed84c05be2c004303a7382, type: 2}
   - {fileID: 11400000, guid: 45d4031b929ec40e0b65e4e816d5f6bd, type: 2}
+  - {fileID: 11400000, guid: af88a55ac85614cfd9fd734bb70471cf, type: 2}
   PlayerPrefab: {fileID: 4074326391173413331, guid: 5abe54630a4f14c9e8cb17c69209485a,
     type: 3}

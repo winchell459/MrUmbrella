@@ -25,19 +25,33 @@ public class PlayerAttack : MonoBehaviour
     public float Damage;
 
     public float AttackRate; //how many times per sec
-    private float MeleeNextAttackTime;
+    public float MeleeNextAttackTime;
 
     public float FireRate;
     private float RangeNextAttackTime;
 
+    public float ProtectionRate;
+    private float ProtectionNextAttackTime;
+
+    public float Duration;
+    //public float ProtectionCD;
+    public float ProtectionPower = 1;
+
     AbilityRange ar;
     AbilityMelee am;
+    AbilityProtection apr;
 
     PlayerHandler PH;
 
     //Bullet bullet;
     bool isFireSingBullet;
 
+    public float healFactor = 10;
+
+    public GameObject[] smallBulletFirePoints;
+
+
+    public Bullet[] smallBullets;
 
 
 
@@ -108,6 +122,54 @@ public class PlayerAttack : MonoBehaviour
 
 
     }
+    public void ProtectionAb(bool isPressC)
+    {
+        if(Time.time >= ProtectionNextAttackTime)
+        {
+            if (isPressC)
+            {
+                UpdateProtectionAbilities();
+                if (!PH) PH = FindObjectOfType<PlayerHandler>();
+                apr = PH.Protection;
+                if(apr.ProtectionType == AbilityProtection.ProtectionTypes.Shield)
+                {
+                    animator.SetBool("isShield", true);
+                    ProtectionPower = PH.Protection.Power;
+                }
+                else if (apr.ProtectionType == AbilityProtection.ProtectionTypes.Invinc)
+                {
+                    animator.SetTrigger("isInvinc");
+                    
+
+                }
+                else if (apr.ProtectionType == AbilityProtection.ProtectionTypes.Healing && transform.parent.gameObject.GetComponent<Health>().health <= 20)
+                {
+                    ProtectionPower = PH.Protection.Power;
+                    transform.parent.gameObject.GetComponent<Health>().Heal(ProtectionPower * healFactor);
+                    //FindObjectOfType<LinkTC>().LinkDamage(-ProtectionPower);
+                }
+                ProtectionNextAttackTime = Time.time + ProtectionRate;
+                
+                Debug.Log(ProtectionPower);
+
+            }
+            else
+            {
+                animator.SetBool("isShield", false);
+                //animator.SetBool("isInvinc", false);
+                
+                Debug.Log(ProtectionPower);
+
+            }
+
+
+        }
+        
+        
+
+    }
+    
+    
     
     public void ProjectileAb()
     {
@@ -124,8 +186,8 @@ public class PlayerAttack : MonoBehaviour
                 bullet.PP.speed = ar.speed;
                 FireRate = ar.CD;
                 bullet.Setup();
-                    //isFireSingBullet = false;
-                
+                //isFireSingBullet = false;
+
             }
             else if (ar.RangeType == AbilityRange.RangeTypes.Fireball)
             {
@@ -133,12 +195,23 @@ public class PlayerAttack : MonoBehaviour
             }
             else if (ar.RangeType == AbilityRange.RangeTypes.SmallBullet)
             {
+                animator.SetTrigger("isSmallBullet");
+                for(int i = 0; i < 3; i += 1)
+                {
+                    smallBullets[i] = Instantiate(smallBulletPrefab, smallBulletFirePoints[i].transform.position, smallBulletFirePoints[i].transform.rotation).GetComponent<Bullet>();
+                    
+                    smallBullets[i].PP.damage = ar.Power;
+                    smallBullets[i].PP.speed = ar.speed;
+                    FireRate = ar.CD;
+                    smallBullets[i].Setup();
+                }
+               
+                
 
             }
-
-
             RangeNextAttackTime = Time.time + FireRate;
         }
+        
         
         
     }
@@ -170,9 +243,16 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Invincibility") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Shield"))
+        {
+            ProtectionPower = 1;
+        }
+        else
+        {
+            ProtectionPower = PH.Protection.Power;
+        }
+
         
-
-
     }
     private void UpdateMeleeAbilities()
     {
@@ -189,5 +269,12 @@ public class PlayerAttack : MonoBehaviour
     public void InstantiateParticles(GameObject ptxs)
     {
         Instantiate(ptxs, attackPoint.position, Quaternion.identity);
+    }
+    private void UpdateProtectionAbilities()
+    {
+        PlayerHandler abUI = FindObjectOfType<PlayerHandler>();
+        ProtectionRate = abUI.Protection.CD;
+        
+        
     }
 }
