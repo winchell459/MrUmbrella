@@ -61,12 +61,22 @@ public class RespawnAltar : MonoBehaviour
         }
         
     }
+    public void Respawn()
+    {
+        Respawn(transform.position);
+    }
     public void Respawn(Transform respawnPos)
     {
-        if (isSpawn == false)
+        //Respawn(respawnPos.position);
+        FindObjectOfType<PlayerHandler>().loadPlayerSaveRespawn();
+    }
+    public void Respawn(Vector2 respawnPos)
+    {
+        //if (isSpawn == false)
         {
             GameObject Instance;
-            Instance = Instantiate(playerPrefab, respawnPos.position, Quaternion.identity);
+            Instance = Instantiate(playerPrefab, respawnPos, Quaternion.identity);
+            Instance.GetComponent<Health>().health = PlayerHandler.PH.Health;
             FindObjectOfType<Follow>().SetTarget(Instance.transform);
             
             isSpawn = true;
@@ -102,6 +112,12 @@ public class RespawnAltar : MonoBehaviour
                 Panel.SetActive(false);
 
             }
+        }
+
+        if (collision.transform.CompareTag("Player") && Input.GetKeyDown(KeyCode.Q))
+        {
+            PlayerHandler.PH.savePlayerSavePoint();
+            Debug.Log("Aplus " + PlayerHandler.PH.Health);
         }
     }
 

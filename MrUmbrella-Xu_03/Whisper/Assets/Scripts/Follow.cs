@@ -50,6 +50,10 @@ public class Follow : MonoBehaviour
 
             if (transform.position.x < minBounds.x + cameraHalfWidth) minX = transform.position.x;            else if (transform.position.x > maxBounds.x - cameraHalfWidth) maxX = transform.position.x;            if (transform.position.y < minY) minY = transform.position.y;            else if (transform.position.y > maxY) maxY = transform.position.y;            x = Mathf.Clamp(x, minX, maxX);            y = Mathf.Clamp(y, minY, maxY);              transform.position = new Vector3(x, y, transform.position.z); 
         }
+        else
+        {
+            player = FindObjectOfType<PlayerController>().transform;
+        }
     }
 
     public void SetBound(BoxCollider2D bounds)
