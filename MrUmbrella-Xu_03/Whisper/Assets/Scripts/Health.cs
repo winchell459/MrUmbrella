@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float health;
-    public float maxHealth ;
+    public float maxHealth;
     //public bool isHeal;
     public string Inheritance;
 
@@ -85,7 +85,12 @@ public class Health : MonoBehaviour
         if(who == "CloseRangeEnemy")
         {
             Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
             transform.parent.GetChild(1).GetComponent<HealthBar>().SetBarStateOff(true);
+        }
+        if(who == "Destroyables")
+        {
+            Destroy(gameObject);
         }
 
         

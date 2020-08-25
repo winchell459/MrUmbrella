@@ -37,11 +37,12 @@ public class EnemyBehaviour : SpawnObjects
     }
     private void Update()
     {
-        if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false && FindObjectOfType<RespawnAltar>().isOnPanel == false)
+        if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false)
         {
-            target = GameObject.FindGameObjectWithTag("PlayerTarget").transform;
-            
-            
+            target = FindObjectOfType<PlayerDeadManager>().playerGO.transform;
+
+
+
         }
         if(transform.GetChild(0).CompareTag("Enemy") == false)
         {

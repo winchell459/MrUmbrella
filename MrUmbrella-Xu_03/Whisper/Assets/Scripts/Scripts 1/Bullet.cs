@@ -28,7 +28,21 @@ public class Bullet : MonoBehaviour {
         }
         else if(bulletFireType == BulletFireTypes.SingBullet)
         {
-            rb.velocity = transform.right * PP.speed;
+            //rb.velocity = transform.right * PP.speed;
+
+            Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 direction = (target - transform.position).normalized;
+            rb.velocity = transform.TransformDirection(direction * PP.speed);
+
+
+            float rotateAmount = Vector3.Cross(direction, transform.up).z;
+
+            //rb.angularVelocity = -rotateAmount * 10000000;
+
+
+
+            
+
         }
         else if(bulletFireType == BulletFireTypes.SmallBullet)
         {

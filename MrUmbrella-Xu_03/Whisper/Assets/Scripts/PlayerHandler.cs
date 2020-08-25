@@ -29,6 +29,10 @@ public class PlayerHandler : MonoBehaviour
     private bool[] rangeUnlock = { true, true, true };
     private bool[] protectionUnlock = { true, true, true };
 
+    public static int DefaultSpawnSceneIndex = 2;
+    public static float DefaultPlayerHealth = 20;
+    //public bool 
+
     private void Awake()
     {
         //PlayerPrefs.SetInt(rangelockTags[1], 0);
@@ -39,6 +43,7 @@ public class PlayerHandler : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             loadPlayerPrefs();
+            loadPlayerSavePoint();
         }
         
         
@@ -50,6 +55,31 @@ public class PlayerHandler : MonoBehaviour
         Debug.Log("Oh hi mart saving pp");
     }
 
+    public void loadPlayerSaveRespawn()
+    {
+
+        Health = DefaultPlayerHealth;
+        int sceneId = PlayerPrefs.GetInt(spawnSceneTag, DefaultSpawnSceneIndex);
+        Area.LoadingAltar = true;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneId);
+    }
+
+    public void loadPlayerSavePoint()
+    {
+        Health = PlayerPrefs.GetFloat(healthTag, DefaultPlayerHealth);
+        int sceneId = PlayerPrefs.GetInt(spawnSceneTag, DefaultSpawnSceneIndex);
+        Area.LoadingAltar = true;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneId);
+        
+
+    }
+
+    public void savePlayerSavePoint()
+    {
+        PlayerPrefs.SetInt(spawnSceneTag, UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.SetFloat(healthTag, GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().health);
+        Health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().health;
+    }
     public void loadPlayerPrefs()
     {
 
@@ -72,11 +102,13 @@ public class PlayerHandler : MonoBehaviour
             index = Mathf.Clamp(index, 0, RangeAbilities.Count - 1);
             Range = RangeAbilities[index];
         }
+        /*
         if (PlayerPrefs.HasKey(healthTag))
         {
             Health = PlayerPrefs.GetFloat(healthTag);
             //Debug.Log("Health: " + Health);
         }
+        */
         for(int i = 0; i < 3; i += 1)
         {
             if (PlayerPrefs.HasKey(meleelockTags[i]))
@@ -105,7 +137,7 @@ public class PlayerHandler : MonoBehaviour
         if (Melee) PlayerPrefs.SetInt(abilityTags[0], MeleeAbilities.IndexOf(Melee));
         if(Protection) PlayerPrefs.SetInt(abilityTags[1], ProtectionAbilities.IndexOf(Protection));
         if (Range) PlayerPrefs.SetInt(abilityTags[2], RangeAbilities.IndexOf(Range));
-        Health = FindObjectOfType<PlayerController>().gameObject.GetComponent<Health>().health;
+        //Health = FindObjectOfType<PlayerController>().gameObject.GetComponent<Health>().health;
         PlayerPrefs.SetFloat(healthTag, Health);
         Debug.Log("Saving Player Health: " + FindObjectOfType<PlayerController>().gameObject.GetComponent<Health>().health);
 

@@ -8,6 +8,8 @@ public abstract class Area : MonoBehaviour
     public List<SpawnObjects> spawnObjects = new List<SpawnObjects>();
     public static List<AreaDespawn> ObjectsDestroyed = new List<AreaDespawn>();
 
+    public static bool LoadingAltar;
+
     public static string LoadingAreaBridge;
     public List<AreaBridge> AreaBridges;
     public Transform DefaultPlayerSpawnPoint;
@@ -41,16 +43,20 @@ public abstract class Area : MonoBehaviour
 
     private void loadPlayer()
     {
-        if(LoadingAreaBridge != null)
+        if (LoadingAltar)
+        {
+            FindObjectOfType<RespawnAltar>().Respawn();
+            LoadingAltar = false;
+            Debug.Log("LOADING ALTAR YEET");
+
+        }
+        else if(LoadingAreaBridge != null)
         {
             foreach(AreaBridge bridge in AreaBridges)
             {
                 if(bridge.BridgeName == LoadingAreaBridge)
                 {
-                    Player = Instantiate(PlayerHandler.PH.PlayerPrefab, bridge.transform.position + (Vector3)bridge.LoadingOffset, Quaternion.identity).transform;//.GetChild(0);
-                    //if(Player.TryGetComponent(out Health health))
-                    float health = PlayerHandler.PH.Health;
-                    Player.GetComponent<Health>().health = health;
+                    InstantiatePlayer(bridge.transform.position + (Vector3)bridge.LoadingOffset);
                     Debug.Log("Bridge load healt: " + PlayerHandler.PH.Health);
                     break;
                 }
@@ -58,19 +64,24 @@ public abstract class Area : MonoBehaviour
         }
         else
         {
-            Player = Instantiate(PlayerHandler.PH.PlayerPrefab, DefaultPlayerSpawnPoint.transform.position, Quaternion.identity).transform;
-            //Debug.Log("No Bridge Load health: " + PlayerHandler.PH.Health);
-            Player.GetComponent<Health>().health = PlayerHandler.PH.Health;
-            //Debug.Log("no bridge load");
+            InstantiatePlayer(DefaultPlayerSpawnPoint.transform.position);
             
         }
         FindObjectOfType<Follow>().SetTarget(Player);
+    }
+    private void InstantiatePlayer(Vector2 spawnPoint)
+    {
+        Player = Instantiate(PlayerHandler.PH.PlayerPrefab, spawnPoint, Quaternion.identity).transform;
+                                                                                                                                                      //if(Player.TryGetComponent(out Health health))
+        float health = PlayerHandler.PH.Health;
+        Player.GetComponent<Health>().health = health;
     }
     public void UseBridge(AreaBridge bridge)
     {
         if (GameObject.FindGameObjectWithTag("Enemy") == null)
         {
             PlayerHandler.PH.SavePlayerPrefs();
+            PlayerHandler.PH.Health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().health;
             LoadingAreaBridge = bridge.BridgeToBridgeName;
             SceneManager.LoadScene(bridge.BridgeToAreaName);
         }

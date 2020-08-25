@@ -110,7 +110,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4074326391173413333}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &971584036785019878
 GameObject:
@@ -140,7 +140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4074326391173413333}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1966187545110558046
 GameObject:
@@ -656,12 +656,12 @@ Transform:
   m_LocalPosition: {x: 0.03, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4074326392673276656}
   - {fileID: 4868711829413796905}
   - {fileID: 4074326391211555250}
   - {fileID: 4193557582024071372}
   - {fileID: 6179849356841019369}
   - {fileID: 5627165723883874476}
-  - {fileID: 4074326392673276656}
   - {fileID: 4074326391419930081}
   - {fileID: 6788413039178727461}
   - {fileID: 5645873884118357945}
@@ -709,7 +709,7 @@ MonoBehaviour:
   checkRadius: 0.7
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 266240
   extraJumpValue: 1
   extraJump: 0
   DJPoint: {fileID: 1806894652566550676, guid: a526e53964b784202bba515f3d8d0329, type: 3}
@@ -798,7 +798,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.28516936, y: -1.899708}
+  m_Offset: {x: 0.28712565, y: -1.9026425}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -809,7 +809,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2862264, y: 0.111395}
+  m_Size: {x: 0.32143927, y: 0.16421413}
   m_EdgeRadius: 0
 --- !u!114 &7912757081337533212
 MonoBehaviour:
@@ -885,7 +885,7 @@ Transform:
   - {fileID: 5013308311823241409}
   - {fileID: 4928996838637554350}
   m_Father: {fileID: 4074326391173413333}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4074326391211555251
 SpriteRenderer:
@@ -987,9 +987,10 @@ MonoBehaviour:
   AttackRange: 0
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 73728
+    m_Bits: 204800
   Damage: 0
   AttackRate: 0
+  MeleeNextAttackTime: 0
   FireRate: 0
   ProtectionRate: 0
   Duration: 0
@@ -1314,7 +1315,7 @@ Transform:
   m_LocalScale: {x: 0.56019276, y: 0.56019276, z: 0.56019276}
   m_Children: []
   m_Father: {fileID: 4074326391173413333}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4074326392673276658
 SpriteRenderer:
@@ -1619,7 +1620,7 @@ Transform:
   m_LocalScale: {x: 0.2875, y: 0.2875, z: 1}
   m_Children: []
   m_Father: {fileID: 4074326391173413333}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6814693922010854872
 GameObject:
@@ -2015,5 +2016,5 @@ Transform:
   - {fileID: 7724496351828098303}
   - {fileID: 3072037394572877331}
   m_Father: {fileID: 4074326391173413333}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

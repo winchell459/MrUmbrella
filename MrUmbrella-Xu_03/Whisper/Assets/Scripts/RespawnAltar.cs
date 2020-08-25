@@ -61,17 +61,24 @@ public class RespawnAltar : MonoBehaviour
         }
         
     }
+    public void Respawn()
+    {
+        Respawn(transform.position);
+    }
+
     public void Respawn(Transform respawnPos)
     {
-        if (isSpawn == false)
-        {
-            GameObject Instance;
-            Instance = Instantiate(playerPrefab, respawnPos.position, Quaternion.identity);
-            FindObjectOfType<Follow>().SetTarget(Instance.transform);
-            
-            isSpawn = true;
-
-        }
+        //Respawn(respawnPos.position);
+        
+        FindObjectOfType<PlayerHandler>().loadPlayerSaveRespawn();
+    }
+    public void Respawn(Vector2 respawnPos)
+    {
+        GameObject Instance;
+        Instance = Instantiate(playerPrefab, respawnPos, Quaternion.identity);
+        FindObjectOfType<Follow>().SetTarget(Instance.transform);
+        Instance.GetComponent<Health>().health = PlayerHandler.PH.Health;
+        
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -102,6 +109,11 @@ public class RespawnAltar : MonoBehaviour
                 Panel.SetActive(false);
 
             }
+        }
+        if(collision.transform.CompareTag("Player") && Input.GetKey(KeyCode.Q))
+        {
+            PlayerHandler.PH.savePlayerSavePoint();
+            Debug.Log("apples uwu");
         }
     }
 
