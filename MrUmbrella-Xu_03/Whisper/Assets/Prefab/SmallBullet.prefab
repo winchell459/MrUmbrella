@@ -129,6 +129,7 @@ MonoBehaviour:
   rb: {fileID: 8448524854970211698}
   impactEffect: {fileID: 5783884484355590309, guid: fe238c303050447bd99f5cde79a87fbd,
     type: 3}
+  SmallBulletMD: 8
   bulletFireType: 2
 --- !u!50 &8448524854970211698
 Rigidbody2D:
@@ -138,7 +139,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8448524854970211697}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -150,7 +151,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 2
+  m_Constraints: 0
 --- !u!114 &8448524854970211703
 MonoBehaviour:
   m_ObjectHideFlags: 0

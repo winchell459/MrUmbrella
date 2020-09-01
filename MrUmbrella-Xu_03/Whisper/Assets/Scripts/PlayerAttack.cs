@@ -150,7 +150,7 @@ public class PlayerAttack : MonoBehaviour
                 }
                 ProtectionNextAttackTime = Time.time + ProtectionRate;
                 
-                Debug.Log(ProtectionPower);
+                //Debug.Log(ProtectionPower);
 
             }
             else
@@ -158,7 +158,7 @@ public class PlayerAttack : MonoBehaviour
                 animator.SetBool("isShield", false);
                 //animator.SetBool("isInvinc", false);
                 
-                Debug.Log(ProtectionPower);
+                //Debug.Log(ProtectionPower);
 
             }
 

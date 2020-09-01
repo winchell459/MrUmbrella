@@ -5,8 +5,9 @@ using UnityEngine;
 public class DialogueCollide : MonoBehaviour
 {
     bool isTrigger;
-    public GameObject DialoguePanel;
+    private GameObject DialoguePanel;
     GameObject Instance;
+    
 
     private void Start()
     {
@@ -33,24 +34,38 @@ public class DialogueCollide : MonoBehaviour
 
         }
     }
-
+    bool ignoreDialoguePanel = false;
     private void Update()
     {
-        if(FindObjectOfType<PlayerDeadManager>().isPlayerDied == false)
+        if (!ignoreDialoguePanel)
         {
-            
-            if(isTrigger == true  && Instance == null)
+            if (!DialoguePanel && FindObjectOfType<DialogueManager>())
             {
-                Instance = Instantiate(DialoguePanel, Vector3.zero, Quaternion.identity);
+                DialoguePanel = FindObjectOfType<DialogueManager>().GetDialoguePanel();
             }
-            else if(isTrigger == false && Instance)
+            else
             {
-                Destroy(Instance);
-            }
-            
+                ignoreDialoguePanel = true;
+                if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false)
+                {
 
-           
-            
+                    if (isTrigger)
+                    {
+                        DialoguePanel.SetActive(true);
+                    }
+                    else
+                    {
+                        DialoguePanel.SetActive(false);
+
+                    }
+
+
+
+
+                }
+
+            }
+
         }
         
         

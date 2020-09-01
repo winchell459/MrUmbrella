@@ -20,20 +20,27 @@ public class EnemyFire : MonoBehaviour
     public GameObject DestroyTheBullet;
 
 
+    
+
+
     private void SpawnBullet()
     {
+        
+        
         DestroyTheBullet = Instantiate(Bullet, new Vector3(SelfPos.position.x, SelfPos.position.y), Quaternion.identity);
-
-
+            
+        
     }
     private void Start()
     {
         MaxTime = FireInterval;
+        
+
     }
 
     private void Fire()
     {
-        if(FindObjectOfType<PlayerDeadManager>().isPlayerDied == false && GetComponent<EnemyBehaviour>().Isidle == false && GetComponent<EnemyBehaviour>().enemyType == EnemyBehaviour.EnemyTypes.eo1)
+        if(FindObjectOfType<PlayerDeadManager>().isPlayerDied == false && GetComponent<EnemyBehaviour>().Isidle == false && GetComponent<EnemyBehaviour>().enemyType == EnemyBehaviour.EnemyTypes.eo1 || GetComponent<EnemyBehaviour>().enemyType == EnemyBehaviour.EnemyTypes.eo4)
         {
 
             //Debug.Log("el");
@@ -42,6 +49,8 @@ public class EnemyFire : MonoBehaviour
             if (canSpanwNextBullet)
             {
                 SpawnBullet();
+
+
 
                 //Debug.Log("e");
                 FindObjectOfType<TrackBullet>().isDamageOnce = false;
@@ -63,6 +72,8 @@ public class EnemyFire : MonoBehaviour
         }
 
     }
+
+    void callSpawnBullet() { }
 
     private void Update()
     {

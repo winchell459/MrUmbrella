@@ -52,7 +52,7 @@ public class Follow : MonoBehaviour
         }
         else
         {
-            player = FindObjectOfType<PlayerController>().transform;
+            if(FindObjectOfType<PlayerController>()) player = FindObjectOfType<PlayerController>().transform;
         }
     }
 

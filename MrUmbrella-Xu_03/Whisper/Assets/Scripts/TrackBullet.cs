@@ -16,6 +16,13 @@ public class TrackBullet : MonoBehaviour
 
     public GameObject Explosion;
 
+    public enum bulletTypes
+    {
+        e01,
+        e03
+    }
+    public bulletTypes bulletType;
+
     
 
     //public Transform GroundOffset;
@@ -100,6 +107,7 @@ public class TrackBullet : MonoBehaviour
                 if (PlayerHealth != null)
                 {
                     PlayerHealth.TakeDamage(PP.damage * FindObjectOfType<PlayerAttack>().ProtectionPower);
+
 
                     Debug.Log(PlayerHealth.health);
                 }

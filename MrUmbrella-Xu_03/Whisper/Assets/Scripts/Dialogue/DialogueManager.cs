@@ -80,24 +80,13 @@ public class DialogueManager : MonoBehaviour
     }
     private void Update()
     {
-        if(dialogueText == null)
-        {
-            dialogueText = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>();
-            Debug.Log("r");
-            
-        }
-        if (nameText == null)
-        {
-            nameText = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(1).gameObject.GetComponent<Text>();
-        }
-        if(btn == null)
-        {
-            btn = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(2).gameObject.GetComponent<Button>();
-            btn.onClick.AddListener(DisplayNextSentence);
-        }
         
         
 
+    }
+    public GameObject GetDialoguePanel()
+    {
+        return nameText.transform.parent.gameObject;
     }
 
 }

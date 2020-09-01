@@ -18,7 +18,7 @@ MonoBehaviour:
   LockedSprite: {fileID: 0}
   Duration: 0
   Power: 3
-  CD: 0.5
+  CD: 1
   Radius: 0
   RangeType: 0
   speed: 30

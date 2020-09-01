@@ -18,6 +18,10 @@ public class EnemyBehaviour : SpawnObjects
 
     public GameObject Player;
 
+    public Vector2 smooth;
+
+    float x;
+    float y;
 
 
 
@@ -25,7 +29,8 @@ public class EnemyBehaviour : SpawnObjects
     public enum EnemyTypes
     {
         eo1,
-        eo3
+        eo3,
+        eo4
     }
     public EnemyTypes enemyType;
 
@@ -86,6 +91,22 @@ public class EnemyBehaviour : SpawnObjects
                 anim.SetBool("isAttack", false);
             }
         }
+        else if(enemyType == EnemyTypes.eo4)
+        {
+            if(Isidle == false)
+            {
+                anim.SetBool("isAttack", true);
+            }
+            else
+            {
+                x = Mathf.Lerp(x, target.transform.position.x, smooth.x * Time.deltaTime);
+                y = Mathf.Lerp(y, target.transform.position.y, smooth.y * Time.deltaTime);
+
+                transform.position = new Vector3(x, y, transform.position.z);
+
+                anim.SetBool("isAttack", false);
+            }
+        }
         
 
         
@@ -115,6 +136,13 @@ public class EnemyBehaviour : SpawnObjects
                 
             }
         }
+        else if (enemyType == EnemyTypes.eo4)
+        {
+            if (collision.transform.CompareTag("Player"))
+            {
+                Isidle = false;
+            }
+        }
         
         
         
@@ -135,6 +163,13 @@ public class EnemyBehaviour : SpawnObjects
             {
                 Isidle = true;
 
+            }
+        }
+        else if (enemyType == EnemyTypes.eo4)
+        {
+            if (collision.transform.CompareTag("Player"))
+            {
+                Isidle = true;
             }
         }
 

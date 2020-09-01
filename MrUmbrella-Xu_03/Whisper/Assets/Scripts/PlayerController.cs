@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     private bool isJump;
 
     public Transform DJPoint;
+    float x, y;
+
 
     //public float drag;
 
@@ -42,6 +44,9 @@ public class PlayerController : MonoBehaviour
     //public bool isSwitch;
 
     public bool isMove = true;
+
+    public Transform Eyes;
+
     void Start()
     {
         extraJump = extraJumpValue;
@@ -209,6 +214,11 @@ public class PlayerController : MonoBehaviour
         }
 
         
+        
+
+        
+
+
 
     }
 

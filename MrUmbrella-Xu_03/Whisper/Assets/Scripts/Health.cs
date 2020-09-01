@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Health : MonoBehaviour
     public GameObject particle;
 
     public bool isPlayerDead;
+
+    public GameObject DamageShow;
 
 
 
@@ -30,11 +33,18 @@ public class Health : MonoBehaviour
     {
         health -= damage;
 
+        GameObject Instance = Instantiate(DamageShow, new Vector3(transform.position.x + Random.Range(-1,1), transform.position.y + Random.Range(-1, 1)), Quaternion.identity);
+
+        Instance.transform.GetChild(0).gameObject.GetComponent<Text>().text = damage.ToString();
+
+        Destroy(Instance, 0.5f);
 
         if (health <= 0)
         {
             Die(Inheritance);
         }
+
+
     }
     public void Heal(float healAmount)
     {
