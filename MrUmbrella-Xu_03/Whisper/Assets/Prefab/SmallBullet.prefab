@@ -129,7 +129,15 @@ MonoBehaviour:
   rb: {fileID: 8448524854970211698}
   impactEffect: {fileID: 5783884484355590309, guid: fe238c303050447bd99f5cde79a87fbd,
     type: 3}
-  SmallBulletMD: 8
+  SmallBulletMaxD: 7.5
+  Player: {fileID: 0}
+  ClosestEnemyX: 0
+  distances:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   bulletFireType: 2
 --- !u!50 &8448524854970211698
 Rigidbody2D:

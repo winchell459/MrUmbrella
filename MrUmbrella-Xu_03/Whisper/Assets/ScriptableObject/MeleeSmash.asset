@@ -17,7 +17,7 @@ MonoBehaviour:
   AbilitySprite: {fileID: 21300000, guid: 8775b07b93a7d444993cad47a72aa554, type: 3}
   LockedSprite: {fileID: 0}
   Duration: 0
-  Power: 7
+  Power: 25
   CD: 5
   Radius: 10
   MeleeType: 2

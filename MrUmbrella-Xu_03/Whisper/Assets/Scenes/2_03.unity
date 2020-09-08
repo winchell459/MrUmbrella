@@ -1566,8 +1566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BridgeName: 2_03_out
-  BridgeToAreaName: 2_04
-  BridgeToBridgeName: 2_04_in
+  BridgeToAreaName: Boss
+  BridgeToBridgeName: Boss_in
   LoadingOffset: {x: 2, y: 0}
 --- !u!4 &966693738
 Transform:

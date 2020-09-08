@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8403065563307590596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -128,6 +128,9 @@ MonoBehaviour:
   rb: {fileID: 8403065563307590650}
   impactEffect: {fileID: 6216240233470466820, guid: 61105ed3764804c6887899a113efb66b,
     type: 3}
+  SmallBulletMaxDistance: 5
+  Player: {fileID: 0}
+  FirePrefab: {fileID: 8403065563307590596}
   bulletFireType: 1
 --- !u!50 &8403065563307590650
 Rigidbody2D:

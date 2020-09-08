@@ -10,11 +10,21 @@ public class Bullet : MonoBehaviour {
     private Vector3 SMcurpos;
     private Vector3 SBcurpos;
 
-    private Vector2 Click;
-
-    public float SmallBulletMaxD = 7.5f;
+    public float SmallBulletMaxDistance = 2.5f;
 
     public GameObject Player;
+
+    public GameObject FirePrefab;
+
+    /*
+    public float ClosestEnemyX;
+
+    public float[] distances;
+
+    float thisDistance;
+
+    float minDistance = float.MaxValue;
+    */
 
     public enum BulletFireTypes
     {
@@ -59,16 +69,20 @@ public class Bullet : MonoBehaviour {
         {
             Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = (target - transform.position).normalized;
-            Click = direction;
             rb.velocity = new Vector2(direction.x * PP.speed, direction.y * PP.speed);
 
             SMcurpos = transform.position;
         }
         
 	}
+    private void Update()
+    {
+        if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false) Player = FindObjectOfType<PlayerDeadManager>().playerGO;
+
+    }
+
     private void FixedUpdate()
     {
-        if(FindObjectOfType<PlayerDeadManager>().isPlayerDied == false) Player = GameObject.FindGameObjectWithTag("Player").gameObject;
 
         if (bulletFireType == BulletFireTypes.SingBullet)
         {
@@ -78,17 +92,39 @@ public class Bullet : MonoBehaviour {
 
             //Debug.Log(PP.damage);
         }
+        
         if (bulletFireType == BulletFireTypes.SmallBullet)
         {
-            if(Mathf.Abs(SMcurpos.x - transform.position.x) > SmallBulletMaxD || Mathf.Abs(SMcurpos.y - transform.position.y) > SmallBulletMaxD)
+            
+            if (Mathf.Abs(SMcurpos.x - transform.position.x) > SmallBulletMaxDistance || Mathf.Abs(SMcurpos.y - transform.position.y) > SmallBulletMaxDistance)
             {
                 Destroy(gameObject);
             }
+            /*
+            if (FindObjectOfType<EnemyBehaviour>())
+            {
+                for (int i = 0; i < FindObjectsOfType<EnemyBehaviour>().Length; i = i + 1)
+                {
+                    if (Player) distances[i] = Player.transform.position.x - FindObjectsOfType<EnemyBehaviour>()[i].gameObject.transform.position.x;
+                }
 
-            PP.damage = Mathf.Clamp(SMDamageLine(1.1f, -Mathf.Abs(Player.transform.position.x - Click.x), 10), 0, 10);
+                for (int i = 0; i < distances.Length; i = i + 1)
+                {
+                    distances[i] = thisDistance;
 
-            Debug.Log(-Mathf.Abs(Player.transform.position.x - Click.x));
+                    if (thisDistance < minDistance)
+                    {
+                        minDistance = thisDistance;
+                        ClosestEnemyX = distances[i];
+                    }
+                }
+             
         }
+        */
+
+
+        }
+        
     }
 
     public float SMDamageLine(float m, float x, float b)
@@ -117,6 +153,12 @@ public class Bullet : MonoBehaviour {
         {
             Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(gameObject);
+            if (bulletFireType == BulletFireTypes.Fireball)
+            {
+                GameObject instance;
+                instance = Instantiate(FirePrefab, transform.position, Quaternion.Inverse(transform.rotation));
+                instance.GetComponent<Bullet>().Setup();
+            }
         }
         if (hitInfo.transform.CompareTag("Enemy"))
         {
@@ -126,7 +168,9 @@ public class Bullet : MonoBehaviour {
                 EnemyHealth.TakeDamage(PP.damage);
 
             }
-            
+           
+
+
         }
 
 
