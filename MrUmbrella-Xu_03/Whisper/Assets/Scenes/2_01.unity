@@ -2754,6 +2754,7 @@ MonoBehaviour:
   rotateSpeed: 200
   Explosion: {fileID: 2188368701358088915, guid: 91a2b570667794e2e8e5e5bf4b7b8d97,
     type: 3}
+  bulletType: 0
 --- !u!1001 &1384761330
 PrefabInstance:
   m_ObjectHideFlags: 0
