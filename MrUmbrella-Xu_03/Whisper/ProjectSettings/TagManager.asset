@@ -35,9 +35,9 @@ TagManager:
   - CloseRangeEnemy
   - Destroyables
   - CaveGround
-  - 
-  - 
-  - 
+  - Platform
+  - Fruit
+  - EnemyUmbrella
   - 
   - 
   - 

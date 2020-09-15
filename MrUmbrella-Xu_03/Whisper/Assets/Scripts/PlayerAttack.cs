@@ -37,6 +37,9 @@ public class PlayerAttack : MonoBehaviour
     //public float ProtectionCD;
     public float ProtectionPower = 1;
 
+    public float tpDistance;
+    public GameObject blinkParticle;
+
     AbilityRange ar;
     AbilityMelee am;
     AbilityProtection apr;
@@ -54,6 +57,7 @@ public class PlayerAttack : MonoBehaviour
     public Bullet[] smallBullets;
 
 
+    bool isAttackHeal;
 
 
     //public Animator CamAnim;
@@ -89,7 +93,13 @@ public class PlayerAttack : MonoBehaviour
                 else if(am.MeleeType == AbilityMelee.MeleeTypes.Poke)
                 {
                     animator.SetBool("isPoke", true);
-                    
+                    Instantiate(blinkParticle, transform.position, Quaternion.identity);
+                    Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    Vector2 direction = (target - transform.position).normalized;
+
+                    transform.parent.position = new Vector3(transform.parent.position.x + tpDistance * direction.x, transform.parent.position.y);
+
+
                 }
                 else if (am.MeleeType == AbilityMelee.MeleeTypes.Smash)
                 {
@@ -135,17 +145,21 @@ public class PlayerAttack : MonoBehaviour
                 {
                     animator.SetBool("isShield", true);
                     ProtectionPower = PH.Protection.Power;
+                    isAttackHeal = false;
                 }
                 else if (apr.ProtectionType == AbilityProtection.ProtectionTypes.Invinc)
                 {
                     animator.SetTrigger("isInvinc");
-                    
+                    isAttackHeal = false;
 
                 }
                 else if (apr.ProtectionType == AbilityProtection.ProtectionTypes.Healing && transform.parent.gameObject.GetComponent<Health>().health <= 20)
                 {
                     ProtectionPower = PH.Protection.Power;
+                    /*
                     transform.parent.gameObject.GetComponent<Health>().Heal(ProtectionPower * healFactor);
+                    */
+                    isAttackHeal = true;
                     //FindObjectOfType<LinkTC>().LinkDamage(-ProtectionPower);
                 }
                 ProtectionNextAttackTime = Time.time + ProtectionRate;
@@ -157,7 +171,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 animator.SetBool("isShield", false);
                 //animator.SetBool("isInvinc", false);
-                
+                isAttackHeal = false;
+
                 //Debug.Log(ProtectionPower);
 
             }
@@ -237,6 +252,10 @@ public class PlayerAttack : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.gameObject.GetComponent<Health>().TakeDamage(Damage);
+            if (isAttackHeal)
+            {
+                transform.parent.gameObject.GetComponent<Health>().Heal(Damage * ProtectionPower);
+            }
             
         }
     }
@@ -252,7 +271,13 @@ public class PlayerAttack : MonoBehaviour
             ProtectionPower = PH.Protection.Power;
         }
 
-        
+        if(apr.ProtectionType != AbilityProtection.ProtectionTypes.Healing)
+        {
+            isAttackHeal = false;
+        }
+
+
+
     }
     private void UpdateMeleeAbilities()
     {

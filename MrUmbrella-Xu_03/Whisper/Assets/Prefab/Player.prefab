@@ -709,7 +709,7 @@ MonoBehaviour:
   checkRadius: 0.7
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 266240
+    m_Bits: 790528
   extraJumpValue: 1
   extraJump: 0
   DJPoint: {fileID: 1806894652566550676, guid: a526e53964b784202bba515f3d8d0329, type: 3}
@@ -986,7 +986,10 @@ MonoBehaviour:
   ProtectionRate: 0
   Duration: 0
   ProtectionPower: 1
-  healFactor: 10
+  tpDistance: 10
+  blinkParticle: {fileID: 2353843657242010621, guid: 9fae9337c11f440f09f48e236416f103,
+    type: 3}
+  healFactor: 2
   smallBulletFirePoints:
   - {fileID: 4164609611816815541}
   - {fileID: 5568997098381275770}

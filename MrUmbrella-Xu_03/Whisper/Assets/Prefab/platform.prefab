@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8519055612930340837}
   - component: {fileID: 8519055612930340835}
   - component: {fileID: 6078870277805777027}
-  m_Layer: 12
+  m_Layer: 19
   m_Name: platform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1048375
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0

@@ -12,13 +12,24 @@ public class BossBehaviour : MonoBehaviour
     private bool isTransition;
     public float AttackRadius = 5;
     public float Attack1Probability = 0.5f;
-    public float AttackingCooldown = 1;
-    private float lastAttack = Mathf.NegativeInfinity; 
+    public float AttackingCooldown = 2;
+    private float lastAttack = Mathf.NegativeInfinity;
+    public Animator anim;
+
+    public Transform P1_0, P1_1, P2_0, P2_1;
+    public float Attack2Speed1 = 1, Attack2Speed2  = 2;
+    public float Attack2Speed { get { return stageOne ? Attack2Speed1 : Attack2Speed2; } set {Attack2Speed2 = value; } }
+    public float Attack2Length = 1;
+
+    public GameObject BadFruitPrefab;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerController>().transform;
+
+        
     }
 
     
@@ -31,8 +42,9 @@ public class BossBehaviour : MonoBehaviour
             if (attack1) Attack1Transition();
             else Attack2Transition();
         }
-
         
+
+
     }
     private void FixedUpdate()
     {
@@ -68,13 +80,14 @@ public class BossBehaviour : MonoBehaviour
     }
     public void Attack1Transition()
     {
-        Debug.Log("1 transtion");
+        anim.SetTrigger("isAttack1");
+        Debug.Log("1");
         //call anim atak 1
     }
     public void Attack2Transition()
     {
-        Debug.Log("2 transtion");
-        //call anim atak 2
+        anim.SetTrigger("isAttack2");
+        Debug.Log("2");
     }
 
     private float xDistance(Transform apple, Transform banana)
