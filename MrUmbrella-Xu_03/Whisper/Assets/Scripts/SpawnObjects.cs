@@ -12,17 +12,7 @@ public class SpawnObjects : MonoBehaviour
     }
 }
 
-/*
-[System.Serializable]
-public class SpawnObjectsMarker
-{
-    public Vector2 Location;
-    public SpawnObjects Object;
-    public string Area;
-    
-       
-}
-*/
+
 
 public class AreaDespawn
 {

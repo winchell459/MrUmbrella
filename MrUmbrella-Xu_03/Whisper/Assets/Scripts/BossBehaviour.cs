@@ -35,13 +35,17 @@ public class BossBehaviour : MonoBehaviour
     
     void Update()
     {
-        if(xDistance(transform, player) < AttackRadius && AttackingCooldown + lastAttack < Time.fixedTime)
+        if (!FindObjectOfType<PlayerDeadManager>().isPlayerDied)
         {
-            lastAttack = Time.fixedTime;
-            bool attack1 = Random.Range(0, 1f) < Attack1Probability;
-            if (attack1) Attack1Transition();
-            else Attack2Transition();
+            if (xDistance(transform, player) < AttackRadius && AttackingCooldown + lastAttack < Time.fixedTime)
+            {
+                lastAttack = Time.fixedTime;
+                bool attack1 = Random.Range(0, 1f) < Attack1Probability;
+                if (attack1) Attack1Transition();
+                else Attack2Transition();
+            }
         }
+        
         
 
 
@@ -55,9 +59,10 @@ public class BossBehaviour : MonoBehaviour
                 if (xDistance(transform,  player) > 0.5f) rb.velocity = new Vector2(Mathf.Sign(player.transform.position.x - transform.position.x) * speed, 0);
                 else { rb.velocity = Vector2.zero; }
             }
-            else
+            else if(!FindObjectOfType<PlayerDeadManager>().isPlayerDied)
             {
-                rb = GetComponent<Rigidbody2D>(); player = FindObjectOfType<PlayerController>().transform;
+                rb = GetComponent<Rigidbody2D>();
+                player = FindObjectOfType<PlayerController>().transform;
             }
                 
         } 

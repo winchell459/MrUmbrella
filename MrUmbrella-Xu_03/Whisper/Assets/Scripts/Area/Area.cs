@@ -21,6 +21,8 @@ public abstract class Area : MonoBehaviour
 
     public Transform Player { get; set; }
 
+    public AudioClip SceneTrack;
+
     private void Awake()
     {
         OnAwake();
@@ -33,6 +35,7 @@ public abstract class Area : MonoBehaviour
         despawnObjects();
         OnLoad();
         loadPlayer();
+        MusicBackgroundHandler.StaticMBH.OnSceneStart(SceneTrack);
     }
 
     // Update is called once per frame
@@ -72,7 +75,7 @@ public abstract class Area : MonoBehaviour
     private void InstantiatePlayer(Vector2 spawnPoint)
     {
         Player = Instantiate(PlayerHandler.PH.PlayerPrefab, spawnPoint, Quaternion.identity).transform;
-                                                                                                                                                      //if(Player.TryGetComponent(out Health health))
+        //if(Player.TryGetComponent(out Health health))
         float health = PlayerHandler.PH.Health;
         Player.GetComponent<Health>().health = health;
     }
@@ -80,6 +83,7 @@ public abstract class Area : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Enemy") == null)
         {
+            MusicBackgroundHandler.StaticMBH.OnSceneEnd();
             PlayerHandler.PH.SavePlayerPrefs();
             PlayerHandler.PH.Health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().health;
             LoadingAreaBridge = bridge.BridgeToBridgeName;

@@ -38,7 +38,7 @@ public class RespawnAltar : MonoBehaviour
 
         if(FindObjectOfType<PlayerDeadManager>().isPlayerDied == true)
         {
-            Debug.Log("YOMAMAA");
+            //Debug.Log("YOMAMAA");
             playerHealth.RespawnPanel(Panel);
 
             
@@ -93,7 +93,7 @@ public class RespawnAltar : MonoBehaviour
                 Panel.SetActive(false);
                 isSpawn = false;
 
-                Debug.Log("NOOOOO YOO MAAA");
+                //Debug.Log("NOOOOO YOO MAAA");
 
                 //FindObjectOfType<Health>().isSetPanel = false;
             }

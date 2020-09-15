@@ -9,11 +9,12 @@ public class Attack2Behaviour : StateMachineBehaviour
     bool onLine1 = true;
     Vector2 direction;
     float lastDrop;
-
+    float attackTime;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        attackTime = Time.fixedTime;
         boss = animator.GetComponent<BossBehaviour>();
         curretnDrop = boss.P1_0.localPosition;
         onLine1 = true;
@@ -44,32 +45,38 @@ public class Attack2Behaviour : StateMachineBehaviour
         if(onLine1 && Vector2.Distance(curretnDrop, boss.P1_0.localPosition) > boss.Attack2Length)
         {
             curretnDrop += direction * boss.Attack2Length;
-            Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
-
+            GameObject  drop = Instantiate(boss.BadFruitPrefab);
+            drop.transform.localPosition = curretnDrop + (Vector2)boss.transform.position;
         }
         else if (onLine1)
         {
             curretnDrop = boss.P1_1.localPosition;
-            Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
+            //Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
+            GameObject drop = Instantiate(boss.BadFruitPrefab);
+            drop.transform.localPosition = curretnDrop + (Vector2)boss.transform.position;
             onLine1 = false;
             curretnDrop = boss.P2_0.localPosition;
             direction = (boss.P2_1.localPosition - boss.P2_0.localPosition).normalized;
         }
         else if (!onLine1 && Vector2.Distance(curretnDrop, boss.P2_1.localPosition) > boss.Attack2Length)
         {
-            curretnDrop = boss.P1_1.localPosition;
-            Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
-            
+            curretnDrop += direction * boss.Attack2Length;
+            //Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
+            GameObject drop = Instantiate(boss.BadFruitPrefab);
+            drop.transform.localPosition = curretnDrop + (Vector2)boss.transform.position;
         }
         else
         {
             curretnDrop = boss.P2_1.localPosition;
-            Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
+            //Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
+            GameObject drop = Instantiate(boss.BadFruitPrefab);
+            drop.transform.localPosition = curretnDrop + (Vector2) boss.transform.position;
             onLine1 = true;
             curretnDrop = boss.P1_0.localPosition;
             direction = (boss.P1_1.localPosition - boss.P1_0.localPosition).normalized;
         }
         lastDrop = Time.fixedTime;
+        Debug.Log("attackTime: " + (Time.fixedTime - attackTime));
     }
 
 

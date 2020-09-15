@@ -271,7 +271,7 @@ public class PlayerAttack : MonoBehaviour
             ProtectionPower = PH.Protection.Power;
         }
 
-        if(apr.ProtectionType != AbilityProtection.ProtectionTypes.Healing)
+        //if(apr.ProtectionType != AbilityProtection.ProtectionTypes.Healing)
         {
             isAttackHeal = false;
         }
