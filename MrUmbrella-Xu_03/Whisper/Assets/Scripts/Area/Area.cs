@@ -21,6 +21,9 @@ public abstract class Area : MonoBehaviour
 
     public Transform Player { get; set; }
 
+    AudioClip SceneTrack;
+
+
     private void Awake()
     {
         OnAwake();
@@ -33,6 +36,8 @@ public abstract class Area : MonoBehaviour
         despawnObjects();
         OnLoad();
         loadPlayer();
+        FindObjectOfType<MusicBackgroundHandler>().OnSceneStart(SceneTrack);
+
     }
 
     // Update is called once per frame
@@ -78,12 +83,16 @@ public abstract class Area : MonoBehaviour
     }
     public void UseBridge(AreaBridge bridge)
     {
-        if (GameObject.FindGameObjectWithTag("Enemy") == null)
+        if (GameObject.FindGameObjectWithTag("Enemy") == null && FindObjectOfType<PlayerAttack>().isBack)
         {
+            //MusicBackgroundHandler.StaticMBH.OnSceneEnd();
+            
+            
             PlayerHandler.PH.SavePlayerPrefs();
             PlayerHandler.PH.Health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().health;
             LoadingAreaBridge = bridge.BridgeToBridgeName;
             SceneManager.LoadScene(bridge.BridgeToAreaName);
+            
         }
         
     }

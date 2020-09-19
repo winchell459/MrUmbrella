@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -49,15 +50,18 @@ public class PlayerAttack : MonoBehaviour
     //Bullet bullet;
     bool isFireSingBullet;
 
-    public float healFactor = 10;
 
     public GameObject[] smallBulletFirePoints;
 
 
     public Bullet[] smallBullets;
 
+    public bool isBack = true;
+    public GameObject UmbrellaPrefab;
 
-    bool isAttackHeal;
+    Vector2 curPos;
+
+    GameObject Instance;
 
 
     //public Animator CamAnim;
@@ -145,21 +149,44 @@ public class PlayerAttack : MonoBehaviour
                 {
                     animator.SetBool("isShield", true);
                     ProtectionPower = PH.Protection.Power;
-                    isAttackHeal = false;
+                    Destroy(Instance);
+
                 }
                 else if (apr.ProtectionType == AbilityProtection.ProtectionTypes.Invinc)
                 {
                     animator.SetTrigger("isInvinc");
-                    isAttackHeal = false;
+                    Destroy(Instance);
+
 
                 }
-                else if (apr.ProtectionType == AbilityProtection.ProtectionTypes.Healing && transform.parent.gameObject.GetComponent<Health>().health <= 20)
+                else if (apr.ProtectionType == AbilityProtection.ProtectionTypes.TLP && transform.parent.gameObject.GetComponent<Health>().health <= 20)
                 {
                     ProtectionPower = PH.Protection.Power;
-                    /*
-                    transform.parent.gameObject.GetComponent<Health>().Heal(ProtectionPower * healFactor);
-                    */
-                    isAttackHeal = true;
+
+                    isBack = !isBack;
+
+
+                    if (!isBack)
+                    {
+                        curPos = transform.parent.position;
+                        Debug.Log(curPos);
+                        Instance = Instantiate(UmbrellaPrefab, transform.parent.position, Quaternion.identity);
+                        transform.parent.position = new Vector3(transform.parent.position.x + ProtectionPower * transform.parent.right.x, transform.parent.position.y);
+                    }
+                    else
+                    {
+
+                        //transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity = curPos * 5;
+                        transform.parent.position = curPos;
+
+                        Destroy(Instance);
+
+
+                    }
+
+                    
+
+
                     //FindObjectOfType<LinkTC>().LinkDamage(-ProtectionPower);
                 }
                 ProtectionNextAttackTime = Time.time + ProtectionRate;
@@ -171,7 +198,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 animator.SetBool("isShield", false);
                 //animator.SetBool("isInvinc", false);
-                isAttackHeal = false;
+                
 
                 //Debug.Log(ProtectionPower);
 
@@ -252,10 +279,7 @@ public class PlayerAttack : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.gameObject.GetComponent<Health>().TakeDamage(Damage);
-            if (isAttackHeal)
-            {
-                transform.parent.gameObject.GetComponent<Health>().Heal(Damage * ProtectionPower);
-            }
+            
             
         }
     }
@@ -271,10 +295,10 @@ public class PlayerAttack : MonoBehaviour
             ProtectionPower = PH.Protection.Power;
         }
 
-        if(apr.ProtectionType != AbilityProtection.ProtectionTypes.Healing)
-        {
-            isAttackHeal = false;
-        }
+       
+        
+
+
 
 
 

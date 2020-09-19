@@ -9,7 +9,7 @@ public class AbilityProtection : AbilityObject
     {
         Shield,
         Invinc,
-        Healing
+        TLP
     }
     public ProtectionTypes ProtectionType;
     //public float Duration = 1;

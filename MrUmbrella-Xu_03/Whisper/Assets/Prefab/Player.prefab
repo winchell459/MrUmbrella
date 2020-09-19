@@ -989,7 +989,6 @@ MonoBehaviour:
   tpDistance: 10
   blinkParticle: {fileID: 2353843657242010621, guid: 9fae9337c11f440f09f48e236416f103,
     type: 3}
-  healFactor: 2
   smallBulletFirePoints:
   - {fileID: 4164609611816815541}
   - {fileID: 5568997098381275770}
@@ -998,6 +997,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isBack: 1
+  UmbrellaPrefab: {fileID: 5161486579334478963, guid: 7f249a55f02f94d3bb6d889a6d7abe59,
+    type: 3}
+  TLPSpeed: 3
 --- !u!60 &4796373283136418165
 PolygonCollider2D:
   m_ObjectHideFlags: 0

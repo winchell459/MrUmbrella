@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: ProtectionHeal
   m_EditorClassIdentifier: 
   AbilityType: 1
-  Detail: Heal
+  Detail: Teleport
   AbilitySprite: {fileID: 21300000, guid: a0ef14362c5474cf28fbdd5d8f3db59b, type: 3}
   LockedSprite: {fileID: 0}
   Duration: 0
-  Power: 1.2
+  Power: 3
   CD: 0.5
   Radius: 0
   ProtectionType: 2

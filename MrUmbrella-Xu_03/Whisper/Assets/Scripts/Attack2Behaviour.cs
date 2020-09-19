@@ -50,14 +50,14 @@ public class Attack2Behaviour : StateMachineBehaviour
         else if (onLine1)
         {
             curretnDrop = boss.P1_1.localPosition;
-            Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
+            Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop + (Vector2) boss.transform.transform.position;
             onLine1 = false;
             curretnDrop = boss.P2_0.localPosition;
             direction = (boss.P2_1.localPosition - boss.P2_0.localPosition).normalized;
         }
         else if (!onLine1 && Vector2.Distance(curretnDrop, boss.P2_1.localPosition) > boss.Attack2Length)
         {
-            curretnDrop = boss.P1_1.localPosition;
+            curretnDrop += direction * boss.Attack2Length;
             Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
             
         }

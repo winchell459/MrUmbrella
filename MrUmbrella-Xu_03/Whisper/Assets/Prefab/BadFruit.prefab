@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2038800134746093881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.1, y: 6.33, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -136,5 +136,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 2188368701358088915, guid: 91a2b570667794e2e8e5e5bf4b7b8d97,
     type: 3}
-  damage: 5
+  damage: 0.1
   isFruit: 1
