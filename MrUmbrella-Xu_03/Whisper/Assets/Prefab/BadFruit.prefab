@@ -138,3 +138,5 @@ MonoBehaviour:
     type: 3}
   damage: 0.1
   isFruit: 1
+  MK: {fileID: 7769582127566560769, guid: 616f704651eb24c338bc8fc629d17fbb, type: 3}
+  MKProb: 0.25

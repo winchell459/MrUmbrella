@@ -29,10 +29,10 @@ public class PlayerAttack : MonoBehaviour
     public float MeleeNextAttackTime;
 
     public float FireRate;
-    private float RangeNextAttackTime;
+    public float RangeNextAttackTime;
 
     public float ProtectionRate;
-    private float ProtectionNextAttackTime;
+    public float ProtectionNextAttackTime;
 
     public float Duration;
     //public float ProtectionCD;

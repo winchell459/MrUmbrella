@@ -9,6 +9,10 @@ public class BadFruitBehavior : MonoBehaviour
 
     public bool isFruit;
 
+    public GameObject MK;
+
+    public float MKProb;
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,8 +21,18 @@ public class BadFruitBehavior : MonoBehaviour
         {
             if (collision.transform.CompareTag("Ground"))
             {
-                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                
                 Destroy(gameObject);
+                bool isMK = Random.Range(0, 1f) < MKProb;
+                if (isMK)
+                {
+                    Instantiate(MK, transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                }
+                
 
             }
         }
@@ -26,10 +40,21 @@ public class BadFruitBehavior : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             Health pHealth = collision.gameObject.GetComponent<Health>();
-            pHealth.TakeDamage(damage);
+            pHealth.TakeDamage(damage * FindObjectOfType<PlayerAttack>().ProtectionPower);
 
             
+
+
         }
+        if (collision.transform.CompareTag("TC"))
+        {
+            if (collision.GetComponent<LinkTC>() != null)
+            {
+                collision.GetComponent<LinkTC>().LinkDamage(damage * FindObjectOfType<PlayerAttack>().ProtectionPower);
+            }
+        }
+
+       
     }
     
 
