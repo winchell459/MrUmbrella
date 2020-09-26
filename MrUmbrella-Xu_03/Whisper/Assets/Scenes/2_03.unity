@@ -640,7 +640,6 @@ GameObject:
   - component: {fileID: 560512132}
   - component: {fileID: 560512131}
   - component: {fileID: 560512133}
-  - component: {fileID: 560512134}
   m_Layer: 0
   m_Name: 2_03
   m_TagString: Untagged
@@ -665,6 +664,7 @@ MonoBehaviour:
   - {fileID: 275209001}
   - {fileID: 966693737}
   DefaultPlayerSpawnPoint: {fileID: 1452265056}
+  SceneTrack: {fileID: 8300000, guid: 284a5f5dd67dd4e05aa1f86e4cd09544, type: 3}
 --- !u!4 &560512132
 Transform:
   m_ObjectHideFlags: 0
@@ -689,7 +689,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 284a5f5dd67dd4e05aa1f86e4cd09544, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -775,19 +775,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &560512134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560512130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcb3c4e47e1c74d32be69c8b1bd4d262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playingClip: {fileID: 0}
 --- !u!1001 &588758096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3321,7 +3308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1978946046
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3430,7 +3417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb3c4e47e1c74d32be69c8b1bd4d262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingClip: {fileID: 0}
 --- !u!4 &1978946048
 Transform:
   m_ObjectHideFlags: 0
@@ -3606,7 +3592,7 @@ PrefabInstance:
     - target: {fileID: 4974664575400669811, guid: 41148435984c14b0793d8d65b36c4bbc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4974664575400669811, guid: 41148435984c14b0793d8d65b36c4bbc,
         type: 3}

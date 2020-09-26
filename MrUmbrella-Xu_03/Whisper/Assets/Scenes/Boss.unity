@@ -216,7 +216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &27118071
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1241,6 +1241,7 @@ MonoBehaviour:
   AreaBridges:
   - {fileID: 275209001}
   DefaultPlayerSpawnPoint: {fileID: 1452265056}
+  SceneTrack: {fileID: 8300000, guid: 284a5f5dd67dd4e05aa1f86e4cd09544, type: 3}
 --- !u!4 &560512132
 Transform:
   m_ObjectHideFlags: 0

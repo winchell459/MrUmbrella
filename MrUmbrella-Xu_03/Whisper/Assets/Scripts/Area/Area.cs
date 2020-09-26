@@ -21,7 +21,7 @@ public abstract class Area : MonoBehaviour
 
     public Transform Player { get; set; }
 
-    AudioClip SceneTrack;
+    public AudioClip SceneTrack;
 
 
     private void Awake()
@@ -85,7 +85,7 @@ public abstract class Area : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Enemy") == null && FindObjectOfType<PlayerAttack>().isBack)
         {
-            //MusicBackgroundHandler.StaticMBH.OnSceneEnd();
+            MusicBackgroundHandler.StaticMBH.OnSceneEnd();
             
             
             PlayerHandler.PH.SavePlayerPrefs();
