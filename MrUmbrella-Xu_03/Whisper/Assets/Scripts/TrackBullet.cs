@@ -16,10 +16,11 @@ public class TrackBullet : MonoBehaviour
 
     public GameObject Explosion;
 
+
     public enum bulletTypes
     {
         e01,
-        e03
+        e07
     }
     public bulletTypes bulletType;
 
@@ -120,6 +121,15 @@ public class TrackBullet : MonoBehaviour
                 {
                     collision.GetComponent<LinkTC>().LinkDamage(PP.damage * FindObjectOfType<PlayerAttack>().ProtectionPower);
                 }
+                
+                if(bulletType == bulletTypes.e07)
+                {
+                    if (FindObjectOfType<PlayerController>() != null)
+                    {
+                        FindObjectOfType<EffectApplier>().ReturnSpeedCall();
+                        
+                    }
+                }
             }
 
             FindObjectOfType<EnemyFire>().animator.SetBool("isAttack", false);
@@ -128,5 +138,7 @@ public class TrackBullet : MonoBehaviour
 
         }
     }
+
+    
     
 }

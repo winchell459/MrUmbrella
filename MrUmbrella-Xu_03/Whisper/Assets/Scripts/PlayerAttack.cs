@@ -101,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
                     Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Vector2 direction = (target - transform.position).normalized;
 
-                    transform.parent.position = new Vector3(transform.parent.position.x + tpDistance * direction.x, transform.parent.position.y);
+                    transform.parent.parent.position = new Vector3(transform.parent.parent.position.x + tpDistance * direction.x, transform.parent.parent.position.y);
 
 
                 }
@@ -159,7 +159,7 @@ public class PlayerAttack : MonoBehaviour
 
 
                 }
-                else if (apr.ProtectionType == AbilityProtection.ProtectionTypes.TLP && transform.parent.gameObject.GetComponent<Health>().health <= 20)
+                else if (apr.ProtectionType == AbilityProtection.ProtectionTypes.TLP && transform.parent.parent.gameObject.GetComponent<Health>().health <= 20)
                 {
                     ProtectionPower = PH.Protection.Power;
 
@@ -168,16 +168,16 @@ public class PlayerAttack : MonoBehaviour
 
                     if (!isBack)
                     {
-                        curPos = transform.parent.position;
+                        curPos = transform.parent.parent.position;
                         Debug.Log(curPos);
-                        Instance = Instantiate(UmbrellaPrefab, transform.parent.position, Quaternion.identity);
-                        transform.parent.position = new Vector3(transform.parent.position.x + ProtectionPower * transform.parent.right.x, transform.parent.position.y);
+                        Instance = Instantiate(UmbrellaPrefab, transform.parent.parent.position, Quaternion.identity);
+                        transform.parent.parent.position = new Vector3(transform.parent.parent.position.x + ProtectionPower * transform.parent.right.x, transform.parent.parent.position.y);
                     }
                     else
                     {
 
                         //transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity = curPos * 5;
-                        transform.parent.position = curPos;
+                        transform.parent.parent.position = curPos;
 
                         Destroy(Instance);
 

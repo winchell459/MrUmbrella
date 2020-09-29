@@ -38,9 +38,9 @@ public class EnemyFire : MonoBehaviour
 
     }
 
-    private void Fire()
+    private void Fire ()
     {
-        if(FindObjectOfType<PlayerDeadManager>().isPlayerDied == false && GetComponent<EnemyBehaviour>().Isidle == false && GetComponent<EnemyBehaviour>().enemyType == EnemyBehaviour.EnemyTypes.eo1 || GetComponent<EnemyBehaviour>().enemyType == EnemyBehaviour.EnemyTypes.eo4)
+        if(FindObjectOfType<PlayerDeadManager>().isPlayerDied == false && GetComponent<EnemyBehaviour>().Isidle == false && GetComponent<EnemyBehaviour>().enemyType == EnemyBehaviour.EnemyTypes.eo1 || GetComponent<EnemyBehaviour>().enemyType == EnemyBehaviour.EnemyTypes.eo4 || GetComponent<EnemyBehaviour>().enemyType == EnemyBehaviour.EnemyTypes.eo7)
         {
 
             //Debug.Log("el");

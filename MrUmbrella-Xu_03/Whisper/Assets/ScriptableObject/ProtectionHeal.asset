@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityType: 1
   Detail: Teleport
-  AbilitySprite: {fileID: 21300000, guid: a0ef14362c5474cf28fbdd5d8f3db59b, type: 3}
+  AbilitySprite: {fileID: 21300000, guid: 9a2b531f6b7ed407ab19a36039c7f106, type: 3}
   LockedSprite: {fileID: 0}
   Duration: 0
   Power: 3

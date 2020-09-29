@@ -40,7 +40,7 @@ public class WeaponFollow : MonoBehaviour
     {
         if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false || target != null)
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform.GetChild(7).gameObject;
+            target = GameObject.FindGameObjectWithTag("Player").transform.GetChild(1).gameObject;
             Player = GameObject.FindGameObjectWithTag("Player").transform;
 
             if (Player.transform.rotation == Quaternion.identity)

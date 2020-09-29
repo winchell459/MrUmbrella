@@ -5,7 +5,7 @@ using UnityEngine;
 public class MusicBackgroundHandler : MonoBehaviour
 {
     public static MusicBackgroundHandler StaticMBH;
-    public AudioClip playingClip;
+    private AudioClip playingClip;
     private AudioSource AS;
 
     private bool fading;
@@ -44,6 +44,8 @@ public class MusicBackgroundHandler : MonoBehaviour
 
     public void OnSceneStart(AudioClip clip)
     {
+        if (!clip) return;
+
         fading = true;
         fadeOut = false;
 

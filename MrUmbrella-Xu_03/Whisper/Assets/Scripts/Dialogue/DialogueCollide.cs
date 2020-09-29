@@ -39,9 +39,10 @@ public class DialogueCollide : MonoBehaviour
     {
         if (!ignoreDialoguePanel)
         {
-            if (!DialoguePanel && FindObjectOfType<DialogueManager>())
+            if (!DialoguePanel)
             {
-                DialoguePanel = FindObjectOfType<DialogueManager>().GetDialoguePanel();
+                if(FindObjectOfType<DialogueManager>())
+                    DialoguePanel = FindObjectOfType<DialogueManager>().GetDialoguePanel();
             }
             else
             {

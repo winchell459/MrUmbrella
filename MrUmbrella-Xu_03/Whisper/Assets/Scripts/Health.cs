@@ -44,8 +44,13 @@ public class Health : MonoBehaviour
             Die(Inheritance);
         }
 
+        
+
 
     }
+
+
+     
     public void Heal(float healAmount)
     {
         if(health < maxHealth)
@@ -102,7 +107,10 @@ public class Health : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        if(who == "Boss")
+        {
+            Destroy(gameObject);
+        }
         
     }
     private void Update()
