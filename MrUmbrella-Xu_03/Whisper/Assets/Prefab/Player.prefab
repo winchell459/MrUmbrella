@@ -97,7 +97,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5627165723883874476
 Transform:
   m_ObjectHideFlags: 0
@@ -729,7 +729,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &7375843079900631005
 CircleCollider2D:
@@ -744,7 +744,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.26, y: -1.32}
+  m_Offset: {x: 0, y: -1.32}
   serializedVersion: 2
   m_Radius: 0.75
 --- !u!58 &144778289748105897
@@ -760,9 +760,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.26, y: -1.2122593}
+  m_Offset: {x: 0, y: -1.1997426}
   serializedVersion: 2
-  m_Radius: 0.6422591
+  m_Radius: 0.6297424
 --- !u!114 &6089346626157311173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,7 +821,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.28239828, y: -1.8591052}
+  m_Offset: {x: 0, y: -1.8591052}
   m_Size: {x: 0.27187097, y: 0.29170823}
   m_Direction: 0
 --- !u!114 &8131542262108938694
@@ -836,7 +836,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf70e2f33e5540fc8ab3e4cbecc53e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHit: 0
   slowSpeed: 2
   duration: 3
 --- !u!1 &4074326391211555248
@@ -1935,7 +1934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8380962961020701171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: -1.84, z: 0}
+  m_LocalPosition: {x: 0, y: -1.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4074326392673276656}

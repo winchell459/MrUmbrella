@@ -8,7 +8,7 @@ public class BossBehaviour : MonoBehaviour
     Transform player;
     public float Speed1 = 2, Speed2 = 5;
     private float speed { get { return stageOne ? Speed1 : Speed2; } set {speed = value; } }
-    private bool stageOne = true;
+    public bool stageOne = true;
     private bool isTransition;
     public float AttackRadius = 5;
     public float Attack1Probability = 0.5f;
@@ -22,8 +22,10 @@ public class BossBehaviour : MonoBehaviour
     public float Attack2Length = 1;
 
     public GameObject BadFruitPrefab;
-
-
+    public BadFruitBehavior[] BFB;
+    public float Stage2PillarDamage = 0.1f;
+    public float Stage2BadFruitDamage = 2;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -46,8 +48,17 @@ public class BossBehaviour : MonoBehaviour
             }
 
         }
-        
-        
+        Health health = GetComponent<Health>();
+        if (health.health <= health.maxHealth/2 && stageOne)
+        {
+            Debug.Log("isStage2");
+            stageOne = false;
+            anim.SetBool("isStage2", true);
+            foreach(BadFruitBehavior fruit in BFB)
+            {
+                fruit.damage = Stage2PillarDamage;
+            }
+        }
 
 
     }
@@ -76,14 +87,7 @@ public class BossBehaviour : MonoBehaviour
         
     }
 
-    public void Attack1()
-    {
-        
-    }
-    public void Attack2()
-    {
-
-    }
+    
     public void Attack1Transition()
     {
         anim.SetTrigger("isAttack1");

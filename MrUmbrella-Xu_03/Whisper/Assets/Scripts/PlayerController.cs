@@ -79,11 +79,11 @@ public class PlayerController : MonoBehaviour
 
         //rb.drag = drag;
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(groundCheck.position, checkRadius);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawSphere(groundCheck.position, checkRadius);
+    //}
 
     private void Update()
     {

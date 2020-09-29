@@ -11863,19 +11863,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed1: 5
   Speed2: 10
+  stageOne: 1
   AttackRadius: 5
   Attack1Probability: 0.5
-  AttackingCooldown: 5
+  AttackingCooldown: 10
   anim: {fileID: 1331666946}
   P1_0: {fileID: 1243484942}
   P1_1: {fileID: 1126874950}
   P2_0: {fileID: 1849603620}
   P2_1: {fileID: 1631958882}
   Attack2Speed1: 1
-  Attack2Speed2: 2
+  Attack2Speed2: 4
   Attack2Length: 5
   BadFruitPrefab: {fileID: 2038800134746093881, guid: 83953f1205d6f4ab593720c2f85832d6,
     type: 3}
+  BFB: []
+  Stage2PillarDamage: 0.1
+  Stage2BadFruitDamage: 2
 --- !u!50 &1331666945
 Rigidbody2D:
   serializedVersion: 4

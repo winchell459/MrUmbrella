@@ -44,13 +44,21 @@ public class Attack2Behaviour : StateMachineBehaviour
         if(onLine1 && Vector2.Distance(curretnDrop, boss.P1_0.localPosition) > boss.Attack2Length)
         {
             curretnDrop += direction * boss.Attack2Length;
-            Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
-
+            GameObject drop = Instantiate(boss.BadFruitPrefab);
+            drop.transform.localPosition = curretnDrop;
+            drop.GetComponent<Rigidbody2D>().gravityScale = boss.Attack2Speed;
+            if (!boss.stageOne) drop.GetComponent<BadFruitBehavior>().damage = boss.Stage2BadFruitDamage;
         }
         else if (onLine1)
         {
             curretnDrop = boss.P1_1.localPosition;
-            Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop + (Vector2) boss.transform.transform.position;
+            //Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop + (Vector2) boss.transform.transform.position;
+
+            GameObject drop = Instantiate(boss.BadFruitPrefab);
+            drop.transform.localPosition = curretnDrop + (Vector2)boss.transform.transform.position;
+            drop.GetComponent<Rigidbody2D>().gravityScale = boss.Attack2Speed;
+            if (!boss.stageOne) drop.GetComponent<BadFruitBehavior>().damage = boss.Stage2BadFruitDamage;
+
             onLine1 = false;
             curretnDrop = boss.P2_0.localPosition;
             direction = (boss.P2_1.localPosition - boss.P2_0.localPosition).normalized;
@@ -58,13 +66,21 @@ public class Attack2Behaviour : StateMachineBehaviour
         else if (!onLine1 && Vector2.Distance(curretnDrop, boss.P2_1.localPosition) > boss.Attack2Length)
         {
             curretnDrop += direction * boss.Attack2Length;
-            Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
-            
+            GameObject drop = Instantiate(boss.BadFruitPrefab);
+            drop.transform.localPosition = curretnDrop;
+            drop.GetComponent<Rigidbody2D>().gravityScale = boss.Attack2Speed;
+            if (!boss.stageOne) drop.GetComponent<BadFruitBehavior>().damage = boss.Stage2BadFruitDamage;
         }
         else
         {
             curretnDrop = boss.P2_1.localPosition;
-            Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
+            //Instantiate(boss.BadFruitPrefab).transform.localPosition = curretnDrop;
+
+            GameObject drop = Instantiate(boss.BadFruitPrefab);
+            drop.transform.localPosition = curretnDrop;
+            drop.GetComponent<Rigidbody2D>().gravityScale = boss.Attack2Speed;
+            if(!boss.stageOne) drop.GetComponent<BadFruitBehavior>().damage = boss.Stage2BadFruitDamage;
+
             onLine1 = true;
             curretnDrop = boss.P1_0.localPosition;
             direction = (boss.P1_1.localPosition - boss.P1_0.localPosition).normalized;

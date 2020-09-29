@@ -139,7 +139,8 @@ public class PlayerHandler : MonoBehaviour
         if (Range) PlayerPrefs.SetInt(abilityTags[2], RangeAbilities.IndexOf(Range));
         //Health = FindObjectOfType<PlayerController>().gameObject.GetComponent<Health>().health;
         PlayerPrefs.SetFloat(healthTag, Health);
-        Debug.Log("Saving Player Health: " + FindObjectOfType<PlayerController>().gameObject.GetComponent<Health>().health);
+        
+        
 
         for (int i = 0; i < 3; i += 1)
         {
