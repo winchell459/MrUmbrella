@@ -68,4 +68,8 @@ public class Follow : MonoBehaviour
         player = Target;
         isFollowing = true;
     }
+    public void ShakeCamera()
+    {
+        gameObject.GetComponent<Animator>().SetTrigger("isShake");
+    }
 }

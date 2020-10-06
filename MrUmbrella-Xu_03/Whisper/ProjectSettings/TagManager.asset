@@ -15,6 +15,7 @@ TagManager:
   - DialoguePanel
   - NPC
   - PatrolArea
+  - RainSoundEmitter
   layers:
   - Default
   - TransparentFX

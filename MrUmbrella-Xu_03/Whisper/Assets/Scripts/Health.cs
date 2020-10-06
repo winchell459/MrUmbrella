@@ -16,10 +16,12 @@ public class Health : MonoBehaviour
 
     public GameObject DamageShow;
 
+    public bool isBossDead;
+
+    bool isCallAnim = false;
 
 
 
-    
 
     private void Awake()
     {
@@ -88,6 +90,20 @@ public class Health : MonoBehaviour
         if(who == "Player")
         {
             isPlayerDead = true;
+            if (FindObjectOfType<RespawnAltar>())
+            {
+                if(!FindObjectOfType<RespawnAltar>().RAS.clip) FindObjectOfType<RespawnAltar>().RAS.clip = FindObjectOfType<RespawnAltar>().death;
+                if (!FindObjectOfType<RespawnAltar>().RAS.isPlaying) FindObjectOfType<RespawnAltar>().RAS.Play();
+            }
+            else if (FindObjectOfType<RespawnNoAltar>())
+            {
+                if (!FindObjectOfType<RespawnNoAltar>().RAS.clip) FindObjectOfType<RespawnNoAltar>().RAS.clip = FindObjectOfType<RespawnNoAltar>().death;
+                if (!FindObjectOfType<RespawnNoAltar>().RAS.isPlaying) FindObjectOfType<RespawnNoAltar>().RAS.Play();
+            }
+            else
+            {
+                Debug.Log("y u no have altar bro");
+            }
             Destroy(gameObject);
         }
         if(who == "FarRangeEnemy")
@@ -109,7 +125,16 @@ public class Health : MonoBehaviour
         }
         if(who == "Boss")
         {
-            Destroy(gameObject);
+            
+
+            if (!isCallAnim)
+            {
+                gameObject.GetComponent<BossBehaviour>().anim.SetTrigger("isDead");
+                isCallAnim = true;
+            }
+                
+            isBossDead = true;
+            Invoke("BossDie", 4.25f);
         }
         
     }
@@ -121,6 +146,13 @@ public class Health : MonoBehaviour
             
         }
         
+    }
+
+    void BossDie()
+    {
+        transform.GetChild(10).parent = null;
+
+        Destroy(gameObject);
     }
 
 

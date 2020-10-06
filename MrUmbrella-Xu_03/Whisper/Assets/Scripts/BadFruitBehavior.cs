@@ -31,16 +31,25 @@ public class BadFruitBehavior : MonoBehaviour
                 else
                 {
                     Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                    
                 }
-                
+                Camera.main.gameObject.GetComponent<Follow>().ShakeCamera();
+
+
 
             }
         }
         
         if (collision.transform.CompareTag("Player"))
         {
+
             Health pHealth = collision.gameObject.GetComponent<Health>();
-            pHealth.TakeDamage(damage * FindObjectOfType<PlayerAttack>().ProtectionPower);
+            if (pHealth)
+            {
+                pHealth.TakeDamage(damage * FindObjectOfType<PlayerAttack>().ProtectionPower);
+            }
+            
+            
 
             
 
@@ -48,10 +57,14 @@ public class BadFruitBehavior : MonoBehaviour
         }
         if (collision.transform.CompareTag("TC"))
         {
-            if (collision.GetComponent<LinkTC>() != null)
+            if (!FindObjectOfType<PlayerDeadManager>().isPlayerDied)
             {
-                collision.GetComponent<LinkTC>().LinkDamage(damage * FindObjectOfType<PlayerAttack>().ProtectionPower);
+                if (collision.GetComponent<LinkTC>() != null)
+                {
+                    collision.GetComponent<LinkTC>().LinkDamage(damage * FindObjectOfType<PlayerAttack>().ProtectionPower);
+                }
             }
+            
         }
 
        

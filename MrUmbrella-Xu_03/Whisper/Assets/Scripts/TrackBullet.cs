@@ -24,7 +24,8 @@ public class TrackBullet : MonoBehaviour
     }
     public bulletTypes bulletType;
 
-    
+    private AudioSource TAS;
+    public AudioClip clip;
 
     //public Transform GroundOffset;
 
@@ -33,8 +34,11 @@ public class TrackBullet : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        TAS = GetComponent<AudioSource>();
         PP = GetComponent<ProjectileProperty>();
+
+        if (!TAS.clip) TAS.clip = clip;
+        if (!TAS.isPlaying) TAS.Play();
     }
 
 

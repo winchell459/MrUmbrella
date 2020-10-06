@@ -47,6 +47,10 @@ public class PlayerController : MonoBehaviour
 
     public Transform Eyes;
 
+    public AudioClip walk;
+    
+    public AudioSource PlayerAS;
+
     void Start()
     {
         extraJump = extraJumpValue;
@@ -60,8 +64,8 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
         if (isMove == true)
         {
-            
 
+            
             moveInput = Input.GetAxis("Horizontal");
 
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
@@ -75,15 +79,13 @@ public class PlayerController : MonoBehaviour
                 Flip(1);
             }
         }
+
         
+           
 
         //rb.drag = drag;
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(groundCheck.position, checkRadius);
-    }
+    
 
     private void Update()
     {
@@ -94,6 +96,7 @@ public class PlayerController : MonoBehaviour
             extraJump = extraJumpValue;
             animator.SetBool("isJumping", false);
         }
+
         
         if (Input.GetKeyDown(KeyCode.Space) && extraJump > 0)
         {
@@ -151,6 +154,15 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("isDoubleJump", true);
             }
+        }
+        if(Mathf.Abs(rb.velocity.x) > 0)
+        {
+            if (PlayerAS.clip == null) PlayerAS.clip = walk;
+            if (!PlayerAS.isPlaying) PlayerAS.Play();
+        }
+        else
+        {
+            PlayerAS.Stop();
         }
 
 

@@ -26,6 +26,9 @@ public class EnemyBehaviour : SpawnObjects
     
     Vector2 startpos;
 
+    public AudioClip clip;
+    private AudioSource EAS;
+
 
     float x;
     float y;
@@ -50,6 +53,7 @@ public class EnemyBehaviour : SpawnObjects
     {
         rb = GetComponent<Rigidbody2D>();
         startpos = transform.position;
+        EAS = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -86,6 +90,7 @@ public class EnemyBehaviour : SpawnObjects
                 float rotateAmount = Vector3.Cross(direction, transform.up).z;
 
                 rb.angularVelocity = -rotateAmount * ChaseTurnSpeed;
+               
 
             }
         }
@@ -129,12 +134,14 @@ public class EnemyBehaviour : SpawnObjects
             if (Isidle == false)
             {
                 Invoke("E05Fall", fallInterval);
+                if (!EAS.clip) EAS.clip = clip;
+                if (!EAS.isPlaying) EAS.Play();
             }
             else
             {
                 rb.velocity = new Vector2(0, speed) * transform.up;
                 anim.SetBool("isAttack", true);
-
+                if (!EAS.isPlaying) EAS.Stop();
             }
 
 

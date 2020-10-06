@@ -6,7 +6,7 @@ public class MusicBackgroundHandler : MonoBehaviour
 {
     public static MusicBackgroundHandler StaticMBH;
     private AudioClip playingClip;
-    private AudioSource AS;
+    public AudioSource AS;
 
     private bool fading;
     private float fadeRate = 0.1f;

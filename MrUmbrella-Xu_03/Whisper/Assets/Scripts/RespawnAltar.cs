@@ -17,12 +17,16 @@ public class RespawnAltar : MonoBehaviour
 
     public bool isOnPanel;
 
+    public AudioClip death;
+    public AudioSource RAS;
+
 
     bool isSetPanel;
 
     private void Start()
     {
         Panel.SetActive(false);
+        RAS = GetComponent<AudioSource>();
     }
     private void Update()
     {

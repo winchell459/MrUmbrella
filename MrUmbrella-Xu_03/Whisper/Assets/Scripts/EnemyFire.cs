@@ -28,7 +28,7 @@ public class EnemyFire : MonoBehaviour
         
         
         DestroyTheBullet = Instantiate(Bullet, new Vector3(SelfPos.position.x, SelfPos.position.y), Quaternion.identity);
-            
+
         
     }
     private void Start()
@@ -49,7 +49,7 @@ public class EnemyFire : MonoBehaviour
             if (canSpanwNextBullet)
             {
                 SpawnBullet();
-
+                
 
 
                 //Debug.Log("e");

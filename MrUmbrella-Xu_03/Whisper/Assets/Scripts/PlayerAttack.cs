@@ -63,6 +63,9 @@ public class PlayerAttack : MonoBehaviour
 
     GameObject Instance;
 
+    public int Crit;
+    public float CritDamage;
+    public float NormDamage;
 
     //public Animator CamAnim;
 
@@ -71,6 +74,8 @@ public class PlayerAttack : MonoBehaviour
         MP = GetComponent<MeleeProperty>();
         
         UpdateMeleeAbilities();
+
+        NormDamage = am.Power;
 
         //CamAnim = Camera.main.transform.parent.GetComponent<Animator>();
         
@@ -91,8 +96,8 @@ public class PlayerAttack : MonoBehaviour
                 if(am.MeleeType == AbilityMelee.MeleeTypes.Swing)
                 {
                     animator.SetBool("isAttacking", true);
-                   
 
+                    
                 }
                 else if(am.MeleeType == AbilityMelee.MeleeTypes.Poke)
                 {
@@ -275,11 +280,24 @@ public class PlayerAttack : MonoBehaviour
     public void Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, AttackRange, enemyLayers);
+        if (am.MeleeType == AbilityMelee.MeleeTypes.Swing)
+        {
+            Crit += 1;
+            if (Crit % 4 == 0 && Crit != 0)
+            {
+                am.Power = CritDamage;
+            }
+            else
+            {
+                am.Power = NormDamage;
+            }
+        }
+        
 
-        foreach(Collider2D enemy in hitEnemies)
+        foreach (Collider2D enemy in hitEnemies)
         {
             enemy.gameObject.GetComponent<Health>().TakeDamage(Damage);
-            
+
             
         }
     }
@@ -325,5 +343,10 @@ public class PlayerAttack : MonoBehaviour
         ProtectionRate = abUI.Protection.CD;
         
         
+    }
+
+    public void PAttackShakeCamera()
+    {
+        Camera.main.gameObject.GetComponent<Follow>().ShakeCamera();
     }
 }

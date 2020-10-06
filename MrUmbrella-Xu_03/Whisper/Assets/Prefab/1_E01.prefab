@@ -820,6 +820,11 @@ MonoBehaviour:
   anim: {fileID: 0}
   damage: 0
   Player: {fileID: 0}
+  smooth: {x: 0, y: 0}
+  fallInterval: 0
+  speed: 0
+  clip: {fileID: 0}
+  EAS: {fileID: 0}
   enemyType: 0
 --- !u!114 &1388764336
 MonoBehaviour:

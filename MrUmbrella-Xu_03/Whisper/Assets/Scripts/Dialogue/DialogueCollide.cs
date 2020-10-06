@@ -19,7 +19,7 @@ public class DialogueCollide : MonoBehaviour
         {
             isTrigger = true;
             col.gameObject.GetComponent<DialogueTrigger>().TriggerDialogue();
-            
+            //Debug.Log("test");
 
 
         }
@@ -39,38 +39,46 @@ public class DialogueCollide : MonoBehaviour
     {
         if (!ignoreDialoguePanel)
         {
-            if (!DialoguePanel)
+            
+
+            
+
+        }
+
+        if (!DialoguePanel)
+        {
+            if (FindObjectOfType<DialogueManager>())
             {
-                if(FindObjectOfType<DialogueManager>())
-                    DialoguePanel = FindObjectOfType<DialogueManager>().GetDialoguePanel();
-            }
-            else
-            {
-                ignoreDialoguePanel = true;
-                if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false)
-                {
 
-                    if (isTrigger)
-                    {
-                        DialoguePanel.SetActive(true);
-                    }
-                    else
-                    {
-                        DialoguePanel.SetActive(false);
-
-                    }
-
-
-
-
-                }
-
+                DialoguePanel = FindObjectOfType<DialogueManager>().GetDialoguePanel();
             }
 
         }
-        
-        
+        else
+        {
+            //ignoreDialoguePanel = true;
+            if (FindObjectOfType<PlayerDeadManager>().isPlayerDied == false)
+            {
 
+                if (isTrigger)
+                {
+                    DialoguePanel.SetActive(true);
+                    Debug.Log("test");
+                }
+                else
+                {
+                    DialoguePanel.SetActive(false);
+                    Debug.Log("testOh");
+
+                }
+
+
+
+
+            }
+
+
+        }
     }
 
 }

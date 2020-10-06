@@ -29,7 +29,7 @@ public class PlayerHandler : MonoBehaviour
     private bool[] rangeUnlock = { true, true, true };
     private bool[] protectionUnlock = { true, true, true };
 
-    public static int DefaultSpawnSceneIndex = 2;
+    public static int DefaultSpawnSceneIndex = 0;
     public static float DefaultPlayerHealth = 20;
     //public bool 
 
@@ -139,7 +139,8 @@ public class PlayerHandler : MonoBehaviour
         if (Range) PlayerPrefs.SetInt(abilityTags[2], RangeAbilities.IndexOf(Range));
         //Health = FindObjectOfType<PlayerController>().gameObject.GetComponent<Health>().health;
         PlayerPrefs.SetFloat(healthTag, Health);
-        Debug.Log("Saving Player Health: " + FindObjectOfType<PlayerController>().gameObject.GetComponent<Health>().health);
+        
+        
 
         for (int i = 0; i < 3; i += 1)
         {
