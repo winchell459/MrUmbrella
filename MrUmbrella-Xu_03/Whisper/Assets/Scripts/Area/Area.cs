@@ -44,6 +44,7 @@ public abstract class Area : MonoBehaviour
     void Update()
     {
         OnUpdate();
+        //Debug.Log(LoadingAltar);
     }
 
     private void loadPlayer()
@@ -63,6 +64,7 @@ public abstract class Area : MonoBehaviour
                 {
                     InstantiatePlayer(bridge.transform.position + (Vector3)bridge.LoadingOffset);
                     Debug.Log("Bridge load healt: " + PlayerHandler.PH.Health);
+                    Debug.Log("BridgeLoad");
                     break;
                 }
             }
@@ -70,7 +72,8 @@ public abstract class Area : MonoBehaviour
         else
         {
             InstantiatePlayer(DefaultPlayerSpawnPoint.transform.position);
-            
+            Debug.Log("DefauldLoad");
+
         }
         FindObjectOfType<Follow>().SetTarget(Player);
     }
@@ -92,7 +95,10 @@ public abstract class Area : MonoBehaviour
             PlayerHandler.PH.Health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().health;
             LoadingAreaBridge = bridge.BridgeToBridgeName;
             SceneManager.LoadScene(bridge.BridgeToAreaName);
+
             
+
+
         }
         
     }
@@ -131,4 +137,5 @@ public abstract class Area : MonoBehaviour
             }
         }
     }
+    
 }

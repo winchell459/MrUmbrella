@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,9 +30,10 @@ public class PlayerHandler : MonoBehaviour
     private bool[] rangeUnlock = { true, true, true };
     private bool[] protectionUnlock = { true, true, true };
 
-    public static int DefaultSpawnSceneIndex = 0;
+    public static int DefaultSpawnSceneIndex = 2;
     public static float DefaultPlayerHealth = 20;
-    //public bool 
+    public bool isDebug;
+    public static bool ResetSave = false;
 
     private void Awake()
     {
@@ -42,8 +44,28 @@ public class PlayerHandler : MonoBehaviour
             PH = this;
             DontDestroyOnLoad(gameObject);
 
-            loadPlayerPrefs();
-            loadPlayerSavePoint();
+
+            if (!ResetSave)
+            {
+
+                loadPlayerPrefs();
+                //if(DefaultSpawnSceneIndex > 1) PlayerPrefs.SetInt(spawnSceneTag, DefaultSpawnSceneIndex + 1);
+
+
+                if (!isDebug)
+                {
+                    loadPlayerSavePoint();
+                }
+                
+            }
+            else
+            {
+                ResetSave = false;
+                PH.Health = DefaultPlayerHealth;
+                resetPlayerSaveRespawn();
+            }
+            
+            
         }
         
         
@@ -54,7 +76,10 @@ public class PlayerHandler : MonoBehaviour
 
         Debug.Log("Oh hi mart saving pp");
     }
-
+    public static void resetPlayerSaveRespawn()
+    {
+        PlayerPrefs.SetInt(spawnSceneTag, DefaultSpawnSceneIndex);
+    }
     public void loadPlayerSaveRespawn()
     {
 
@@ -215,6 +240,11 @@ public class PlayerHandler : MonoBehaviour
             }
         }
 
+
     }
-    
+    private void Update()
+    {
+        Debug.Log(ResetSave);
+    }
+
 }

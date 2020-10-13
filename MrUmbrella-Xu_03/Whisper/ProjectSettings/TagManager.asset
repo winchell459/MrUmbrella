@@ -16,6 +16,8 @@ TagManager:
   - NPC
   - PatrolArea
   - RainSoundEmitter
+  - UneffectedSFX
+  - FruitShouter
   layers:
   - Default
   - TransparentFX

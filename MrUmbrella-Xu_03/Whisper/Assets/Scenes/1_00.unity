@@ -2441,7 +2441,12 @@ PrefabInstance:
     - target: {fileID: 2393959114566327881, guid: f8dadb2a7a1934ff3a83ef42743893fa,
         type: 3}
       propertyPath: m_Name
-      value: PlayerHandler (1)
+      value: PlayerHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393959114566327882, guid: f8dadb2a7a1934ff3a83ef42743893fa,
+        type: 3}
+      propertyPath: isDebug
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2393959114566327883, guid: f8dadb2a7a1934ff3a83ef42743893fa,
         type: 3}
@@ -2692,6 +2697,75 @@ Transform:
   m_Father: {fileID: 1694214086}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &676895097
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3374103763207172933, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.874271
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374103763207172933, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.84040904
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374103763207172933, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -402.03342
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374103763207172933, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374103763207172933, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374103763207172933, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374103763207172933, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374103763207172933, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374103763207172933, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374103763207172933, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374103763207172933, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374103763207172938, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: m_Name
+      value: BGMH
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fa19afd767f5b455e87a4c697f70a99d, type: 3}
 --- !u!1 &689431686
 GameObject:
   m_ObjectHideFlags: 0
@@ -4078,7 +4152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872495408}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 2.9, z: 0}
+  m_LocalPosition: {x: -7.2, y: 2.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4329,9 +4403,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BridgeName: 1_00_out
-  BridgeToAreaName: SampleScene
-  BridgeToBridgeName: SampleScene_in
-  LoadingOffset: {x: -5.49, y: 0}
+  BridgeToAreaName: 1_01-02
+  BridgeToBridgeName: 1_01-02_in
+  LoadingOffset: {x: -3, y: 0}
 --- !u!114 &1042680100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5218,7 +5292,7 @@ PrefabInstance:
     - target: {fileID: 4945597829270723183, guid: 0b434da7a73e34f608d7589ca9f03f71,
         type: 3}
       propertyPath: m_Name
-      value: PlayerDeadManager (1)
+      value: PlayerDeadManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b434da7a73e34f608d7589ca9f03f71, type: 3}
@@ -5560,7 +5634,7 @@ MonoBehaviour:
   - {fileID: 672626392}
   - {fileID: 1709331092}
   AreaBridges:
-  - {fileID: 1411100740}
+  - {fileID: 0}
   - {fileID: 1042680099}
   DefaultPlayerSpawnPoint: {fileID: 872495409}
   SceneTrack: {fileID: 0}
@@ -6309,95 +6383,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1411100737
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1411100741}
-  - component: {fileID: 1411100740}
-  - component: {fileID: 1411100739}
-  - component: {fileID: 1411100738}
-  m_Layer: 0
-  m_Name: BridgeIn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1411100738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411100737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b7b44eeaf9934282810d3c85262f563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallaxEffectMultiplier: {x: 0.27, y: 0.25}
-  cameraTransform: {fileID: 0}
---- !u!61 &1411100739
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411100737}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0011479855, y: 1.4449294}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.002296, y: 3.8898587}
-  m_EdgeRadius: 0
---- !u!114 &1411100740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411100737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e85fc70043714c5e85a3ba5807c1bc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BridgeName: 1_00_in
-  BridgeToAreaName: SampleScene
-  BridgeToBridgeName: SampleScene_out
-  LoadingOffset: {x: 2, y: 0}
---- !u!4 &1411100741
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411100737}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.8, y: -2.01, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 50
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1442065152
 GameObject:
   m_ObjectHideFlags: 0

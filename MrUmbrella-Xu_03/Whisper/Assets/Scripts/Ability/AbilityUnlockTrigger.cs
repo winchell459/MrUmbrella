@@ -7,6 +7,7 @@ public class AbilityUnlockTrigger : MonoBehaviour
 {
     public AbilityObject ao;
     public GameObject theCanvas;
+    public AudioClip CongratsClip;
 
     private void Start()
     {
@@ -23,6 +24,8 @@ public class AbilityUnlockTrigger : MonoBehaviour
             theCanvas.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = ao.Detail + "!";
 
             theCanvas.SetActive(true);
+            theCanvas.GetComponent<AudioSource>().clip = CongratsClip;
+            theCanvas.GetComponent<AudioSource>().Play();
         }
         
     }

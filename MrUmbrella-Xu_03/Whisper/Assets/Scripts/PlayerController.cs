@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour
         }
         if(Mathf.Abs(rb.velocity.x) > 0)
         {
-            if (PlayerAS.clip == null) PlayerAS.clip = walk;
+            PlayerAS.clip = walk;
             if (!PlayerAS.isPlaying) PlayerAS.Play();
         }
         else

@@ -20,7 +20,7 @@ public class MixerManager : MonoBehaviour
                 {
                     aSource.outputAudioMixerGroup = CaveRainMixer;
                 }
-                else if (aSource.gameObject.GetComponent<MusicBackgroundHandler>())
+                else if (aSource.gameObject.GetComponent<MusicBackgroundHandler>() || aSource.transform.CompareTag("UneffectedSFX"))
                 {
                     aSource.outputAudioMixerGroup = null;
                 }

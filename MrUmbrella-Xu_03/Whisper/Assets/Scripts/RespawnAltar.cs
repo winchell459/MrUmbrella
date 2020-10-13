@@ -68,6 +68,7 @@ public class RespawnAltar : MonoBehaviour
     public void Respawn()
     {
         Respawn(transform.position);
+        
     }
 
     public void Respawn(Transform respawnPos)
@@ -82,7 +83,9 @@ public class RespawnAltar : MonoBehaviour
         Instance = Instantiate(playerPrefab, respawnPos, Quaternion.identity);
         FindObjectOfType<Follow>().SetTarget(Instance.transform);
         Instance.GetComponent<Health>().health = PlayerHandler.PH.Health;
-        
+        Debug.Log("RespawnAltar");
+
+
 
     }
     private void OnTriggerEnter2D(Collider2D collision)

@@ -365,7 +365,7 @@ MonoBehaviour:
   isSpawn: 0
   isOnPanel: 0
   death: {fileID: 8300000, guid: b57d36dfff1534d828913031915d86fb, type: 3}
-  RAS: {fileID: 0}
+  RAS: {fileID: -492149143279559269}
 --- !u!61 &5407984438790406223
 BoxCollider2D:
   m_ObjectHideFlags: 0

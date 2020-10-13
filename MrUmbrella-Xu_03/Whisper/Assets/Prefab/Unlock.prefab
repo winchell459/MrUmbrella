@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ao: {fileID: 11400000, guid: ff35003748b2c4f22982ced2fcd9f7d5, type: 2}
+  theCanvas: {fileID: 0}
+  CongratsClip: {fileID: 8300000, guid: e314dc89e79204648b7632570409bd90, type: 3}
 --- !u!61 &4284963662722780216
 BoxCollider2D:
   m_ObjectHideFlags: 0

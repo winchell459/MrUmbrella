@@ -44,7 +44,8 @@ public class EnemyBehaviour : SpawnObjects
         eo4,
         eo5,
         eo6,
-        eo7
+        eo7,
+        CaveBoss
     }
     public EnemyTypes enemyType;
 
@@ -180,6 +181,23 @@ public class EnemyBehaviour : SpawnObjects
 
             }
         }
+        else if (enemyType == EnemyTypes.CaveBoss)
+        {
+            if (Isidle == false)
+            {
+                anim.SetBool("isAttack", true);
+
+            }
+            else
+            {
+                GetComponent<AudioSource>().clip = clip;
+                if(!GetComponent<AudioSource>().isPlaying) GetComponent<AudioSource>().Play(); 
+
+                anim.SetBool("isAttack", false);
+
+            }
+        }
+
 
 
 
@@ -257,6 +275,14 @@ public class EnemyBehaviour : SpawnObjects
 
             }
         }
+        else if (enemyType == EnemyTypes.CaveBoss)
+        {
+            if (collision.transform.CompareTag("Player"))
+            {
+                Isidle = false;
+
+            }
+        }
 
 
 
@@ -303,6 +329,14 @@ public class EnemyBehaviour : SpawnObjects
             }
         }
         else if (enemyType == EnemyTypes.eo7)
+        {
+            if (collision.transform.CompareTag("Player"))
+            {
+                Isidle = true;
+
+            }
+        }
+        else if (enemyType == EnemyTypes.CaveBoss)
         {
             if (collision.transform.CompareTag("Player"))
             {

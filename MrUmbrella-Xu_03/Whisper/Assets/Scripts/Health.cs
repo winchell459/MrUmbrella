@@ -20,7 +20,8 @@ public class Health : MonoBehaviour
 
     bool isCallAnim = false;
 
-
+    public AudioSource HurtAS;
+    public AudioClip HurtAC;
 
 
     private void Awake()
@@ -38,8 +39,11 @@ public class Health : MonoBehaviour
         GameObject Instance = Instantiate(DamageShow, new Vector3(transform.position.x + Random.Range(-1,1), transform.position.y + Random.Range(-1, 1)), Quaternion.identity);
 
         Instance.transform.GetChild(0).gameObject.GetComponent<Text>().text = damage.ToString();
-
         Destroy(Instance, 0.5f);
+        HurtAS.clip = HurtAC;
+        if(!HurtAS.isPlaying) HurtAS.Play();
+
+       
 
         if (health <= 0)
         {

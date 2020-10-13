@@ -30,6 +30,8 @@ public class BossBehaviour : MonoBehaviour
     public float Stage2PillarDamage = 2;
     public float Stage2Attack2Damage = 5;
 
+    public AudioSource BossAs;
+
 
     void Start()
     {
@@ -64,9 +66,9 @@ public class BossBehaviour : MonoBehaviour
                 fruit.damage = Stage2PillarDamage;
             }
         }
-        
-        
 
+
+        //FindObjectOfType<BadFruitBehavior>().isFruitShouter = true;
 
     }
     private void FixedUpdate()
@@ -125,6 +127,14 @@ public class BossBehaviour : MonoBehaviour
     {
         Camera.main.gameObject.GetComponent<Follow>().ShakeCamera();
     }
+
+    public void PlaySound(AudioClip ThisClip)
+    {
+        BossAs.clip = ThisClip;
+        BossAs.Play();
+    }
+
+    
 
 
 }
