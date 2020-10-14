@@ -1293,7 +1293,7 @@ MonoBehaviour:
   UmbrellaPrefab: {fileID: 5161486579334478963, guid: 7f249a55f02f94d3bb6d889a6d7abe59,
     type: 3}
   Crit: 0
-  CritDamage: 7.5
+  CritDamage: 12
   NormDamage: 1
 --- !u!60 &4796373283136418165
 PolygonCollider2D:

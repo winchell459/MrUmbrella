@@ -6,7 +6,8 @@ public class MainMenu : MonoBehaviour
 {
     public UnityEngine.UI.Button ContinueButton;
     public string FirstSceneName = "1_00";
-    
+    bool isOn;
+
     void Start()
     {
         if (!PlayerPrefs.HasKey("SavedGame"))
@@ -20,6 +21,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetFloat("SavedGame", System.DateTime.Now.Second);
         PlayerHandler.ResetSave = true;
         startGame();
+        //MusicBackgroundHandler.StaticMBH.OnSceneEnd();
     }
     public void Continue()
     {
@@ -27,6 +29,29 @@ public class MainMenu : MonoBehaviour
     }
     private void startGame()
     {
+        //MusicBackgroundHandler.StaticMBH.OnSceneStt();
         UnityEngine.SceneManagement.SceneManager.LoadScene(FirstSceneName);
+    }
+
+    public void toggleCredits(GameObject creditsPanel)
+    {
+
+        isOn = !isOn;
+        Debug.Log(isOn);
+        if (isOn)
+        {
+            creditsPanel.SetActive(true);
+        }
+        else
+        {
+            creditsPanel.SetActive(false);
+            Debug.Log("settofalse");
+        }
+       
+        
+
+
+
+
     }
 }

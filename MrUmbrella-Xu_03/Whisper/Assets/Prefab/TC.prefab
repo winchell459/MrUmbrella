@@ -207,6 +207,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -256,7 +257,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5051385508775783472}
   attacking: 0
-  firepoint: {fileID: 5051385507838953664}
+  fireBallfirePoint: {fileID: 0}
+  BulletFirepoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  smallBulletPrefab: {fileID: 0}
   FireBall: {fileID: 8403065563307590596, guid: 3bac9df23f6cc4d80ae1b04c59f124bc,
     type: 3}
   maxTurn: 180
@@ -270,6 +274,22 @@ MonoBehaviour:
     m_Bits: 8192
   Damage: 0
   AttackRate: 0
+  MeleeNextAttackTime: 0
+  FireRate: 0
+  RangeNextAttackTime: 0
+  ProtectionRate: 0
+  ProtectionNextAttackTime: 0
+  Duration: 0
+  ProtectionPower: 1
+  tpDistance: 0
+  blinkParticle: {fileID: 0}
+  smallBulletFirePoints: []
+  smallBullets: []
+  isBack: 1
+  UmbrellaPrefab: {fileID: 0}
+  Crit: 0
+  CritDamage: 0
+  NormDamage: 0
 --- !u!114 &5051385508860372106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +522,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -526,7 +547,7 @@ SpriteRenderer:
   m_SortingLayerID: -1784844021
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 80fb6870e93574d25bc41f0c61500161, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b22b0c2af86f4f32965a90228174dff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

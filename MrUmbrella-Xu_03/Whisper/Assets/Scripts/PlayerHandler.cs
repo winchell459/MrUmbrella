@@ -26,9 +26,9 @@ public class PlayerHandler : MonoBehaviour
     private static string spawnSceneTag = "spawnScene";
     private static string healthTag = "Health";
 
-    private bool[] meleeUnlock = { true, true, true };
-    private bool[] rangeUnlock = { true, true, true };
-    private bool[] protectionUnlock = { true, true, true };
+    private bool[] meleeUnlock = { true, false, false };
+    private bool[] rangeUnlock = { false, false, false };
+    private bool[] protectionUnlock = { false, false, false };
 
     public static int DefaultSpawnSceneIndex = 2;
     public static float DefaultPlayerHealth = 20;
@@ -63,6 +63,7 @@ public class PlayerHandler : MonoBehaviour
                 ResetSave = false;
                 PH.Health = DefaultPlayerHealth;
                 resetPlayerSaveRespawn();
+                Melee = MeleeAbilities[0];
             }
             
             
@@ -113,19 +114,22 @@ public class PlayerHandler : MonoBehaviour
         {
             int index = PlayerPrefs.GetInt(abilityTags[0]);
             index = (int)Mathf.Clamp(index, 0, MeleeAbilities.Count - 1); //[1,2,3,4,5,6]
-            Melee = MeleeAbilities[index];
+            if(PlayerPrefs.GetInt(meleelockTags[index]) > 0)
+                Melee = MeleeAbilities[index];
         }
         if (PlayerPrefs.HasKey(abilityTags[1]))
         {
             int index = PlayerPrefs.GetInt(abilityTags[1]);
             index = Mathf.Clamp(index, 0, ProtectionAbilities.Count - 1);
-            Protection = ProtectionAbilities[index];
+            if (PlayerPrefs.GetInt(protectionlockTags[index]) > 0)
+                Protection = ProtectionAbilities[index];
         } 
         if (PlayerPrefs.HasKey(abilityTags[2]))
         {
             int index = PlayerPrefs.GetInt(abilityTags[2]);
             index = Mathf.Clamp(index, 0, RangeAbilities.Count - 1);
-            Range = RangeAbilities[index];
+            if (PlayerPrefs.GetInt(rangelockTags[index]) > 0)
+                Range = RangeAbilities[index];
         }
         /*
         if (PlayerPrefs.HasKey(healthTag))

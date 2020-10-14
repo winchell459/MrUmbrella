@@ -88,7 +88,7 @@ public abstract class Area : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Enemy") == null && FindObjectOfType<PlayerAttack>().isBack)
         {
-            MusicBackgroundHandler.StaticMBH.OnSceneEnd();
+            //MusicBackgroundHandler.StaticMBH.OnSceneEnd();
             
             
             PlayerHandler.PH.SavePlayerPrefs();

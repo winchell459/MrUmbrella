@@ -12,7 +12,7 @@ public class AbilityButton : MonoBehaviour
     {
         FindObjectOfType<AbilityUI>().SetSlot(Ability);
     }
-    private void Awake()
+    private void Start()
     {
         if (FindObjectOfType<PlayerHandler>().AbilityUnlocked(Ability))
         {

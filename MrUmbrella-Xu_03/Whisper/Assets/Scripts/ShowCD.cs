@@ -83,9 +83,9 @@ public class ShowCD : MonoBehaviour
 
             CDtext[2].text = (-differences[2]).ToString();
 
-            CDImage[0].sprite = PlayerHandler.PH.Melee.AbilitySprite;
-            CDImage[1].sprite = PlayerHandler.PH.Range.AbilitySprite;
-            CDImage[2].sprite = PlayerHandler.PH.Protection.AbilitySprite;
+            if (PlayerHandler.PH.Melee) CDImage[0].sprite = PlayerHandler.PH.Melee.AbilitySprite;
+            if(PlayerHandler.PH.Range) CDImage[1].sprite = PlayerHandler.PH.Range.AbilitySprite;
+            if (PlayerHandler.PH.Protection) CDImage[2].sprite = PlayerHandler.PH.Protection.AbilitySprite;
 
         }
 
