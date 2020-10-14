@@ -35,8 +35,8 @@ public class MusicBackgroundHandler : MonoBehaviour
 
     public void OnSceneEnd()
     {
-        fading = true;
-        fadeOut = true;
+        //fading = true;
+        //fadeOut = true;
 
     }
 
