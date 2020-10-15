@@ -52,6 +52,7 @@ public class MusicBackgroundHandler : MonoBehaviour
         if(!playingClip || clip != playingClip)
         {
             playingClip = clip;
+            if (!AS) AS = GetComponent<AudioSource>();
             AS.clip = clip;
             AS.loop = true;
             AS.Play();

@@ -2454,7 +2454,7 @@ MonoBehaviour:
   - {fileID: 275209001}
   - {fileID: 624166532}
   DefaultPlayerSpawnPoint: {fileID: 1452265056}
-  SceneTrack: {fileID: 8300000, guid: f8e1355de18c24e96908a48f447b9ece, type: 3}
+  SceneTrack: {fileID: 8300000, guid: 78d10a69de687447eb3c9709dde8cdc9, type: 3}
 --- !u!4 &560512132
 Transform:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public abstract class Area : MonoBehaviour
         despawnObjects();
         OnLoad();
         loadPlayer();
-        FindObjectOfType<MusicBackgroundHandler>().OnSceneStart(SceneTrack);
+        MusicBackgroundHandler.StaticMBH.OnSceneStart(SceneTrack);
 
     }
 
