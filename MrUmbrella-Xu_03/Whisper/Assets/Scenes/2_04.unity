@@ -3396,7 +3396,7 @@ PrefabInstance:
     - target: {fileID: 5025676399979817253, guid: 479587ce49abb4881801f5af65c1faa5,
         type: 3}
       propertyPath: DialogueTriggerPoint.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5025676399979817253, guid: 479587ce49abb4881801f5af65c1faa5,
         type: 3}
@@ -3418,6 +3418,11 @@ PrefabInstance:
       propertyPath: DialogueTriggerPoint.Array.data[0]
       value: 
       objectReference: {fileID: 1476085807}
+    - target: {fileID: 5025676399979817253, guid: 479587ce49abb4881801f5af65c1faa5,
+        type: 3}
+      propertyPath: DialogueTriggerPoint.Array.data[1]
+      value: 
+      objectReference: {fileID: 1235398208}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 479587ce49abb4881801f5af65c1faa5, type: 3}
 --- !u!114 &1443515585 stripped

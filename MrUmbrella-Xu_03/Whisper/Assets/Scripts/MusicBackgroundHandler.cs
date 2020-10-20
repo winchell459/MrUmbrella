@@ -35,8 +35,8 @@ public class MusicBackgroundHandler : MonoBehaviour
 
     public void OnSceneEnd()
     {
-        fading = true;
-        fadeOut = true;
+        //fading = true;
+        //fadeOut = true;
 
     }
 
@@ -46,7 +46,7 @@ public class MusicBackgroundHandler : MonoBehaviour
     {
         if (!clip) return;
 
-        fading = true;
+        //fading = true;
         fadeOut = false;
 
         if(!playingClip || clip != playingClip)

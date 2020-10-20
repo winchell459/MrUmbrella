@@ -1542,6 +1542,8 @@ MonoBehaviour:
     name: Sam
     sentences:
     - Left click to perform a melee attack!
+    - Right click to perform a range attack! (when you have one)
+    - Press C to perform a protection ability! (when you have one)
 --- !u!4 &389812888
 Transform:
   m_ObjectHideFlags: 0
@@ -3017,6 +3019,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: BGMH
       objectReference: {fileID: 0}
+    - target: {fileID: 3374103763207172939, guid: fa19afd767f5b455e87a4c697f70a99d,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 0bf91697d72fc4f789c1bc9a2a7daf8a,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa19afd767f5b455e87a4c697f70a99d, type: 3}
 --- !u!1 &790613586
@@ -8819,6 +8827,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5025676399979817253, guid: 479587ce49abb4881801f5af65c1faa5,
         type: 3}
+      propertyPath: DialogueTriggerPoint.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025676399979817253, guid: 479587ce49abb4881801f5af65c1faa5,
+        type: 3}
       propertyPath: DialogueTriggerPoint.Array.data[0]
       value: 
       objectReference: {fileID: 1218039807}
@@ -8842,6 +8855,11 @@ PrefabInstance:
       propertyPath: btn
       value: 
       objectReference: {fileID: 1894251422}
+    - target: {fileID: 5025676399979817253, guid: 479587ce49abb4881801f5af65c1faa5,
+        type: 3}
+      propertyPath: DialogueTriggerPoint.Array.data[2]
+      value: 
+      objectReference: {fileID: 1237554457}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 479587ce49abb4881801f5af65c1faa5, type: 3}
 --- !u!1001 &5051385509014171190

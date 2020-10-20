@@ -274,6 +274,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5025676399979817253, guid: 479587ce49abb4881801f5af65c1faa5,
         type: 3}
+      propertyPath: DialogueTriggerPoint.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025676399979817253, guid: 479587ce49abb4881801f5af65c1faa5,
+        type: 3}
       propertyPath: nameText
       value: 
       objectReference: {fileID: 1387241994}
@@ -287,8 +292,25 @@ PrefabInstance:
       propertyPath: btn
       value: 
       objectReference: {fileID: 1387241992}
+    - target: {fileID: 5025676399979817253, guid: 479587ce49abb4881801f5af65c1faa5,
+        type: 3}
+      propertyPath: DialogueTriggerPoint.Array.data[0]
+      value: 
+      objectReference: {fileID: 342378374}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 479587ce49abb4881801f5af65c1faa5, type: 3}
+--- !u!114 &84511188 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5025676399979817253, guid: 479587ce49abb4881801f5af65c1faa5,
+    type: 3}
+  m_PrefabInstance: {fileID: 84511187}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310ca79ff5aa14a52a92f61814f816bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &132716475 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6809395604833610502, guid: eb222745e1a804be3b77e701653ab670,
@@ -3166,6 +3188,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DC
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176289093188439506, guid: 67d660166f9614e57b53ae8891588ec5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 84511188}
+    - target: {fileID: 1176289093188439506, guid: 67d660166f9614e57b53ae8891588ec5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayNextSentence
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67d660166f9614e57b53ae8891588ec5, type: 3}

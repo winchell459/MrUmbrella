@@ -2066,7 +2066,7 @@ PrefabInstance:
         type: 3}
       propertyPath: DialogueTriggerPoint.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 823150971}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 479587ce49abb4881801f5af65c1faa5, type: 3}
 --- !u!114 &531232252 stripped
@@ -2820,7 +2820,7 @@ MonoBehaviour:
     name: Old Man Burt
     sentences:
     - Hey there young man, there was some commotion ovah yonder.
-    - Ya mind checking it out for me?
+    - Ya mind checkin' it out for me? 'preciate it
 --- !u!4 &823150974
 Transform:
   m_ObjectHideFlags: 0

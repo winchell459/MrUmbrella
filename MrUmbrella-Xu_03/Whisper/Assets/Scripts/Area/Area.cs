@@ -28,6 +28,7 @@ public abstract class Area : MonoBehaviour
     {
         OnAwake();
         
+
     }
 
     // Start is called before the first frame update
@@ -36,7 +37,8 @@ public abstract class Area : MonoBehaviour
         despawnObjects();
         OnLoad();
         loadPlayer();
-        FindObjectOfType<MusicBackgroundHandler>().OnSceneStart(SceneTrack);
+        MusicBackgroundHandler.StaticMBH.OnSceneStart(SceneTrack);
+
 
     }
 
@@ -88,7 +90,7 @@ public abstract class Area : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Enemy") == null && FindObjectOfType<PlayerAttack>().isBack)
         {
-            //MusicBackgroundHandler.StaticMBH.OnSceneEnd();
+            MusicBackgroundHandler.StaticMBH.OnSceneEnd();
             
             
             PlayerHandler.PH.SavePlayerPrefs();

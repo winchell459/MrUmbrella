@@ -5200,7 +5200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BridgeName: 2_05_in
   BridgeToAreaName: Boss
-  BridgeToBridgeName: Boss_in
+  BridgeToBridgeName: Boss_cave
   LoadingOffset: {x: -2, y: 3}
 --- !u!4 &376426868
 Transform:
@@ -6735,6 +6735,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4636344514585552621, guid: ae86c65ee980344ed949ce3fb4c8ef33,
+        type: 3}
+      propertyPath: Inheritance
+      value: Destroyables
+      objectReference: {fileID: 0}
     - target: {fileID: 4636344516206997248, guid: ae86c65ee980344ed949ce3fb4c8ef33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8559,7 +8564,7 @@ MonoBehaviour:
     sentences:
     - It couldn't be..
     - The Dweller has been dead for centuries!
-    - I suppose someone has brought this monster back to life.q
+    - I suppose someone has brought this monster back to life.
 --- !u!4 &1476085810
 Transform:
   m_ObjectHideFlags: 0

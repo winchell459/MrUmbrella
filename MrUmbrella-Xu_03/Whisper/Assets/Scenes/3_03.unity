@@ -801,7 +801,7 @@ MonoBehaviour:
   BridgeName: 3_03_out
   BridgeToAreaName: 3_04
   BridgeToBridgeName: 3_04_in
-  LoadingOffset: {x: -2, y: 3}
+  LoadingOffset: {x: -2, y: 5}
 --- !u!4 &376426868
 Transform:
   m_ObjectHideFlags: 0
