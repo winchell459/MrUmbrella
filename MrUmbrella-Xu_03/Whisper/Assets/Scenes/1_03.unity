@@ -4454,21 +4454,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 577850110}
-    - target: {fileID: 3035678126901877402, guid: ae031258814184384a68ac9e9ac05dcf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: KTR
-      objectReference: {fileID: 0}
     - target: {fileID: 3035678128101124715, guid: ae031258814184384a68ac9e9ac05dcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 577850110}
-    - target: {fileID: 3035678128101124715, guid: ae031258814184384a68ac9e9ac05dcf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: togglePanel
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae031258814184384a68ac9e9ac05dcf, type: 3}
 --- !u!1 &1962093566 stripped

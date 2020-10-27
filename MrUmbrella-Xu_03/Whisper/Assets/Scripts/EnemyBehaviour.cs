@@ -218,7 +218,7 @@ public class EnemyBehaviour : SpawnObjects
     {
         Player.gameObject.GetComponent<Health>().TakeDamage(damage * FindObjectOfType<PlayerAttack>().ProtectionPower);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void MyOnTriggerEnter2D(Collider2D collision)
     {
         if(enemyType == EnemyTypes.eo1)
         {
@@ -228,7 +228,8 @@ public class EnemyBehaviour : SpawnObjects
                 
 
             }
-        }else if(enemyType == EnemyTypes.eo3)
+        }
+        else if(enemyType == EnemyTypes.eo3)
         {
             if (collision.transform.CompareTag("Player"))
             {
@@ -287,7 +288,11 @@ public class EnemyBehaviour : SpawnObjects
 
 
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        MyOnTriggerEnter2D(collision);
+    }
+    public void MyOnTriggerExit2D(Collider2D collision)
     {
         if (enemyType == EnemyTypes.eo1)
         {
@@ -345,6 +350,11 @@ public class EnemyBehaviour : SpawnObjects
             }
         }
 
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        MyOnTriggerExit2D(collision);
     }
 
     public void EnemyDIE()
