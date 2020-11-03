@@ -7,6 +7,7 @@ public class RespawnNoAltar : MonoBehaviour
     public GameObject Panel;
     public AudioClip death;
     public AudioSource RAS;
+    public GameObject player;
 
     // Update is called once per frame
 
@@ -24,6 +25,14 @@ public class RespawnNoAltar : MonoBehaviour
 
 
 
+        }
+        if (!player)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+        else
+        {
+            FindObjectOfType<PlayerDeadManager>().SetStatus(false);
         }
     }
     public void Respawn()

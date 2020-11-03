@@ -75,7 +75,7 @@ public class PlayerAttack : MonoBehaviour
         
         UpdateMeleeAbilities();
 
-        NormDamage = am.Power;
+        if(am) NormDamage = am.Power;
 
         //CamAnim = Camera.main.transform.parent.GetComponent<Animator>();
         
@@ -103,12 +103,12 @@ public class PlayerAttack : MonoBehaviour
                 {
                     animator.SetBool("isPoke", true);
                     Instantiate(blinkParticle, transform.position, Quaternion.identity);
-                    Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    Vector2 direction = (target - transform.position).normalized;
+                    //Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    //Vector2 direction = (target - transform.position).normalized;
 
-                    transform.parent.parent.position = new Vector3(transform.parent.parent.position.x + tpDistance * direction.x, transform.parent.parent.position.y);
+                    //transform.parent.parent.position = new Vector3(transform.parent.parent.position.x + tpDistance * direction.x, transform.parent.parent.position.y);
 
-
+                    //FindObjectOfType<PlayerController>().isPoke = true;
                 }
                 else if (am.MeleeType == AbilityMelee.MeleeTypes.Smash)
                 {
@@ -126,6 +126,7 @@ public class PlayerAttack : MonoBehaviour
 
             }
             //set to false
+            
             
         }
         else
@@ -313,8 +314,16 @@ public class PlayerAttack : MonoBehaviour
             ProtectionPower = PH.Protection.Power;
         }
 
-       
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Poke"))
+        {
+            FindObjectOfType<PlayerController>().isPoke = true;
+        }
+        else
+        {
+            FindObjectOfType<PlayerController>().isPoke = false;
+        }
         
+
 
 
 

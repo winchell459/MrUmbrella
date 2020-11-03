@@ -12,6 +12,7 @@ public class AbilityUnlockTrigger : MonoBehaviour
     private void Start()
     {
         theCanvas.SetActive(false);
+        if (PlayerHandler.PH.AbilityUnlocked(ao)) Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

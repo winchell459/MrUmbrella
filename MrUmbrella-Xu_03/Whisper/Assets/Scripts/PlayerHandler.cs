@@ -35,6 +35,8 @@ public class PlayerHandler : MonoBehaviour
     public bool isDebug;
     public static bool ResetSave = false;
 
+    public bool playerDead = false;
+
     private void Awake()
     {
         //PlayerPrefs.SetInt(rangelockTags[1], 0);

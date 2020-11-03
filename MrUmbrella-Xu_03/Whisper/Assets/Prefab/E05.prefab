@@ -226,13 +226,15 @@ MonoBehaviour:
   health: 20
   maxHealth: 0
   Inheritance: CloseRangeEnemy
-  particle: {fileID: 0}
+  particle: {fileID: 1264398253127470961, guid: ea68d399e39e14f5092219e97b9ec8eb,
+    type: 3}
   isPlayerDead: 0
   DamageShow: {fileID: 348266992634077544, guid: c95be59db9e5b442c85459b186e901e4,
     type: 3}
   isBossDead: 0
   HurtAS: {fileID: 4842193936123459095}
   HurtAC: {fileID: 8300000, guid: 3df6a9635b54242c1868ad45902b80c0, type: 3}
+  DeathAC: {fileID: 0}
 --- !u!60 &2358411051403684224
 PolygonCollider2D:
   m_ObjectHideFlags: 0

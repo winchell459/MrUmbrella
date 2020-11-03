@@ -626,7 +626,8 @@ MonoBehaviour:
   health: 20
   maxHealth: 0
   Inheritance: CloseRangeEnemy
-  particle: {fileID: 0}
+  particle: {fileID: 1264398253127470961, guid: ea68d399e39e14f5092219e97b9ec8eb,
+    type: 3}
   isPlayerDead: 0
   DamageShow: {fileID: 348266992634077544, guid: c95be59db9e5b442c85459b186e901e4,
     type: 3}

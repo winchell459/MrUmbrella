@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 101.33
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -1149,6 +1149,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6864499740147855947}
     m_Modifications:
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_Text
+      value: Teleports player forward and marks the location the player was in before
+        the teleportaion. The player can use this ability again to go back to the
+        marked position.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8163104221091415873, guid: e7f58284b55a14fb983781318d812b7c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1363,6 +1375,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4692564163733819332}
     m_Modifications:
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_Text
+      value: Shoots three bullets that come together at the mouse's position. The
+        range is very limited on this ability.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8163104221091415873, guid: e7f58284b55a14fb983781318d812b7c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1582,6 +1605,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4692564163733819332}
     m_Modifications:
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_Text
+      value: The umbrella spins and shoots out fireballs in random directions. The
+        fireballs will cause damage and bounce around.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8163104221091415873, guid: e7f58284b55a14fb983781318d812b7c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1801,6 +1835,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4692564163733819332}
     m_Modifications:
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_Text
+      value: Shoots an arrow in the direction of the mouse, causing damage. Damage
+        will increase as the player's distance increases with the arrow.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8163104221091415873, guid: e7f58284b55a14fb983781318d812b7c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2025,6 +2070,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 197271311662364890}
     m_Modifications:
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_Text
+      value: Raises and enlarges the umbrella and smashes it down dealing huge damage
+        in a large area.
+      objectReference: {fileID: 0}
     - target: {fileID: 8163104221091415874, guid: e7f58284b55a14fb983781318d812b7c,
         type: 3}
       propertyPath: Ability
@@ -2175,6 +2226,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 197271311662364890}
     m_Modifications:
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_Text
+      value: Charges forward towards the direction the player is facing in and stabs
+        twice the enemy in front of the player.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8163104221091415878, guid: e7f58284b55a14fb983781318d812b7c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2312,6 +2374,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6864499740147855947}
     m_Modifications:
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_Text
+      value: Makes player invincible for a short period of time.
+      objectReference: {fileID: 0}
     - target: {fileID: 8163104221091415873, guid: e7f58284b55a14fb983781318d812b7c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2526,6 +2593,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6864499740147855947}
     m_Modifications:
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_Text
+      value: Shields player and thus only taking 25 percent of the original damage.
+      objectReference: {fileID: 0}
     - target: {fileID: 8163104221091415873, guid: e7f58284b55a14fb983781318d812b7c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2740,6 +2812,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 197271311662364890}
     m_Modifications:
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_Text
+      value: Turns umbrella quickly in a circle. Any enemies in range of the swing
+        will be damaged. Every fourth hit is a critical hit.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3194248157861859146, guid: e7f58284b55a14fb983781318d812b7c,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8163104221091415873, guid: e7f58284b55a14fb983781318d812b7c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

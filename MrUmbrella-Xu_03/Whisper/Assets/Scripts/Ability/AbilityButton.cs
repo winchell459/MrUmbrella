@@ -33,4 +33,17 @@ public class AbilityButton : MonoBehaviour
         unlocked = true;
         GetComponent<Button>().interactable = true;
     }
+    bool isToggle;
+    public void Discription(GameObject info)
+    {
+        isToggle = !isToggle;
+        if (isToggle)
+        {
+            info.SetActive(true);
+        }
+        else
+        {
+            info.SetActive(false);
+        }
+    }
 }

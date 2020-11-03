@@ -24,6 +24,7 @@ public class Health : MonoBehaviour
     public AudioClip HurtAC;
     public AudioClip DeathAC;
 
+    public GameObject DeathParticle;
 
     private void Awake()
     {
@@ -45,7 +46,12 @@ public class Health : MonoBehaviour
         HurtAS.clip = HurtAC;
         if(!HurtAS.isPlaying) HurtAS.Play();
 
-       
+        if(Inheritance == "Player")
+        {
+            FindObjectOfType<PlayerHealthBar>().transform.parent.gameObject.GetComponent<Animator>().SetTrigger("isHurt");
+        }
+
+
 
         if (health <= 0)
         {
@@ -110,13 +116,17 @@ public class Health : MonoBehaviour
             {
                 Debug.Log("y u no have altar bro");
             }
+            GameObject Instance = Instantiate(DeathParticle, transform.position, Quaternion.identity);
+            Destroy(Instance, 3);
             Destroy(gameObject);
         }
         if(who == "FarRangeEnemy")
         {
             FindObjectOfType<EnemyFire>().enabled = false;
             Destroy(FindObjectOfType<EnemyFire>().DestroyTheBullet);
-
+            Camera.main.gameObject.GetComponent<Follow>().ShakeCamera();
+            GameObject Instance = Instantiate(particle, transform.position, Quaternion.identity);
+            Destroy(Instance, 3);
             transform.parent.GetComponent<EnemyBehaviour>().EnemyDIE();
         }
         if(who == "CloseRangeEnemy")
@@ -124,6 +134,10 @@ public class Health : MonoBehaviour
             Destroy(gameObject);
             Destroy(transform.parent.gameObject);
             transform.parent.GetChild(1).GetComponent<HealthBar>().SetBarStateOff(true);
+            Camera.main.gameObject.GetComponent<Follow>().ShakeCamera();
+            transform.parent.GetComponent<EnemyBehaviour>().EnemyDIE();
+            GameObject Instance = Instantiate(particle, transform.position, Quaternion.identity);
+            Destroy(Instance, 3);
         }
         if(who == "Destroyables")
         {

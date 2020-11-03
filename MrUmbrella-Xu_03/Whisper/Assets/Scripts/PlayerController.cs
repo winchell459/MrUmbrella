@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     
     public AudioSource PlayerAS;
 
+    public bool isPoke;
+
     void Start()
     {
         extraJump = extraJumpValue;
@@ -65,10 +67,19 @@ public class PlayerController : MonoBehaviour
         if (isMove == true)
         {
 
-            
             moveInput = Input.GetAxis("Horizontal");
 
-            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+
+            if (!isPoke)
+            {
+                
+                rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(transform.right.x * 10, rb.velocity.y);
+            }
+            
 
             if (facingRight == false && moveInput > 0)
             {
