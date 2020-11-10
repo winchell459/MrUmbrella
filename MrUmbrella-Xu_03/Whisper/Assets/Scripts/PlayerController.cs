@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TouchControlsKit;
 
 public class PlayerController : MonoBehaviour
 {
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
         if (isMove == true)
         {
 
-            moveInput = Input.GetAxis("Horizontal");
+            moveInput = Mathf.Clamp(xValue, -1, 1); //Input.GetAxis("Horizontal");
 
 
             if (!isPoke)
@@ -102,6 +103,8 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(isGrounded);
 
+        InputHandler();
+
         if (isGrounded == true)
         {
             extraJump = extraJumpValue;
@@ -109,7 +112,7 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        if (Input.GetKeyDown(KeyCode.Space) && extraJump > 0)
+        if (jumpButtonDown && extraJump > 0)
         {
 
             rb.velocity = Vector2.up * jumpForce;
@@ -118,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
 
         }
-        else if (Input.GetKey(KeyCode.Space) && extraJump == 0 && isGrounded == true)
+        else if (jumpButton && extraJump == 0 && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpForce;
 
@@ -185,7 +188,7 @@ public class PlayerController : MonoBehaviour
         if(FindObjectOfType<PlayerAttack>())
         {
 
-            if (Input.GetMouseButtonDown(0) && !FindObjectOfType<AbPanelActive>().OnHold)
+            if (attack1ButtonDown && !FindObjectOfType<AbPanelActive>().OnHold)
             {
                 FindObjectOfType<PlayerAttack>().MeleeAb(true);
                 //rb.drag = drag;
@@ -195,7 +198,7 @@ public class PlayerController : MonoBehaviour
                 FindObjectOfType<PlayerAttack>().MeleeAb(false);
                 //rb.drag = 0;
             }
-            if (Input.GetButtonDown("Fire1") && !FindObjectOfType<AbPanelActive>().OnHold)
+            if (attack2Button && !FindObjectOfType<AbPanelActive>().OnHold)
             {
                 FindObjectOfType<PlayerAttack>().ProjectileAb();
             }
@@ -204,7 +207,7 @@ public class PlayerController : MonoBehaviour
                 FindObjectOfType<PlayerAttack>().animator.SetBool("isProtection", false);
                 FindObjectOfType<PlayerAttack>().animator.SetBool("isFireBall", false);
             }
-            if (Input.GetButtonDown("Fire2"))
+            if (attack3Button)
             {
                 FindObjectOfType<PlayerAttack>().ProtectionAb(true);
             }
@@ -277,10 +280,66 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    bool xButton;
+    bool xButtonDown;
+    bool xButtonUp;
+    float xValue;
 
+    bool jumpButton;
+    bool jumpButtonDown;
+    bool jumpButtonUp;
 
+    bool attack1Button;
+    bool attack1ButtonDown;
+    bool attack1ButtonUp;
 
+    bool attack2Button;
+    bool attack2ButtonDown;
+    bool attack2ButtonUp;
 
+    bool attack3Button;
+    bool attack3ButtonDown;
+    bool attack3ButtonUp;
+
+    void InputHandler()
+    {
+        xValue = TCKInput.GetAxis("Joystick").x;
+        GetInput(Mathf.Abs(xValue) > 0, ref xButton, ref xButtonDown, ref xButtonUp);
+        GetInput(Input.GetKey(KeyCode.Space) || TCKInput.GetAction("jumpBtn", EActionEvent.Down), ref jumpButton, ref jumpButtonDown, ref jumpButtonUp);
+        GetInput(/*Input.GetMouseButton(0) || */TCKInput.GetAction("atc1btn", EActionEvent.Down), ref attack1Button, ref attack1ButtonDown, ref attack1ButtonUp);
+        GetInput(TCKInput.GetAction("atc2btn", EActionEvent.Down), ref attack2Button, ref attack2ButtonDown, ref attack2ButtonUp);
+        GetInput(TCKInput.GetAction("atc3btn", EActionEvent.Down), ref attack3Button, ref attack3ButtonDown, ref attack3ButtonUp);
+    }
+
+    void GetInput(bool input, ref bool button, ref bool buttonDown, ref bool buttonUp)
+    {
+        if (input)
+        {
+            if (!button)
+            {
+                buttonDown = true;
+            }
+            else
+            {
+               buttonDown = false;
+            }
+            button = true;
+            buttonUp = false;
+        }
+        else
+        {
+            if (button)
+            {
+                buttonUp = true;
+            }
+            else
+            {
+                buttonUp = false;
+            }
+            button = false;
+            buttonDown = false;
+        }
+    }
     /*
 
     private void Update()
