@@ -23,7 +23,9 @@ namespace TouchControlsKit
     {
         public Image joystickImage, backgroundImage;
         public RectTransform joystickRT, backgroundRT;
-        
+
+        public float cameraSize = 5.7f;
+
         [SerializeField, Label( "Mode" )]
         private bool isStatic = true;
                 
@@ -108,13 +110,13 @@ namespace TouchControlsKit
 
                 currentDirection = currentPosition - defaultPosition;
 
-                float currentDistance = Vector2.Distance( defaultPosition, currentPosition );
+                float currentDistance = Vector2.Distance( defaultPosition, currentPosition ) * 100/cameraSize;
                 float touchForce = 100f;
 
                 float calculatedBorderSize = ( backgroundRT.sizeDelta.magnitude / 2f ) * borderSize / 16f;
                 
                 if( currentDistance > calculatedBorderSize ) { // borderPosition 
-                    currentPosition = defaultPosition + currentDirection.normalized * calculatedBorderSize;
+                    currentPosition = defaultPosition + currentDirection.normalized * calculatedBorderSize / (100/cameraSize);
                 }                                    
                 else {
                     touchForce = ( currentDistance / calculatedBorderSize ) * 100f;
