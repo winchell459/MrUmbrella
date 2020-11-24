@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -66,6 +67,8 @@ public class PlayerAttack : MonoBehaviour
     public int Crit;
     public float CritDamage;
     public float NormDamage;
+
+    public Vector2 pointpoint;
 
     //public Animator CamAnim;
 
@@ -234,6 +237,7 @@ public class PlayerAttack : MonoBehaviour
                 bullet.PP.speed = ar.speed;
                 FireRate = ar.CD;
                 bullet.Setup();
+                
                 //isFireSingBullet = false;
 
             }
@@ -302,7 +306,7 @@ public class PlayerAttack : MonoBehaviour
             
         }
     }
-
+    bool isClick;
     void Update()
     {
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Invincibility") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Shield"))
@@ -322,8 +326,10 @@ public class PlayerAttack : MonoBehaviour
         {
             FindObjectOfType<PlayerController>().isPoke = false;
         }
-        
 
+
+        
+        
 
 
 

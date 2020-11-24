@@ -26,6 +26,8 @@ public class Bullet : MonoBehaviour {
     float minDistance = float.MaxValue;
     */
 
+    public GameObject AT2JoyS;
+
     public enum BulletFireTypes
     {
         SingBullet,
@@ -36,7 +38,10 @@ public class Bullet : MonoBehaviour {
     
     public BulletFireTypes bulletFireType;
 
-    
+    public List<Transform> theEnemies;
+    public int offset;
+    public Vector2 rangeOfOffset;
+
 
     // Use this for initialization
     public void Setup () {
@@ -52,26 +57,58 @@ public class Bullet : MonoBehaviour {
         {
             //rb.velocity = transform.right * PP.speed;
 
+            /*
             Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = (target - transform.position).normalized;
             rb.velocity = new Vector2(direction.x * PP.speed, direction.y * PP.speed);
 
-            //float rotateAmount = Vector3.Cross(direction, transform.up).z;
-
-            //rb.angularVelocity = -rotateAmount * 10000000;
+            rb.velocity = new Vector2(FindObjectOfType<PlayerAttack>().pointpoint.x * PP.speed, FindObjectOfType<PlayerAttack>().pointpoint.y * PP.speed);
 
             SBcurpos = transform.position;
 
+            */
 
+
+            if (GameObject.FindGameObjectWithTag("Enemy"))
+            {
+                foreach (GameObject e in GameObject.FindGameObjectsWithTag("Enemy"))
+                {
+                    theEnemies.Add(e.transform);
+                }
+                rangeOfOffset.x = (float)SMDamageLine(1, Vector2.Distance(transform.position, GetClosestEnemy(theEnemies).position), 0);
+                rangeOfOffset.x = (float)SMDamageLine(1, Vector2.Distance(transform.position, GetClosestEnemy(theEnemies).position), 0.5f);
+
+                offset = (int)Random.Range(rangeOfOffset.x, rangeOfOffset.x);
+
+                Vector2 direction = (GetClosestEnemy(theEnemies).position - transform.position).normalized;
+                rb.velocity = new Vector2(direction.x * PP.speed + offset, direction.y * PP.speed);
+
+
+                SBcurpos = transform.position;
+            }
+           
+            
 
         }
         else if(bulletFireType == BulletFireTypes.SmallBullet)
         {
-            Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 direction = (target - transform.position).normalized;
-            rb.velocity = new Vector2(direction.x * PP.speed, direction.y * PP.speed);
+            //Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //Vector2 direction = (target - transform.position).normalized;
+            if (GameObject.FindGameObjectWithTag("Enemy"))
+            {
+                foreach (GameObject e in GameObject.FindGameObjectsWithTag("Enemy"))
+                {
+                    theEnemies.Add(e.transform);
+                }
+                Vector2 direction = (GetClosestEnemy(theEnemies).position - transform.position).normalized;
+                rb.velocity = new Vector2(direction.x * PP.speed + offset, direction.y * PP.speed);
 
-            SMcurpos = transform.position;
+
+
+
+                SMcurpos = transform.position;
+            }
+            
         }
         
 	}
@@ -175,5 +212,21 @@ public class Bullet : MonoBehaviour {
 
 
     }
-	
+    Transform GetClosestEnemy(List<Transform> enemies)
+    {
+        Transform tMin = null;
+        float minDist = Mathf.Infinity;
+        Vector3 currentPos = transform.position;
+        foreach (Transform t in enemies)
+        {
+            float dist = Vector3.Distance(t.position, currentPos);
+            if (dist < minDist)
+            {
+                tMin = t;
+                minDist = dist;
+            }
+        }
+        return tMin;
+    }
+
 }

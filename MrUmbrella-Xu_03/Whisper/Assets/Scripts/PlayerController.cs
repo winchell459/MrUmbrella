@@ -97,14 +97,18 @@ public class PlayerController : MonoBehaviour
 
         //rb.drag = drag;
     }
-    
 
+    bool isPressed;
     private void Update()
     {
         //Debug.Log(isGrounded);
 
         InputHandler();
-
+        if (EButtonDown)
+        {
+            isPressed = !isPressed;
+            FindObjectOfType<AbPanelActive>().AbPanel.SetActive(isPressed);
+        }
         if (isGrounded == true)
         {
             extraJump = extraJumpValue;
@@ -226,7 +230,7 @@ public class PlayerController : MonoBehaviour
                 FindObjectOfType<PlayerAttack>().ProjectileAb(false, false);
             }
             */
-            FindObjectOfType<AbPanelActive>().OpenInventory();
+            //FindObjectOfType<AbPanelActive>().OpenInventory();
 
         }
 
@@ -301,6 +305,16 @@ public class PlayerController : MonoBehaviour
     bool attack3ButtonDown;
     bool attack3ButtonUp;
 
+    public bool EButton;
+    public bool EButtonDown;
+    public bool EButtonUp;
+
+    public bool QButton;
+    public bool QButtonDown;
+    public bool QButtonUp;
+
+    //on touchdown up do 1 (using bool) bullet at direction calculated using vector2.angle 
+
     void InputHandler()
     {
         xValue = TCKInput.GetAxis("Joystick").x;
@@ -309,6 +323,8 @@ public class PlayerController : MonoBehaviour
         GetInput(/*Input.GetMouseButton(0) || */TCKInput.GetAction("atc1btn", EActionEvent.Down), ref attack1Button, ref attack1ButtonDown, ref attack1ButtonUp);
         GetInput(TCKInput.GetAction("atc2btn", EActionEvent.Down), ref attack2Button, ref attack2ButtonDown, ref attack2ButtonUp);
         GetInput(TCKInput.GetAction("atc3btn", EActionEvent.Down), ref attack3Button, ref attack3ButtonDown, ref attack3ButtonUp);
+        GetInput(TCKInput.GetAction("Ebtn", EActionEvent.Down), ref EButton, ref EButtonDown, ref EButtonUp);
+        GetInput(TCKInput.GetAction("Qbtn", EActionEvent.Down), ref QButton, ref QButtonDown, ref QButtonUp);
     }
 
     void GetInput(bool input, ref bool button, ref bool buttonDown, ref bool buttonUp)

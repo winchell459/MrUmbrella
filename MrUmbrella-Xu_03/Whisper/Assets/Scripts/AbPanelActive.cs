@@ -11,13 +11,13 @@ public class AbPanelActive : MonoBehaviour
     private void Start()
     {
         loadAbilityPanel();
-        
+
         AbPanel.SetActive(false);
     }
 
     public void OpenInventory()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || GetComponent<PlayerController>().EButtonDown)
         {
             OnHold = !OnHold;
             FindObjectOfType<PlayerHandler>().SavePlayerPrefs();
@@ -43,5 +43,6 @@ public class AbPanelActive : MonoBehaviour
     private void Update()
     {
         //Debug.Log(gameObject);
+        Debug.Log(name);
     }
 }

@@ -20,6 +20,8 @@ public class RespawnAltar : MonoBehaviour
     public AudioClip death;
     public AudioSource RAS;
 
+    public GameObject TouchCanvas;
+
 
     bool isSetPanel;
 
@@ -27,6 +29,7 @@ public class RespawnAltar : MonoBehaviour
     {
         Panel.SetActive(false);
         RAS = GetComponent<AudioSource>();
+        TouchCanvas = GameObject.FindGameObjectWithTag("TCKCanvas").transform.GetChild(8).gameObject;
     }
     private void Update()
     {
@@ -90,34 +93,29 @@ public class RespawnAltar : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isRespawn == true)
+        if (collision.transform.CompareTag("Player"))
         {
-            if (collision.transform.CompareTag("Player"))
-            {
-                transform.GetChild(1).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(true);
 
 
-                Panel.SetActive(false);
-                isSpawn = false;
+            Panel.SetActive(false);
+            isSpawn = false;
 
-                Debug.Log("NOOOOO YOO MAAA");
+            Debug.Log("NOOOOO YOO MAAA");
 
-                //FindObjectOfType<Health>().isSetPanel = false;
-            }
+            TouchCanvas.SetActive(true);
+            //FindObjectOfType<Health>().isSetPanel = false;
         }
         
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (isRespawn == true)
+        if (collision.transform.CompareTag("Player"))
         {
-            if (collision.transform.CompareTag("Player"))
-            {
-                Panel.SetActive(false);
-
-            }
+            Panel.SetActive(false);
+            TouchCanvas.SetActive(true);
         }
-        if(collision.transform.CompareTag("Player") && Input.GetKey(KeyCode.Q))
+        if (collision.transform.CompareTag("Player") && Input.GetKey(KeyCode.Q) || FindObjectOfType<PlayerController>().QButton)
         {
             PlayerHandler.PH.savePlayerSavePoint();
             Debug.Log("apples uwu");
@@ -130,6 +128,7 @@ public class RespawnAltar : MonoBehaviour
         {
             transform.GetChild(1).gameObject.SetActive(false);
             isRespawn = false;
+            TouchCanvas.SetActive(false);
 
         }
     }

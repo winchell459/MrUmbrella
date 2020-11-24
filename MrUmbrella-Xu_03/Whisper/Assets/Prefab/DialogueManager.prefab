@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 0}
   dialogueText: {fileID: 0}
+  btn: {fileID: 0}
   DialogueTriggerPoint:
-  - {fileID: 0}
   - {fileID: 0}
   whichIsTriggered: 0

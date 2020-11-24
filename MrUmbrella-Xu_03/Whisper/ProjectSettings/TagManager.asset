@@ -18,6 +18,8 @@ TagManager:
   - RainSoundEmitter
   - UneffectedSFX
   - FruitShouter
+  - TCKCanvas
+  - TCKProjectile
   layers:
   - Default
   - TransparentFX
