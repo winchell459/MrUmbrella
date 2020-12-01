@@ -22,5 +22,6 @@ public class BossDieManager : MonoBehaviour
     {
         WinCanvas.SetActive(false);
         UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        Destroy(FindObjectOfType<MusicBackgroundHandler>().gameObject);
     }
 }

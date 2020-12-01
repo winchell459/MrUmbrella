@@ -12,6 +12,8 @@ public class HealthBar : MonoBehaviour
 
     public GameObject Parent;
 
+    public bool isBoss = false;
+
 
     private void Start()
     {
@@ -45,19 +47,22 @@ public class HealthBar : MonoBehaviour
     private void Update()
     {
         SetBar();
-
-        if(Parent != null)
+        if (!isBoss)
         {
-            if (selfHealth.gameObject.transform.parent.gameObject.GetComponent<EnemyDamagable>().isEnemyDamage == false)
+            if (Parent != null)
             {
-                SetBarStateOff(true);
+                if (selfHealth.gameObject.transform.parent.gameObject.GetComponent<EnemyDamagable>().isEnemyDamage == false)
+                {
+                    SetBarStateOff(true);
 
-            }
-            else
-            {
-                SetBarStateOff(false);
+                }
+                else
+                {
+                    SetBarStateOff(false);
+                }
             }
         }
+        
 
     }
 

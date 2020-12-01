@@ -15,18 +15,22 @@ public class MusicBackgroundHandler : MonoBehaviour
 
     private void Awake()
     {
-        if (!StaticMBH)
+        if (FindObjectOfType<Area>())
         {
-            StaticMBH = this;
+            if (!StaticMBH)
+            {
+                StaticMBH = this;
 
-            DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(gameObject);
 
-            AS = GetComponent<AudioSource>();
+                AS = GetComponent<AudioSource>();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        
     }
     private void OnLevelWasLoaded(int level)
     {
