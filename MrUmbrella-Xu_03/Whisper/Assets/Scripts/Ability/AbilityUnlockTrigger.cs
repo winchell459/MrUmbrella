@@ -27,6 +27,8 @@ public class AbilityUnlockTrigger : MonoBehaviour
             theCanvas.SetActive(true);
             theCanvas.GetComponent<AudioSource>().clip = CongratsClip;
             theCanvas.GetComponent<AudioSource>().Play();
+
+            Time.timeScale = 0;
         }
         
     }
@@ -35,5 +37,6 @@ public class AbilityUnlockTrigger : MonoBehaviour
     {
         theCanvas.SetActive(false);
         Debug.Log("p");
+        Time.timeScale = 1;
     }
 }

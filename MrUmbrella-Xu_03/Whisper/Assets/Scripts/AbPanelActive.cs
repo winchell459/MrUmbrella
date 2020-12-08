@@ -33,6 +33,8 @@ public class AbPanelActive : MonoBehaviour
         {
             AbPanel.SetActive(false);
 
+            
+
             //FindObjectOfType<PlayerHandler>().SavePlayerPrefs();
         }
     }
@@ -43,6 +45,6 @@ public class AbPanelActive : MonoBehaviour
     private void Update()
     {
         //Debug.Log(gameObject);
-        Debug.Log(name);
+        //Debug.Log(name);
     }
 }

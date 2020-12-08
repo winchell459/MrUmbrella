@@ -111,8 +111,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -4588,7 +4590,7 @@ ScriptsOnlyBuild:
     className: Fog
   - hash:
       serializedVersion: 2
-      Hash: 621001511d230df5f340f0e48e66417f
+      Hash: 497a22349e3bc740917aa18df730c09f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: HealthBar
@@ -5695,4 +5697,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/3_04.unity
   - Assets/Scenes/3_05.unity
   - Assets/Scenes/3_06.unity
-  playerPath: /Users/johnxu/Desktop/Games/WOTP_Mob07
+  playerPath: /Users/johnxu/Desktop/Games/WOTP_Mob08
