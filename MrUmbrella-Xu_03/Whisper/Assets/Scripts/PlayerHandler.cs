@@ -111,7 +111,7 @@ public class PlayerHandler : MonoBehaviour
     public void loadPlayerPrefs()
     {
 
-        //Debug.Log("Ability 0 value " + PlayerPrefs.GetInt("ability0"));
+        
         if (PlayerPrefs.HasKey(abilityTags[0]))
         {
             int index = PlayerPrefs.GetInt(abilityTags[0]);
