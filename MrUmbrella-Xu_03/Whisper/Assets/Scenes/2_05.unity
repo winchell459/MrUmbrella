@@ -6735,11 +6735,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4636344514585552621, guid: ae86c65ee980344ed949ce3fb4c8ef33,
-        type: 3}
-      propertyPath: Inheritance
-      value: Destroyables
-      objectReference: {fileID: 0}
     - target: {fileID: 4636344516206997248, guid: ae86c65ee980344ed949ce3fb4c8ef33,
         type: 3}
       propertyPath: m_LocalPosition.x

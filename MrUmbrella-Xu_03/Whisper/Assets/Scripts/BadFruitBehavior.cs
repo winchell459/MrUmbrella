@@ -21,8 +21,14 @@ public class BadFruitBehavior : MonoBehaviour
 
     private void Start()
     {
-        if(GameObject.FindGameObjectWithTag("FruitShouter")) BFShout = GameObject.FindGameObjectWithTag("FruitShouter");
-        FruitAS = BFShout.GetComponent<AudioSource>();
+        if (GameObject.FindGameObjectWithTag("FruitShouter"))
+        {
+            BFShout = GameObject.FindGameObjectWithTag("FruitShouter");
+            Debug.Log("FruitShouter Acquired");
+            FruitAS = BFShout.GetComponent<AudioSource>();
+        }
+        
+        
     }
 
 

@@ -369,3 +369,10 @@
 /Users/johnxu/Desktop/GitHub/MrUmbrella/MrUmbrella-Xu_03/Whisper/obj/Debug/Assembly-CSharp.csproj.CopyComplete
 /Users/johnxu/Desktop/GitHub/MrUmbrella/MrUmbrella-Xu_03/Whisper/obj/Debug/Assembly-CSharp.dll
 /Users/johnxu/Desktop/GitHub/MrUmbrella/MrUmbrella-Xu_03/Whisper/obj/Debug/Assembly-CSharp.pdb
+/Users/johnxu/Desktop/GitHub/MrUmbrella/MrUmbrella-Xu_03/Whisper/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll
+/Users/johnxu/Desktop/GitHub/MrUmbrella/MrUmbrella-Xu_03/Whisper/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.dll
+/Users/johnxu/Desktop/GitHub/MrUmbrella/MrUmbrella-Xu_03/Whisper/Temp/bin/Debug/UnityEngine.WebGLModule.dll
+/Users/johnxu/Desktop/GitHub/MrUmbrella/MrUmbrella-Xu_03/Whisper/Temp/bin/Debug/UnityEngine.WebGLModule.pdb
+/Users/johnxu/Desktop/GitHub/MrUmbrella/MrUmbrella-Xu_03/Whisper/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.pdb
+/Users/johnxu/Desktop/GitHub/MrUmbrella/MrUmbrella-Xu_03/Whisper/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.pdb
+/Users/johnxu/Desktop/GitHub/MrUmbrella/MrUmbrella-Xu_03/Whisper/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache

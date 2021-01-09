@@ -31,6 +31,9 @@ public class BossBehaviour : MonoBehaviour
     public float Stage2Attack2Damage = 5;
 
     public AudioSource BossAs;
+    public GameObject Field;
+    public Transform LeftEdge;
+    public Transform RighEdge;
 
 
     void Start()
@@ -115,6 +118,7 @@ public class BossBehaviour : MonoBehaviour
     public void Attack2Transition()
     {
         anim.SetTrigger("isAttack2");
+        Instantiate(Field, new Vector3(Random.Range(LeftEdge.position.x, RighEdge.position.x), LeftEdge.position.y), Quaternion.identity);
         Debug.Log("2");
     }
 
